@@ -13,9 +13,6 @@ const pokemonService = {
         const response = await axiosInstance.get(baseURL + `pokemon/?offset=${offset}&limit=${limit}`);
         return response.data.results;
     }
-    // getImgPokemon: async () => {
-    //     const response = await axiosInstance.get(``)
-    // }
 };
 
 export {

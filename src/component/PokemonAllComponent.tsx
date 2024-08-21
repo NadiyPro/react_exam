@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
-import axios from "axios";
+import {loadPokemonAll, loadPokemonImages} from "../redux/reducers/loadAbility";
 
 const PokemonAllComponent= () => {
     const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
@@ -9,32 +9,20 @@ const PokemonAllComponent= () => {
     const limit = useAppSelector(state => state.pokemonAllStore.limit);
     const dispatch = useAppDispatch();
 
-    const [pokemonImages, setPokemonImages] = useState<{ [key: string]: string }>({});
+    const pokemonImages = useAppSelector(state => state.pokemonAllStore.pokemonImages);
 
     useEffect(() => {
         dispatch(pokemonAllActions.loadPokemonAll({offset, limit}))
     }, [dispatch, offset, limit]);
 
     useEffect(() => {
-        const fetchImages = async () => {
-            const images = await Promise.all(
-                pokemon.map(async (poke) => {
-                    const pokemonId = getPokemonIdFromUrl(poke.url);
-                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-                    return { name: poke.name, imageUrl: response.data.sprites.front_default };
-                })
-            );
-
-            const imageMap = images.reduce((acc, { name, imageUrl }) => {
-                acc[name] = imageUrl;
-                return acc;
-            }, {} as { [key: string]: string });
-
-            setPokemonImages(imageMap);
+        const axiosPokemonData = async () => {
+            await dispatch(loadPokemonAll({ offset, limit }));
+            dispatch(loadPokemonImages(pokemon));
         };
 
-        fetchImages();
-    }, [pokemon]);
+        axiosPokemonData();
+    }, [dispatch, offset, limit, pokemon]);
 
     const nextPage = () => {
         dispatch(pokemonAllActions.setOffset(offset + limit));
@@ -45,20 +33,11 @@ const PokemonAllComponent= () => {
             dispatch(pokemonAllActions.setOffset(offset - limit));
         }
     };
-    const getPokemonIdFromUrl = (url: string) => {
-        const segments = url.split('/').filter(Boolean);
-        return segments[segments.length - 1];
-    };
 
-
-    const fetchPokemonImage = async (url: string) => {
-        const pokemonId = getPokemonIdFromUrl(url);
-        const response = await axios.get(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`);
-        return response.data.sprites.front_default;
-    };
 
     return (
         <div>
+
             {pokemon.map(poke => (
                 <div key={poke.name}>
                     {poke.name}
@@ -66,15 +45,9 @@ const PokemonAllComponent= () => {
                     {pokemonImages[poke.name] && (
                         <img src={pokemonImages[poke.name]} alt={poke.name} />
                     )}
-                </div>
-            ))}
-                {/*{pokemon.map(pokemon => <div>*/}
-                {/*    {pokemon.name} {pokemon.url}*/}
-                {/*    </div>*/}
+                </div>))
+            }
 
-                {/*)}*/}
-
-            {/* Кнопки для переключения страниц */}
             <button onClick={prevPage} disabled={offset === 0}>
                 Previous
             </button>
