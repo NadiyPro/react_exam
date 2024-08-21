@@ -1,20 +1,20 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import  {loadPokemonImages, loadPokemonAll} from "../reducers/loadAbility";
+import {loadPokemonAll, loadPokemonImage} from "../reducers/loadAbility";
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
+    images: { [key: string]: string };
     error: string | null;
     offset: number;
     limit: number;
-    pokemonImages: { [key: string]: string };
 }
 
 const initialState: PokemonAllState = {
     pokemon: [],
+    images: {},
     error: null,
     offset: 0,
     limit: 20,
-    pokemonImages: {}
 };
 
 export const pokemonAllSlice = createSlice({
@@ -32,8 +32,9 @@ export const pokemonAllSlice = createSlice({
                     state.pokemon = action.payload;
                 }
             )
-            .addCase(loadPokemonImages.fulfilled, (state, action) => {
-                state.pokemonImages = action.payload;
+            .addCase(loadPokemonImage.fulfilled, (state, action) => {
+                const { name, imageUrl } = action.payload as { name: string; imageUrl: string };
+                state.images[name] = imageUrl;
             });
     }
 });
@@ -43,5 +44,5 @@ export const pokemonAllSlice = createSlice({
 export const pokemonAllActions = {
     ...pokemonAllSlice.actions,
     loadPokemonAll,
-    loadPokemonImages
+    loadPokemonImage
 };
