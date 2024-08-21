@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import {useNavigate} from "react-router-dom";
 
 const PokemonAllComponent= () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const offset = useAppSelector(state => state.pokemonAllStore.offset);
@@ -39,7 +40,7 @@ const PokemonAllComponent= () => {
             {pokemon.map(value => (
                 <div key={value.name}>
                     <div>{value.name}</div>
-                    <img src={images[value.name]} alt={value.name} />
+                    <img src={images[value.name]} alt={value.name} onClick={() => navigate(`pokemon/${value.name}`)}/>
                 </div>
             ))}
 
