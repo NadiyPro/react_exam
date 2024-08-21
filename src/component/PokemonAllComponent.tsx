@@ -37,7 +37,6 @@ const PokemonAllComponent= () => {
         }
     };
 
-
     return (
         <div>
 
