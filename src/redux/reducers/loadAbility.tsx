@@ -2,8 +2,8 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {pokemonService} from "../../service/api.service";
 
-const loadAbility = createAsyncThunk(
-    'abilityAllSlice',
+const loadPokemonAll = createAsyncThunk(
+    'pokemonAllSlice',
     async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {
         try {
             let response = await pokemonService.getAll(offset,limit);
@@ -14,4 +14,4 @@ const loadAbility = createAsyncThunk(
         }
     }
 );
-export default loadAbility;
+export default loadPokemonAll;

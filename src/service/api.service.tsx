@@ -1,5 +1,5 @@
 import axios from "axios";
-import {IAbilityNameUrl} from "../models/IAbilityAll";
+import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
 
 export const baseURL = 'https://pokeapi.co/api/v2/';
 
@@ -9,8 +9,8 @@ const axiosInstance = axios.create({
 });
 
 const pokemonService = {
-    getAll: async (offset:number, limit: number):Promise<IAbilityNameUrl[]> => {
-        const response = await axiosInstance.get(baseURL + `ability?offset=${offset}&limit=${limit}`);
+    getAll: async (offset:number, limit: number):Promise<IPokemonNameUrl[]> => {
+        const response = await axiosInstance.get(baseURL + `pokemon/?offset=${offset}&limit=${limit}`);
         return response.data.results;
     }
 };

@@ -1,11 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {abilitiesSlice} from "./slices/abilitiesSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {pokemonAllSlice} from "./slices/pokemonAllSlice";
 
 
 export const store = configureStore({
     reducer: {
-        abilityStore: abilitiesSlice.reducer
+        pokemonAllStore: pokemonAllSlice.reducer
     }
 });
 
