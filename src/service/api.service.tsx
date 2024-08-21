@@ -18,19 +18,19 @@ const pokemonService = {
         return response.data.sprites.front_default;
     },
     getAbilities: async (name: string) : Promise<string> => {
-        const response = await axiosInstance.get(`/pokemon/${name}`);
+        const response = await axiosInstance.get(`/ability/${name}`);
         return response.data.sprites.abilities;
     },
     getStats: async (name: string) : Promise<string> => {
-        const response = await axiosInstance.get(`/pokemon/${name}`);
+        const response = await axiosInstance.get(`/stat/${name}`);
         return response.data.sprites.stats;
     },
     getType: async (name: string) : Promise<string> => {
-        const response = await axiosInstance.get(`/pokemon/${name}`);
+        const response = await axiosInstance.get(`/type/${name}`);
         return response.data.sprites.type;
     },
     getForms: async (name: string) : Promise<string> => {
-        const response = await axiosInstance.get(`/pokemon/${name}`);
+        const response = await axiosInstance.get(`/pokemon-form/${name}`);
         return response.data.sprites.forms;
     }
 };
