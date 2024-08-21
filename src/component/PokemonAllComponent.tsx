@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
-import loadPokemonAll from "../redux/reducers/loadAbility";
 
 const PokemonAllComponent= () => {
     const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
@@ -27,7 +26,7 @@ const PokemonAllComponent= () => {
         <div>
 
                 {pokemon.map(pokemon => <div>
-                    {pokemon.name}
+                    {pokemon.name} {pokemon.url}
                     </div>
 
                 )}
