@@ -27,7 +27,7 @@ const PokemonAllComponent= () => {
         <div>
 
                 {pokemon.map(pokemon => <div>
-                    {pokemon.name} {pokemon.url}
+                    {pokemon.name}
                     </div>
 
                 )}
