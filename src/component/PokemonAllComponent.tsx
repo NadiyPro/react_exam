@@ -16,9 +16,9 @@ const PokemonAllComponent= () => {
     }, [dispatch, offset, limit]);
 
     useEffect(() => {
-        pokemon.forEach(poke => {
-            if (!images[poke.name]) { // Только если изображение ещё не загружено
-                dispatch(pokemonAllActions.loadPokemonImage(poke.name));
+        pokemon.forEach(value => {
+            if (!images[value.name]) { // Только если изображение ещё не загружено
+                dispatch(pokemonAllActions.loadPokemonImage(value.name));
             }
         });
     }, [pokemon, images, dispatch]);
@@ -36,10 +36,10 @@ const PokemonAllComponent= () => {
     return (
         <div>
 
-            {pokemon.map(poke => (
-                <div key={poke.name}>
-                    <div>{poke.name}</div>
-                    <img src={images[poke.name]} alt={poke.name} />
+            {pokemon.map(value => (
+                <div key={value.name}>
+                    <div>{value.name}</div>
+                    <img src={images[value.name]} alt={value.name} />
                 </div>
             ))}
 
