@@ -1,11 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {abilityAllSlice} from "./slices/abilityAllSlice";
+import {abilitiesSlice} from "./slices/abilitiesSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 
 export const store = configureStore({
     reducer: {
-        abilityStore: abilityAllSlice.reducer
+        abilityStore: abilitiesSlice.reducer
     }
 });
 

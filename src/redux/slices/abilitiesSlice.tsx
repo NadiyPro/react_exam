@@ -1,9 +1,8 @@
-import { IAbilityAll } from '../../models/IAbilityAll';
-import {createSlice} from "@reduxjs/toolkit";
+import {IAbilityNameUrl} from '../../models/IAbilityAll';
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import loadAbility from "../reducers/loadAbility";
 interface AbilityState {
-    abilities: IAbilityAll[];
-    isLoaded: boolean,
+    abilities: IAbilityNameUrl[];
     error: string | null;
     offset: number;
     limit: number;
@@ -11,27 +10,32 @@ interface AbilityState {
 
 const initialState: AbilityState = {
     abilities: [],
-    isLoaded: false,
     error: null,
     offset: 0,
     limit: 20,
 };
 
-export const abilityAllSlice = createSlice({
-    name: 'abilityAllSlice',
+export const abilitiesSlice = createSlice({
+    name: 'abilitiesSlice',
     initialState: initialState,
-    reducers:{},
+    reducers:{
+       setOffset:(state, action:PayloadAction<number>)=>{
+            state.offset = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(
                 loadAbility.fulfilled, (state, action) => {
                     state.abilities = action.payload;
-                    state.isLoaded = true;
                 }
             )
     }
 });
+
+
+
 export const abilityActions = {
-    ...abilityAllSlice.actions,
+    ...abilitiesSlice.actions,
     loadAbility
 };
