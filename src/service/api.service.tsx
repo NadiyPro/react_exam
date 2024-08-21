@@ -16,6 +16,22 @@ const pokemonService = {
     getPokemonImage: async (name: string): Promise<string> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.sprites.front_default;
+    },
+    getAbilities: async (name: string) : Promise<string> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        return response.data.sprites.abilities;
+    },
+    getStats: async (name: string) : Promise<string> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        return response.data.sprites.stats;
+    },
+    getType: async (name: string) : Promise<string> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        return response.data.sprites.type;
+    },
+    getForms: async (name: string) : Promise<string> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        return response.data.sprites.forms;
     }
 };
 
