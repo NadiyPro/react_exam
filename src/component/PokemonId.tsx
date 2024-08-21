@@ -5,7 +5,6 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const PokemonId = () => {
     const {name} = useParams();
-    const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const ability = useAppSelector(state => state.pokemonAllStore.ability);
     const dispatch = useAppDispatch();
@@ -13,32 +12,32 @@ const PokemonId = () => {
 
     useEffect(() => {
         if (name){
-            const imag = dispatch(pokemonAllActions.loadPokemonImage(name));
-            const ability = dispatch(pokemonAllActions.loadAbilities(name));
+            dispatch(pokemonAllActions.loadPokemonImage(name));
+            dispatch(pokemonAllActions.loadAbilities(name));
         }
-    }, [dispatch]);
+    }, [dispatch,name]);
 
 
     return (
         <div>
-
-            {
-                pokemon.map(value => (
-                <div key={value.name}>
-                    <div>{value.name}</div>
-                    <img src={images[value.name]} alt={value.name}/>
+            {name && (
+                <div key={name}>
+                    <div>{name}</div>
+                    <img src={images[name]} alt={name} />
                 </div>
-            ))
-            }
+            )}
 
+            {/*{<div key={name}>*/}
+            {/*    <div>{name}</div>*/}
+            {/*    <img src={images[name]} alt={name}/>*/}
+            {/*</div>}*/}
 
-            {
-                ability.map(value => (
-                    <div key={value.id}>
-                        {value.id} {value.name}
-                    </div>
-                ))
-            }
+            {/*{ability.map((value) => (*/}
+            {/*    <div key={value.id}>*/}
+            {/*        <div>Ability: {value.name}</div>*/}
+            {/*        <div>Effect: {value.effect_entries.map(entry => entry.short_effect).join(', ')}</div>*/}
+            {/*    </div>*/}
+            {/*))}*/}
         </div>
     );
 };

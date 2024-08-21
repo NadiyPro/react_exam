@@ -40,8 +40,13 @@ export const pokemonAllSlice = createSlice({
                 state.images[name] = imageUrl;
             })
             .addCase(loadAbilities.fulfilled, (state, action) => {
-                state.ability = action.payload;
-        })
+                state.ability = action.payload.map((abilityObj) => {
+                    return abilityObj.ability
+                });
+            })
+        //     .addCase(loadAbilities.fulfilled, (state, action) => {
+        //         state.ability = action.payload;
+        // })
     }
 });
 
