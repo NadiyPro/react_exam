@@ -27,17 +27,13 @@ const PokemonId = () => {
                 </div>
             )}
 
-            {/*{<div key={name}>*/}
-            {/*    <div>{name}</div>*/}
-            {/*    <img src={images[name]} alt={name}/>*/}
-            {/*</div>}*/}
+            {/*{*/}
+            {/*    ability.map(value => <div>*/}
+            {/*        {value.name}*/}
+            {/*    </div>)*/}
+            {/*}*/}
 
-            {/*{ability.map((value) => (*/}
-            {/*    <div key={value.id}>*/}
-            {/*        <div>Ability: {value.name}</div>*/}
-            {/*        <div>Effect: {value.effect_entries.map(entry => entry.short_effect).join(', ')}</div>*/}
-            {/*    </div>*/}
-            {/*))}*/}
+
         </div>
     );
 };

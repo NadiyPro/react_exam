@@ -32,8 +32,8 @@ const loadAbilities = createAsyncThunk(
     'pokemonAbilitiesSlice' ,
 async(name: string, thunkAPI)=>{
     try {
-        let response = await pokemonService.getAbilities(name);
-        return thunkAPI.fulfillWithValue(response);
+        let response = await pokemonService.getAbilities(name)
+        return response;
     } catch (e) {
         let error = e as AxiosError;
         return thunkAPI.rejectWithValue(error?.response?.data);

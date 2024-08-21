@@ -1,5 +1,4 @@
 export interface IAbilities {
-    ability: any
     id: number
     name: string
     is_main_series: boolean

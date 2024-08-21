@@ -22,21 +22,17 @@ const pokemonService = {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.abilities;
     },
-    // getAbilities: async (name: string) : Promise<IAbilities[]> => {
-    //     const response = await axiosInstance.get(`/ability/${name}`);
-    //     return response.data.sprites.abilities;
-    // },
     getStats: async (name: string) : Promise<string> => {
         const response = await axiosInstance.get(`/stat/${name}`);
-        return response.data.sprites.stats;
+        return response.data.stats;
     },
     getType: async (name: string) : Promise<string> => {
         const response = await axiosInstance.get(`/type/${name}`);
-        return response.data.sprites.type;
+        return response.data.type;
     },
     getForms: async (name: string) : Promise<string> => {
         const response = await axiosInstance.get(`/pokemon-form/${name}`);
-        return response.data.sprites.forms;
+        return response.data.forms;
     }
 };
 
