@@ -17,7 +17,7 @@ const PokemonAllComponent= () => {
 
     useEffect(() => {
         pokemon.forEach(value => {
-            if (!images[value.name]) { // Только если изображение ещё не загружено
+            if (!images[value.name]) {
                 dispatch(pokemonAllActions.loadPokemonImage(value.name));
             }
         });
