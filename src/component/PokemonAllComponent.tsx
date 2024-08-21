@@ -49,7 +49,7 @@ const PokemonAllComponent= () => {
             }
 
             <button onClick={prevPage} disabled={offset === 0}>
-                Previous
+                Prev
             </button>
             <button onClick={nextPage}>
                 Next
