@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 import {loadPokemonAll, loadPokemonImages} from "../redux/reducers/loadAbility";
+import {useNavigate} from "react-router-dom";
+import {baseURL} from "../service/api.service";
 
 const PokemonAllComponent= () => {
+    const navigate = useNavigate();
     const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
     const offset = useAppSelector(state => state.pokemonAllStore.offset);
     const limit = useAppSelector(state => state.pokemonAllStore.limit);
@@ -43,7 +46,7 @@ const PokemonAllComponent= () => {
                     {poke.name}
                     <br />
                     {pokemonImages[poke.name] && (
-                        <img src={pokemonImages[poke.name]} alt={poke.name} />
+                        <img src={pokemonImages[poke.name]} alt={poke.name} onClick={() => navigate(baseURL + `/pokemon-form/${poke.name}/`)}/>
                     )}
                 </div>))
             }
