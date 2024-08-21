@@ -6,7 +6,7 @@ const MainLayout = () => {
     return (
         <div>
             MainLayout
-            <AbilityList />
+            <AbilityList/>
             <Outlet/>
         </div>
     );

@@ -8,9 +8,13 @@ const axiosInstance = axios.create({
     headers: {}
 });
 
-export const pokemonService = {
+const pokemonService = {
     getAll: async (offset:number, limit: number):Promise<IAbilityAll[]> => {
         const response = await axiosInstance.get(baseURL + `ability?offset=${offset}&limit=${limit}`);
         return response.data;
     }
+};
+
+export {
+    pokemonService
 }
