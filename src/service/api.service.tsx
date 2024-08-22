@@ -25,7 +25,13 @@ const pokemonService = {
             return ability
         })
     },
-
+    getAbilitiesAll: async (name: string): Promise<Ability[]> => {
+        const response = await axiosInstance.get(`/ability/${name}`);
+        console.log(response.data.abilities)
+        return response.data.abilities.map((ability: Ability) => {
+            return ability
+        })
+    },
     // getStats: async (name: string) : Promise<Stat[]> => {
     //     const response = await axiosInstance.get(`/stat/${name}`);
     //     return response.data.stats;
