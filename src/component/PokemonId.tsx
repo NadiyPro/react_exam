@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
-import {loadTypeDetails} from "../redux/reducers/loadAbility";
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -98,20 +97,23 @@ const PokemonId = () => {
                                     )
                                 }
                             </div>
-                            {/*<div>*/}
-                            {/*    {typeDetails.map((typeDetail) => {*/}
-                            {/*        return (*/}
-                            {/*            <div key={typeDetail.id}>*/}
-                            {/*                <p>name: {typeDetail.name} </p>*/}
-                            {/*                <ul>*/}
-                            {/*                    {typeDetails.map((value, index) => (*/}
-                            {/*                        <li key={index}>{value}</li>*/}
-                            {/*                    ))}*/}
-                            {/*                </ul>*/}
-                            {/*            </div>*/}
-                            {/*        );*/}
-                            {/*    })}*/}
-                            {/*</div>*/}
+                            <div>
+                                {typeDetails.map((typeDetail) => {
+                                    return (
+                                        <div key={typeDetail.id}>
+                                            <p>name: {typeDetail.name} <br/>
+                                                double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value => value.name)}
+                                                <br/>
+                                                double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value => value.name)}
+                                                <br/>
+                                                half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value => value.name)}
+                                                <br/>
+                                                half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value => value.name)}
+                                            </p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 )}
