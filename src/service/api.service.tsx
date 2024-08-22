@@ -1,6 +1,6 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {IAbilities} from "../models/IAbilities";
+import {Ability, Form, Stat, Type} from "../models/IPokemon";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -18,19 +18,26 @@ const pokemonService = {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.sprites.front_default;
     },
-    getAbilities: async (name: string): Promise<IAbilities[]> => {
+    getAbilities: async (name: string): Promise<Ability[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        return response.data.abilities;
+        console.log()
+        return response.data.abilities.map((ability: Ability) => {
+            return {
+                name: ability.ability.name,
+                is_hidden: ability.is_hidden,
+                slot: ability.slot
+            };
+        })
     },
-    getStats: async (name: string) : Promise<string> => {
+    getStats: async (name: string) : Promise<Stat[]> => {
         const response = await axiosInstance.get(`/stat/${name}`);
         return response.data.stats;
     },
-    getType: async (name: string) : Promise<string> => {
+    getType: async (name: string) : Promise<Type[]> => {
         const response = await axiosInstance.get(`/type/${name}`);
         return response.data.type;
     },
-    getForms: async (name: string) : Promise<string> => {
+    getForms: async (name: string) : Promise<Form[]> => {
         const response = await axiosInstance.get(`/pokemon-form/${name}`);
         return response.data.forms;
     }
