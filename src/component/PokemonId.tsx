@@ -34,15 +34,14 @@ const PokemonId = () => {
             {
                 name && (
                     <div key={name}>
-                        <div>{name}</div>
+                        <div>Pokemon name: {name}</div>
                         <img src={images[name]} alt={name}/>
                         <div>
                             {pokemonOne && (
                                 <div>
                                     <p key={pokemonOne.name}>id: {pokemonOne.id} <br/> height: {pokemonOne.height} <br/> weight: {pokemonOne.weight}</p>
                                 </div>
-                            )
-                            }
+                            )}
                         </div>
                         <div>
                             <h5>abilities</h5>
