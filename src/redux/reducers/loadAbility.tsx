@@ -72,7 +72,7 @@ const loadTypeDetails = createAsyncThunk(
             let typeNames = type.map(value => value.type.name);
 
             let typeDetails = await pokemonService.getTypeDetails(typeNames);
-            console.log(thunkAPI.fulfillWithValue(typeDetails))
+
             return  thunkAPI.fulfillWithValue({typeDetails, type});
         } catch (e) {
             let error = e as AxiosError;
@@ -88,6 +88,7 @@ const loadFormDetails = createAsyncThunk(
             let form = await pokemonService.getForms(name);
 
             let formNames = form.map(value => value.name);
+            console.log(formNames)
 
             let formDetails = await pokemonService.getFormsDetails(formNames);
             console.log(thunkAPI.fulfillWithValue(formDetails))

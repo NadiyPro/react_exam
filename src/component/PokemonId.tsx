@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
-import {loadFormDetails} from "../redux/reducers/loadAbility";
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -125,23 +124,40 @@ const PokemonId = () => {
                             <h5>form</h5>
                             <div>
                                 {
-
+                                    form.map((value, index) =>
+                                        <div key={index}>
+                                            <p> name: {value.name} </p>
+                                        </div>
+                                    )
                                 }
                             </div>
-                            {/*<div>*/}
-                            {/*    {formDetails.map((formDetail) => {*/}
-                            {/*        return (*/}
-                            {/*            <div  key={formDetail.id}>*/}
-                            {/*                <p>name: {formDetail.name}:</p>*/}
-                            {/*                /!*<ul>*!/*/}
-                            {/*                /!*    {abilityDetail.effect_entries.map((value, index) => (*!/*/}
-                            {/*                /!*        <li key={index}>{value.short_effect}</li>*!/*/}
-                            {/*                /!*    ))}*!/*/}
-                            {/*                /!*</ul>*!/*/}
-                            {/*            </div>*/}
-                            {/*        );*/}
-                            {/*    })};*/}
-                            {/*</div>*/}
+                            <div>
+                                {formDetails.map((formDetail) => {
+                                    return (
+                                        <div key={formDetail.id}>
+                                            <p>name: {formDetail.name}:</p>
+                                            <p>form_name: {formDetail.form_name}</p>
+                                            <div>
+                                                <h6>back_default</h6>
+                                                <img src={formDetail.sprites.back_default} alt={'back_default'}/>
+                                            </div>
+                                            <div>
+                                                <h6>back_shiny</h6>
+                                                <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
+                                            </div>
+                                            <div>
+                                                <h6>front_shiny</h6>
+                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
+                                            </div>
+                                            <div>
+                                                <h6>front_shiny</h6>
+                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
+                                            </div>
+
+                                        </div>
+                                    );
+                                })};
+                            </div>
                         </div>
                     </div>
                 )}

@@ -52,8 +52,8 @@ const pokemonService = {
     },
     getForms: async (name: string) : Promise<IForm[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response.data.types)
-        return response.data.types;
+        console.log(response.data.forms)
+        return response.data.forms;
     },
     getFormsDetails: async (names: string[]): Promise<IFormDetail[]> => {
         const response = names.map((name) => axiosInstance.get(`/pokemon-form/${name}`)
