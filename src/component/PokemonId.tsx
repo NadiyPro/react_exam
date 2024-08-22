@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import {loadTypeDetails} from "../redux/reducers/loadAbility";
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -10,6 +11,8 @@ const PokemonId = () => {
     const abilities = useAppSelector(state => state.pokemonAllStore.abilities);
     const statDetails = useAppSelector(state => state.pokemonAllStore.statDetails);
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
+    const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
+    const type = useAppSelector(state => state.pokemonAllStore.type);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -17,6 +20,7 @@ const PokemonId = () => {
             dispatch(pokemonAllActions.loadPokemonImage(name));
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
+            dispatch(pokemonAllActions.loadTypeDetails(name));
         }
     }, [dispatch,name]);
 
@@ -29,12 +33,12 @@ const PokemonId = () => {
                         <div>{name}</div>
                         <img src={images[name]} alt={name}/>
                         <div>
+                            <h5>abilities</h5>
                             <div>
                                 {
                                     abilities.map(value =>
                                         <div key={value.slot}>
-                                            <p>is_hidden: {`${value.is_hidden}`} <br/> slot: {value.slot}
-                                                <br/> name: {value.ability.name}</p>
+                                            <p>is_hidden: {`${value.is_hidden}`} <br/> name: {value.ability.name}</p>
                                         </div>
                                     )
                                 }
@@ -56,6 +60,7 @@ const PokemonId = () => {
                         </div>
 
                         <div>
+                            <h5>stat</h5>
                             <div>
                                 {
                                     stat.map((value, index) =>
@@ -80,6 +85,33 @@ const PokemonId = () => {
                                     );
                                 })}
                             </div>
+                        </div>
+
+                        <div>
+                            <h5>type</h5>
+                            <div>
+                                {
+                                    type.map((value, index) =>
+                                        <div key={index}>
+                                            <p> name: {value.type.name} <br/> slot: {value.slot} </p>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                            {/*<div>*/}
+                            {/*    {typeDetails.map((typeDetail) => {*/}
+                            {/*        return (*/}
+                            {/*            <div key={typeDetail.id}>*/}
+                            {/*                <p>name: {typeDetail.name} </p>*/}
+                            {/*                <ul>*/}
+                            {/*                    {typeDetails.map((value, index) => (*/}
+                            {/*                        <li key={index}>{value}</li>*/}
+                            {/*                    ))}*/}
+                            {/*                </ul>*/}
+                            {/*            </div>*/}
+                            {/*        );*/}
+                            {/*    })}*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 )}

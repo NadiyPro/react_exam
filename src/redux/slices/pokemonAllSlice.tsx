@@ -1,9 +1,16 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {loadAbilitiesDetails, loadPokemonAll, loadPokemonImage, loadStatDetails} from "../reducers/loadAbility";
+import {
+    loadAbilitiesDetails,
+    loadPokemonAll,
+    loadPokemonImage,
+    loadStatDetails,
+    loadTypeDetails
+} from "../reducers/loadAbility";
 import {IAbilityDetail} from "../../models/IAbilityDetail";
-import {IAbility, IStat} from "../../models/IPokemon";
+import {IAbility, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
+import {ITypeDetail} from "../../models/ITypeDetail";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -14,7 +21,9 @@ interface PokemonAllState {
     limit: number;
     abilities: IAbility[];
     statDetails: IStatDetail[];
-    stat: IStat[]
+    stat: IStat[],
+    typeDetails: ITypeDetail[];
+    type:IType[]
 }
 
 const initialState: PokemonAllState = {
@@ -26,7 +35,9 @@ const initialState: PokemonAllState = {
     limit: 20,
     abilities: [],
     statDetails:[],
-    stat:[]
+    stat:[],
+    typeDetails:[],
+    type:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -62,6 +73,13 @@ export const pokemonAllSlice = createSlice({
                     state.stat = stat;
                 }
             )
+            .addCase(
+                loadTypeDetails.fulfilled, (state, action) => {
+                    const {typeDetails, type} = action.payload as { typeDetails: ITypeDetail[]; type: IType[] };
+                    state.typeDetails = typeDetails;
+                    state.type = type;
+                }
+            )
     }
 });
 
@@ -72,5 +90,6 @@ export const pokemonAllActions = {
     loadPokemonAll,
     loadPokemonImage,
     loadAbilitiesDetails,
-    loadStatDetails
+    loadStatDetails,
+    loadTypeDetails
 };

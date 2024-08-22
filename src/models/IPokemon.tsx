@@ -16,7 +16,7 @@ export interface IPokemon {
     sprites: Sprites
     cries: Cries
     stats: IStat[]
-    types: Type[]
+    types: IType[]
     past_types: PastType[]
 }
 
@@ -352,7 +352,7 @@ export interface Stat2 {
     url: string
 }
 
-export interface Type {
+export interface IType {
     slot: number
     type: Type2
 }

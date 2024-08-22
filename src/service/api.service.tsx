@@ -1,8 +1,9 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {IAbility, IStat} from "../models/IPokemon";
+import {IAbility, IStat, IType} from "../models/IPokemon";
 import {IAbilityDetail} from "../models/IAbilityDetail";
 import {IStatDetail} from "../models/IStatDetail";
+import {ITypeDetail} from "../models/ITypeDetail";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -22,7 +23,6 @@ const pokemonService = {
     },
     getAbilities: async (name: string): Promise<IAbility[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response.data.abilities)
         return response.data.abilities; // Вернем массив объектов Ability
     },
     getAbilitiesDetails: async (names: string[]): Promise<IAbilityDetail[]> => {
@@ -32,18 +32,26 @@ const pokemonService = {
     },
     getStats: async (name: string) : Promise<IStat[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response.data.stats)
         return response.data.stats;
     },
     getStatsDetails: async (names: string[]): Promise<IStatDetail[]> => {
         const response = names.map((name) => axiosInstance.get(`/stat/${name}`)
             .then(response => response.data));
         return Promise.all(response);
+    },
+    getType: async (name: string) : Promise<IType[]> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        console.log(response.data.types)
+        return response.data.types;
+    },
+    getTypeDetails: async (names: string[]): Promise<ITypeDetail[]> => {
+        const response = names.map((name) => axiosInstance.get(`/type/${name}`)
+            .then(response => response.data));
+        return Promise.all(response);
     }
-    // getStats: async (name: string) : Promise<Stat[]> => {
-    //     const response = await axiosInstance.get(`/stat/${name}`);
-    //     return response.data.stats;
-    // },
+
+
+
     // getType: async (name: string) : Promise<Type[]> => {
     //     const response = await axiosInstance.get(`/type/${name}`);
     //     return response.data.type;
