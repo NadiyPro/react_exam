@@ -36,7 +36,7 @@ const loadAbilitiesDetails = createAsyncThunk(
             let abilitiesNames = abilities.map(ability => ability.ability.name);
 
             let abilitiesDetails = await pokemonService.getAbilitiesDetails(abilitiesNames);
-console.log(thunkAPI.fulfillWithValue(abilitiesDetails))
+            console.log(thunkAPI.fulfillWithValue(abilitiesDetails))
             return  thunkAPI.fulfillWithValue({abilitiesDetails, abilities});
         } catch (e) {
             let error = e as AxiosError;
@@ -45,8 +45,29 @@ console.log(thunkAPI.fulfillWithValue(abilitiesDetails))
     }
 );
 
+const loadStatDetails = createAsyncThunk(
+    'pokemonStatSlice',
+    async (name: string, thunkAPI) => {
+        try {
+            let stat = await pokemonService.getStats(name);
+
+            let statNames = stat.map(value => value.stat.name);
+
+            let statDetails = await pokemonService.getStatsDetails(statNames);
+            console.log(thunkAPI.fulfillWithValue(statDetails))
+            return  thunkAPI.fulfillWithValue({statDetails, stat});
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
+
+
+
 export {
     loadPokemonAll,
     loadPokemonImage,
-    loadAbilitiesDetails
+    loadAbilitiesDetails,
+    loadStatDetails
 };

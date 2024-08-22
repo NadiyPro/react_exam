@@ -1,8 +1,9 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {loadAbilitiesDetails, loadPokemonAll, loadPokemonImage} from "../reducers/loadAbility";
+import {loadAbilitiesDetails, loadPokemonAll, loadPokemonImage, loadStatDetails} from "../reducers/loadAbility";
 import {IAbilityDetail} from "../../models/IAbilityDetail";
-import {IAbility} from "../../models/IPokemon";
+import {IAbility, IStat} from "../../models/IPokemon";
+import {IStatDetail} from "../../models/IStatDetail";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -11,7 +12,9 @@ interface PokemonAllState {
     error: string | null;
     offset: number;
     limit: number;
-    abilities: IAbility[]
+    abilities: IAbility[];
+    statDetails: IStatDetail[];
+    stat: IStat[]
 }
 
 const initialState: PokemonAllState = {
@@ -21,7 +24,9 @@ const initialState: PokemonAllState = {
     error: null,
     offset: 0,
     limit: 20,
-    abilities: []
+    abilities: [],
+    statDetails:[],
+    stat:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -48,10 +53,15 @@ export const pokemonAllSlice = createSlice({
                     const {abilitiesDetails, abilities} = action.payload as { abilitiesDetails: IAbilityDetail[]; abilities: IAbility[] };
                     state.abilitiesDetails = abilitiesDetails;
                     state.abilities = abilities;
-                    // state.ability = action.payload;
                 }
             )
-
+            .addCase(
+                loadStatDetails.fulfilled, (state, action) => {
+                    const {statDetails, stat} = action.payload as { statDetails: IStatDetail[]; stat: IStat[] };
+                    state.statDetails = statDetails;
+                    state.stat = stat;
+                }
+            )
     }
 });
 
@@ -61,5 +71,6 @@ export const pokemonAllActions = {
     ...pokemonAllSlice.actions,
     loadPokemonAll,
     loadPokemonImage,
-    loadAbilitiesDetails
+    loadAbilitiesDetails,
+    loadStatDetails
 };
