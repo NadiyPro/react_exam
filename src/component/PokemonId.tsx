@@ -20,7 +20,16 @@ interface StatDetail {
         increase: { move: { name: string } }[];
     };
 }
-
+interface TypeDetail {
+    id: number;
+    name: string;
+    damage_relations: {
+        double_damage_from: { name: string }[];
+        double_damage_to: { name: string }[];
+        half_damage_from: { name: string }[];
+        half_damage_to: { name: string }[];
+    };
+}
 const PokemonId = () => {
     const {name} = useParams();
     const pokemonOne = useAppSelector(state => state.pokemonAllStore.pokemonOne);
@@ -30,7 +39,7 @@ const PokemonId = () => {
     const statDetails = useAppSelector(state => state.pokemonAllStore.statDetails);
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
     const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
-    const type = useAppSelector(state => state.pokemonAllStore.type);
+    // const type = useAppSelector(state => state.pokemonAllStore.type);
     const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
     const form = useAppSelector(state => state.pokemonAllStore.form);
     const dispatch = useAppDispatch();
@@ -48,6 +57,7 @@ const PokemonId = () => {
 
     const [selectedAbilityDetail, setSelectedAbilityDetail] = useState<AbilityDetail | null>(null);
     const [selectedStatDetail, setSelectedStatDetail] = useState<StatDetail | null>(null);
+    const [selectedTypeDetail, setSelectedTypeDetail] = useState<TypeDetail | null>(null);
 
     const handleAbilityClick = (abilityDetail: AbilityDetail) => {
         if (selectedAbilityDetail?.name === abilityDetail.name) {
@@ -63,7 +73,13 @@ const PokemonId = () => {
             setSelectedStatDetail(statDetail);
         }
     };
-
+    const handleTypeClick = (typeDetail: TypeDetail) => {
+        if (selectedTypeDetail?.name === typeDetail.name) {
+            setSelectedTypeDetail(null);
+        } else {
+            setSelectedTypeDetail(typeDetail);
+        }
+    };
     return (
         <div>
             {
@@ -197,29 +213,61 @@ const PokemonId = () => {
                             {/*    }*/}
                             {/*</div>*/}
                             <div>
-                                {typeDetails.map((typeDetail) => {
-                                    return (
-                                        <div key={typeDetail.id}>
-                                            <div>
-                                                {typeDetail.name}
-                                                <ul>
-                                                    double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value =>
-                                                    <li>{value.name}</li>)}
-                                                    <br/>
-                                                    double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value =>
-                                                    <li>{value.name}</li>)}
-                                                    <br/>
-                                                    half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value =>
-                                                    <li>{value.name}</li>)}
-                                                    <br/>
-                                                    half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value =>
-                                                    <li>{value.name}</li>)}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                                {typeDetails.map((typeDetail) => (
+                                    <div key={typeDetail.id}>
+                                        <button onClick={() => handleTypeClick(typeDetail)}>
+                                            Detail: {typeDetail.name}
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
+
+                            <div>
+                                {selectedTypeDetail && (
+                                    <div className="divAbilities">
+                                        {/*{selectedTypeDetail.name}*/}
+                                        <ul>
+                                            double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map(value =>
+                                            <li>{value.name}</li>)}
+                                            <br/>
+                                            double_damage_to: {selectedTypeDetail.damage_relations.double_damage_to.map(value =>
+                                            <li>{value.name}</li>)}
+                                            <br/>
+                                            half_damage_from:{selectedTypeDetail.damage_relations.half_damage_from.map(value =>
+                                            <li>{value.name}</li>)}
+                                            <br/>
+                                            half_damage_to:{selectedTypeDetail.damage_relations.half_damage_to.map(value =>
+                                            <li>{value.name}</li>)}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
+
+
+                            {/*<div>*/}
+                            {/*    {typeDetails.map((typeDetail) => {*/}
+                            {/*        return (*/}
+                            {/*            <div key={typeDetail.id}>*/}
+                            {/*                <div>*/}
+                            {/*                    {typeDetail.name}*/}
+                            {/*                    <ul>*/}
+                            {/*                        double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value =>*/}
+                            {/*                        <li>{value.name}</li>)}*/}
+                            {/*                        <br/>*/}
+                            {/*                        double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value =>*/}
+                            {/*                        <li>{value.name}</li>)}*/}
+                            {/*                        <br/>*/}
+                            {/*                        half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value =>*/}
+                            {/*                        <li>{value.name}</li>)}*/}
+                            {/*                        <br/>*/}
+                            {/*                        half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value =>*/}
+                            {/*                        <li>{value.name}</li>)}*/}
+                            {/*                    </ul>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        );*/}
+                            {/*    })}*/}
+                            {/*</div>*/}
                         </div>
 
 
@@ -239,7 +287,7 @@ const PokemonId = () => {
                                     return (
                                         <div key={formDetail.id}>
                                             <div>
-                                            <h6>front_default</h6>
+                                                <h6>front_default</h6>
                                                 <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
                                             </div>
                                             <div>
@@ -252,7 +300,7 @@ const PokemonId = () => {
                                                 <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
                                             </div>
                                             <div>
-                                                <h6>back_shiny</h6>
+                                            <h6>back_shiny</h6>
                                                 <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
                                             </div>
 
