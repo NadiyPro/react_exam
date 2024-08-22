@@ -3,12 +3,12 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
     loadAbilitiesDetails, loadFormDetails,
     loadPokemonAll,
-    loadPokemonImage,
+    loadPokemonImage, loadPokemonOne,
     loadStatDetails,
     loadTypeDetails
 } from "../reducers/loadAbility";
 import {IAbilityDetail} from "../../models/IAbilityDetail";
-import {IAbility, IForm, IStat, IType} from "../../models/IPokemon";
+import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
@@ -26,7 +26,8 @@ interface PokemonAllState {
     typeDetails: ITypeDetail[];
     type:IType[];
     formDetails:IFormDetail[];
-    form:IForm[]
+    form:IForm[];
+    pokemonOne:IPokemon | null;
 }
 
 const initialState: PokemonAllState = {
@@ -42,7 +43,8 @@ const initialState: PokemonAllState = {
     typeDetails:[],
     type:[],
     formDetails:[],
-    form:[]
+    form:[],
+    pokemonOne: null
 };
 
 export const pokemonAllSlice = createSlice({
@@ -58,6 +60,11 @@ export const pokemonAllSlice = createSlice({
             .addCase(
                 loadPokemonAll.fulfilled, (state, action) => {
                     state.pokemon = action.payload;
+                }
+            )
+            .addCase(
+                loadPokemonOne.fulfilled, (state, action) => {
+                    state.pokemonOne = action.payload;
                 }
             )
             .addCase(loadPokemonImage.fulfilled, (state, action) => {
@@ -100,6 +107,7 @@ export const pokemonAllSlice = createSlice({
 export const pokemonAllActions = {
     ...pokemonAllSlice.actions,
     loadPokemonAll,
+    loadPokemonOne,
     loadPokemonImage,
     loadAbilitiesDetails,
     loadStatDetails,

@@ -15,6 +15,19 @@ const loadPokemonAll = createAsyncThunk(
     }
 );
 
+const loadPokemonOne = createAsyncThunk(
+    'pokemonOneSlice',
+    async  (name: string, thunkAPI) => {
+        try {
+            let response = await pokemonService.getPokemon(name);
+            return thunkAPI.fulfillWithValue(response);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
+
 const loadPokemonImage = createAsyncThunk(
     'pokemonImageSlice',
     async (name: string, thunkAPI) => {
@@ -102,6 +115,7 @@ const loadFormDetails = createAsyncThunk(
 
 export {
     loadPokemonAll,
+    loadPokemonOne,
     loadPokemonImage,
     loadAbilitiesDetails,
     loadStatDetails,

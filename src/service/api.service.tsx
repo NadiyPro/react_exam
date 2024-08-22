@@ -1,6 +1,6 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {IAbility, IForm, IStat, IType} from "../models/IPokemon";
+import {IAbility, IForm, IPokemon, IStat, IType} from "../models/IPokemon";
 import {IAbilityDetail} from "../models/IAbilityDetail";
 import {IStatDetail} from "../models/IStatDetail";
 import {ITypeDetail} from "../models/ITypeDetail";
@@ -17,6 +17,10 @@ const pokemonService = {
     getAll: async (offset:number, limit: number):Promise<IPokemonNameUrl[]> => {
         const response = await axiosInstance.get(baseURL + `/pokemon/?offset=${offset}&limit=${limit}`);
         return response.data.results;
+    },
+    getPokemon: async (name: string):Promise<IPokemon> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        return response.data;
     },
     getPokemonImage: async (name: string): Promise<string> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);

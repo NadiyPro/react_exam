@@ -5,6 +5,7 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const PokemonId = () => {
     const {name} = useParams();
+    const pokemonOne = useAppSelector(state => state.pokemonAllStore.pokemonOne);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
     const abilities = useAppSelector(state => state.pokemonAllStore.abilities);
@@ -18,6 +19,7 @@ const PokemonId = () => {
 
     useEffect(() => {
         if (name){
+            dispatch(pokemonAllActions.loadPokemonOne(name));
             dispatch(pokemonAllActions.loadPokemonImage(name));
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
@@ -34,6 +36,14 @@ const PokemonId = () => {
                     <div key={name}>
                         <div>{name}</div>
                         <img src={images[name]} alt={name}/>
+                        <div>
+                            {pokemonOne && (
+                                <div>
+                                    <p key={pokemonOne.name}>id: {pokemonOne.id} <br/> height: {pokemonOne.height} <br/> weight: {pokemonOne.weight}</p>
+                                </div>
+                            )
+                            }
+                        </div>
                         <div>
                             <h5>abilities</h5>
                             <div>
@@ -135,23 +145,22 @@ const PokemonId = () => {
                                 {formDetails.map((formDetail) => {
                                     return (
                                         <div key={formDetail.id}>
-                                            <p>name: {formDetail.name}:</p>
-                                            <p>form_name: {formDetail.form_name}</p>
+                                            <div>
+                                                <h6>front_default</h6>
+                                                <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
+                                            </div>
                                             <div>
                                                 <h6>back_default</h6>
                                                 <img src={formDetail.sprites.back_default} alt={'back_default'}/>
                                             </div>
+
+                                            <div>
+                                                <h6>front_shiny</h6>
+                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
+                                            </div>
                                             <div>
                                                 <h6>back_shiny</h6>
                                                 <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
-                                            </div>
-                                            <div>
-                                                <h6>front_shiny</h6>
-                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
-                                            </div>
-                                            <div>
-                                                <h6>front_shiny</h6>
-                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
                                             </div>
 
                                         </div>
