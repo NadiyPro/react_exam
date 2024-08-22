@@ -1,9 +1,10 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {IAbility, IStat, IType} from "../models/IPokemon";
+import {IAbility, IForm, IStat, IType} from "../models/IPokemon";
 import {IAbilityDetail} from "../models/IAbilityDetail";
 import {IStatDetail} from "../models/IStatDetail";
 import {ITypeDetail} from "../models/ITypeDetail";
+import {IFormDetail} from "../models/IFormDetail";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -48,14 +49,20 @@ const pokemonService = {
         const response = names.map((name) => axiosInstance.get(`/type/${name}`)
             .then(response => response.data));
         return Promise.all(response);
+    },
+    getForms: async (name: string) : Promise<IForm[]> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        console.log(response.data.types)
+        return response.data.types;
+    },
+    getFormsDetails: async (names: string[]): Promise<IFormDetail[]> => {
+        const response = names.map((name) => axiosInstance.get(`/pokemon-form/${name}`)
+            .then(response => response.data));
+        return Promise.all(response);
     }
 
 
 
-    // getType: async (name: string) : Promise<Type[]> => {
-    //     const response = await axiosInstance.get(`/type/${name}`);
-    //     return response.data.type;
-    // },
     // getForms: async (name: string) : Promise<Form[]> => {
     //     const response = await axiosInstance.get(`/pokemon-form/${name}`);
     //     return response.data.forms;

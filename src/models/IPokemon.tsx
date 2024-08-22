@@ -7,7 +7,7 @@ export interface IPokemon {
     order: number
     weight: number
     abilities: IAbility[]
-    forms: Form[]
+    forms: IForm[]
     game_indices: Index[]
     held_items: HeldItem[]
     location_area_encounters: string
@@ -29,7 +29,7 @@ export interface IAbility {
     }
 }
 
-export interface Form {
+export interface IForm {
     name: string
     url: string
 }

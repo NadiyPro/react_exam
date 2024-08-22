@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import {loadFormDetails} from "../redux/reducers/loadAbility";
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -12,6 +13,8 @@ const PokemonId = () => {
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
     const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
     const type = useAppSelector(state => state.pokemonAllStore.type);
+    const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
+    const form = useAppSelector(state => state.pokemonAllStore.form);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -20,6 +23,7 @@ const PokemonId = () => {
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
             dispatch(pokemonAllActions.loadTypeDetails(name));
+            dispatch(pokemonAllActions.loadFormDetails(name));
         }
     }, [dispatch,name]);
 
@@ -114,6 +118,30 @@ const PokemonId = () => {
                                     );
                                 })}
                             </div>
+                        </div>
+
+
+                        <div>
+                            <h5>form</h5>
+                            <div>
+                                {
+
+                                }
+                            </div>
+                            {/*<div>*/}
+                            {/*    {formDetails.map((formDetail) => {*/}
+                            {/*        return (*/}
+                            {/*            <div  key={formDetail.id}>*/}
+                            {/*                <p>name: {formDetail.name}:</p>*/}
+                            {/*                /!*<ul>*!/*/}
+                            {/*                /!*    {abilityDetail.effect_entries.map((value, index) => (*!/*/}
+                            {/*                /!*        <li key={index}>{value.short_effect}</li>*!/*/}
+                            {/*                /!*    ))}*!/*/}
+                            {/*                /!*</ul>*!/*/}
+                            {/*            </div>*/}
+                            {/*        );*/}
+                            {/*    })};*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 )}

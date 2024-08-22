@@ -81,10 +81,29 @@ const loadTypeDetails = createAsyncThunk(
     }
 );
 
+const loadFormDetails = createAsyncThunk(
+    'pokemonFormSlice',
+    async (name: string, thunkAPI) => {
+        try {
+            let form = await pokemonService.getForms(name);
+
+            let formNames = form.map(value => value.name);
+
+            let formDetails = await pokemonService.getFormsDetails(formNames);
+            console.log(thunkAPI.fulfillWithValue(formDetails))
+            return  thunkAPI.fulfillWithValue({formDetails, form});
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
+
 export {
     loadPokemonAll,
     loadPokemonImage,
     loadAbilitiesDetails,
     loadStatDetails,
-    loadTypeDetails
+    loadTypeDetails,
+    loadFormDetails
 };
