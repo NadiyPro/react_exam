@@ -1,7 +1,8 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {Ability, Stat} from "../models/IPokemon";
+import {IAbility, IStat} from "../models/IPokemon";
 import {IAbilityDetail} from "../models/IAbilityDetail";
+import {IStatDetail} from "../models/IStatDetail";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -19,7 +20,7 @@ const pokemonService = {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.sprites.front_default;
     },
-    getAbilities: async (name: string): Promise<Ability[]> => {
+    getAbilities: async (name: string): Promise<IAbility[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         console.log(response.data.abilities)
         return response.data.abilities; // Вернем массив объектов Ability
@@ -29,11 +30,16 @@ const pokemonService = {
             .then(response => response.data));
         return Promise.all(response);
     },
-    // getStats: async (name: string) : Promise<Stat[]> => {
-    //     const response = await axiosInstance.get(`/stat/${name}`);
-    //     return response.data.stats;
-    // },
-
+    getStats: async (name: string) : Promise<IStat[]> => {
+        const response = await axiosInstance.get(`/pokemon/${name}`);
+        console.log(response.data.stats)
+        return response.data.stats;
+    },
+    getStatsDetails: async (names: string[]): Promise<IStatDetail[]> => {
+        const response = names.map((name) => axiosInstance.get(`/stat/${name}`)
+            .then(response => response.data));
+        return Promise.all(response);
+    }
     // getStats: async (name: string) : Promise<Stat[]> => {
     //     const response = await axiosInstance.get(`/stat/${name}`);
     //     return response.data.stats;

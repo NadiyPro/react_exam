@@ -6,7 +6,7 @@ export interface IPokemon {
     is_default: boolean
     order: number
     weight: number
-    abilities: Ability[]
+    abilities: IAbility[]
     forms: Form[]
     game_indices: Index[]
     held_items: HeldItem[]
@@ -15,12 +15,12 @@ export interface IPokemon {
     species: Species
     sprites: Sprites
     cries: Cries
-    stats: Stat[]
+    stats: IStat[]
     types: Type[]
     past_types: PastType[]
 }
 
-export interface Ability {
+export interface IAbility {
     is_hidden: boolean
     slot: number
     ability: {
@@ -341,7 +341,7 @@ export interface Cries {
     legacy: string
 }
 
-export interface Stat {
+export interface IStat {
     base_stat: number
     effort: number
     stat: Stat2
