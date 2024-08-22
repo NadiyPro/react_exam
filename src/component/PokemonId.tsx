@@ -69,7 +69,7 @@ const PokemonId = () => {
                                 {
                                     abilities.map(value =>
                                         <div key={value.slot}>
-                                            <p>is_hidden: {`${value.is_hidden}`} <br/> name: {value.ability.name}</p>
+                                            <p>is_hidden: {`${value.is_hidden}`} <br/> {value.ability.name}</p>
                                         </div>
                                     )
                                 }
@@ -109,13 +109,12 @@ const PokemonId = () => {
                     </div>
 
                 <div>
-                <h5>stat</h5>
+                <h5>base_stat</h5>
                 <div>
             {
                 stat.map((value, index) =>
                 <div key={index}>
-            <p>base_stat: {value.base_stat} <br/> effort:{value.effort}
-                <br/> name: {value.stat.name}</p>
+            <p>{value.stat.name}: {value.base_stat}</p>
         </div>
     )
 }
