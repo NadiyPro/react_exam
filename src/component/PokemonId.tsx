@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import {Ability} from "../models/IPokemon";
+import {IAbilityDetail} from "../models/IAbilityDetail";
+
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -13,7 +16,7 @@ const PokemonId = () => {
     useEffect(() => {
         if (name){
             dispatch(pokemonAllActions.loadPokemonImage(name));
-            dispatch(pokemonAllActions.loadAbilities(name));
+            dispatch(pokemonAllActions.loadAbilitiesDetails(name));
         }
     }, [dispatch,name]);
 
@@ -25,13 +28,19 @@ const PokemonId = () => {
                         <div>{name}</div>
                         <img src={images[name]} alt={name}/>
                         <ul>
-                            {abilities.map((ability) => (
-                                ability.is_hidden && (
-                                    <li key={ability.slot}>
-                                        {ability.slot} {ability.is_hidden.toString()} {ability.ability.name}
-                                    </li>
-                                )
-                            ))}
+                                {abilities.map((abilityDetail) => {
+                                    console.log(abilityDetail.effect_entries); // Лог данных
+                                    return (
+                                        <li key={abilityDetail.id}>
+                                            <strong>{abilityDetail.name}:</strong>
+                                            <ul>
+                                                {abilityDetail.effect_entries.map((entry, index) => (
+                                                    <li key={index}>{entry.short_effect}</li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                    );
+                                })}
                         </ul>
                     </div>
                 )}

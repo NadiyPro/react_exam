@@ -1,6 +1,7 @@
 import axios from "axios";
 import {IPokemonNameUrl} from "../models/IPokemonPagNameUrl";
-import {Ability, Form, Stat, Type} from "../models/IPokemon";
+import {Ability} from "../models/IPokemon";
+import {IAbilityDetail} from "../models/IAbilityDetail";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -18,20 +19,30 @@ const pokemonService = {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.sprites.front_default;
     },
+    // getAbilities: async (name: string): Promise<Ability[]> => {
+    //     const response = await axiosInstance.get(`/pokemon/${name}`);
+    //     console.log(response.data.abilities)
+    //     return response.data.abilities.map((ability: Ability) => {
+    //         return ability.ability.name
+    //     })
+    // },
     getAbilities: async (name: string): Promise<Ability[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         console.log(response.data.abilities)
-        return response.data.abilities.map((ability: Ability) => {
-            return ability
-        })
+        return response.data.abilities; // Вернем массив объектов Ability
     },
-    getAbilitiesAll: async (name: string): Promise<Ability[]> => {
-        const response = await axiosInstance.get(`/ability/${name}`);
-        console.log(response.data.abilities)
-        return response.data.abilities.map((ability: Ability) => {
-            return ability
-        })
-    },
+    getAbilitiesDetails: async (names: string[]): Promise<IAbilityDetail[]> => {
+        const promises = names.map((name) => axiosInstance.get(`/ability/${name}`)
+            .then(response => response.data));
+        return Promise.all(promises);
+    }
+
+    // getAbilitiesAll: async (name: string): Promise<IAbilityDetail[]> => {
+    //     const response = await axiosInstance.get(`/ability/${name}`);
+    //     return response.data
+    // },
+
+
     // getStats: async (name: string) : Promise<Stat[]> => {
     //     const response = await axiosInstance.get(`/stat/${name}`);
     //     return response.data.stats;

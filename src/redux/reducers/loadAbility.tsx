@@ -28,21 +28,41 @@ const loadPokemonImage = createAsyncThunk(
     }
 );
 
-const loadAbilities = createAsyncThunk(
-    'pokemonAbilitiesSlice' ,
-async(name: string, thunkAPI)=>{
-    try {
-        let response = await pokemonService.getAbilities(name)
-        return response;
-    } catch (e) {
-        let error = e as AxiosError;
-        return thunkAPI.rejectWithValue(error?.response?.data);
+// const loadAbilities = createAsyncThunk(
+//     'pokemonAbilitiesSlice' ,
+// async(name: string, thunkAPI)=>{
+//     try {
+//         let response = await pokemonService.getAbilities(name)
+//         return response;
+//     } catch (e) {
+//         let error = e as AxiosError;
+//         return thunkAPI.rejectWithValue(error?.response?.data);
+//     }
+// }
+// )
+const loadAbilitiesDetails = createAsyncThunk(
+    'pokemonAbilitiesSlice',
+    async (name: string, thunkAPI) => {
+        try {
+            // Получаем способности покемона
+            let abilities = await pokemonService.getAbilities(name);
+
+            // Извлекаем имена способностей из массива объектов Ability
+            let abilitiesNames = abilities.map(ability => ability.ability.name);
+
+            // Затем получаем детальную информацию по этим способностям
+            let abilitiesDetails = await pokemonService.getAbilitiesDetails(abilitiesNames);
+
+            return thunkAPI.fulfillWithValue(abilitiesDetails);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
     }
-}
-)
+);
 
 export {
     loadPokemonAll,
     loadPokemonImage,
-    loadAbilities
+    loadAbilitiesDetails
 };

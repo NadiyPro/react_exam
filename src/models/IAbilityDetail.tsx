@@ -1,4 +1,4 @@
-export interface IAbilityDetal {
+export interface IAbilityDetail {
     id: number
     name: string
     is_main_series: boolean
