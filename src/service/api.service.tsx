@@ -20,27 +20,24 @@ const pokemonService = {
     },
     getAbilities: async (name: string): Promise<Ability[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log()
+        console.log(response.data.abilities)
         return response.data.abilities.map((ability: Ability) => {
-            return {
-                name: ability.ability.name,
-                is_hidden: ability.is_hidden,
-                slot: ability.slot
-            };
+            return ability
         })
     },
-    getStats: async (name: string) : Promise<Stat[]> => {
-        const response = await axiosInstance.get(`/stat/${name}`);
-        return response.data.stats;
-    },
-    getType: async (name: string) : Promise<Type[]> => {
-        const response = await axiosInstance.get(`/type/${name}`);
-        return response.data.type;
-    },
-    getForms: async (name: string) : Promise<Form[]> => {
-        const response = await axiosInstance.get(`/pokemon-form/${name}`);
-        return response.data.forms;
-    }
+
+    // getStats: async (name: string) : Promise<Stat[]> => {
+    //     const response = await axiosInstance.get(`/stat/${name}`);
+    //     return response.data.stats;
+    // },
+    // getType: async (name: string) : Promise<Type[]> => {
+    //     const response = await axiosInstance.get(`/type/${name}`);
+    //     return response.data.type;
+    // },
+    // getForms: async (name: string) : Promise<Form[]> => {
+    //     const response = await axiosInstance.get(`/pokemon-form/${name}`);
+    //     return response.data.forms;
+    // }
 };
 
 export {

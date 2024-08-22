@@ -28,7 +28,7 @@ const PokemonId = () => {
                             {abilities.map((ability) => (
                                 ability.is_hidden && (
                                     <li key={ability.slot}>
-                                        {ability.slot} {ability.is_hidden.toString()}
+                                        {ability.slot} {ability.is_hidden.toString()} {ability.ability.name}
                                     </li>
                                 )
                             ))}
