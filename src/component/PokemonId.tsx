@@ -187,28 +187,35 @@ const PokemonId = () => {
 
                         <div>
                             <h5>type</h5>
-                            <div>
-                                {
-                                    type.map((value, index) =>
-                                        <div key={index}>
-                                            <p> name: {value.type.name} <br/> slot: {value.slot} </p>
-                                        </div>
-                                    )
-                                }
-                            </div>
+                            {/*<div>*/}
+                            {/*    {*/}
+                            {/*        type.map((value, index) =>*/}
+                            {/*            <div key={index}>*/}
+                            {/*                <p> name: {value.type.name} <br/> slot: {value.slot} </p>*/}
+                            {/*            </div>*/}
+                            {/*        )*/}
+                            {/*    }*/}
+                            {/*</div>*/}
                             <div>
                                 {typeDetails.map((typeDetail) => {
                                     return (
                                         <div key={typeDetail.id}>
-                                            <p>name: {typeDetail.name} <br/>
-                                                double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value => value.name)}
-                                                <br/>
-                                                double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value => value.name)}
-                                                <br/>
-                                                half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value => value.name)}
-                                                <br/>
-                                                half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value => value.name)}
-                                            </p>
+                                            <div>
+                                                {typeDetail.name}
+                                                <ul>
+                                                    double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value =>
+                                                    <li>{value.name}</li>)}
+                                                    <br/>
+                                                    double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value =>
+                                                    <li>{value.name}</li>)}
+                                                    <br/>
+                                                    half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value =>
+                                                    <li>{value.name}</li>)}
+                                                    <br/>
+                                                    half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value =>
+                                                    <li>{value.name}</li>)}
+                                                </ul>
+                                            </div>
                                         </div>
                                     );
                                 })}
@@ -232,7 +239,7 @@ const PokemonId = () => {
                                     return (
                                         <div key={formDetail.id}>
                                             <div>
-                                                <h6>front_default</h6>
+                                            <h6>front_default</h6>
                                                 <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
                                             </div>
                                             <div>
