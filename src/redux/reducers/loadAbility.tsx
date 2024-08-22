@@ -1,6 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {pokemonService} from "../../service/api.service";
+import React from "react";
+import {pokemonAllActions} from "../slices/pokemonAllSlice";
 
 const loadPokemonAll = createAsyncThunk(
     'pokemonAllSlice',
@@ -44,16 +46,13 @@ const loadAbilitiesDetails = createAsyncThunk(
     'pokemonAbilitiesSlice',
     async (name: string, thunkAPI) => {
         try {
-            // Получаем способности покемона
             let abilities = await pokemonService.getAbilities(name);
 
-            // Извлекаем имена способностей из массива объектов Ability
             let abilitiesNames = abilities.map(ability => ability.ability.name);
 
-            // Затем получаем детальную информацию по этим способностям
             let abilitiesDetails = await pokemonService.getAbilitiesDetails(abilitiesNames);
-
-            return thunkAPI.fulfillWithValue(abilitiesDetails);
+console.log(thunkAPI.fulfillWithValue(abilitiesDetails))
+            return  thunkAPI.fulfillWithValue({abilitiesDetails, abilities});
         } catch (e) {
             let error = e as AxiosError;
             return thunkAPI.rejectWithValue(error?.response?.data);
