@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
-import {pokemonService} from "../service/api.service";
 
 
 const PokemonId = () => {
@@ -27,17 +26,10 @@ const PokemonId = () => {
                     <div key={name}>
                         <div>{name}</div>
                         <img src={images[name]} alt={name}/>
-                        {/*{abilit.map((value) => (*/}
-                        {/*    value.is_hidden && (*/}
-                        {/*        <li key={value.slot}>*/}
-                        {/*            {value.slot} {value.is_hidden.toString()} {value.ability.name}*/}
-                        {/*        </li>*/}
-                        {/*    )*/}
-                        {/*))}*/}
                         <div>
                             {
                                 abilities.map(value =>
-                                    <div>
+                                    <div key={value.slot}>
                                         <p>is_hidden: {`${value.is_hidden}`} <br/> slot: {value.slot} <br/> name: {value.ability.name}</p>
                                     </div>
                                 )

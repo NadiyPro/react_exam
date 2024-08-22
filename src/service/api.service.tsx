@@ -19,13 +19,6 @@ const pokemonService = {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         return response.data.sprites.front_default;
     },
-    // getAbilities: async (name: string): Promise<Ability[]> => {
-    //     const response = await axiosInstance.get(`/pokemon/${name}`);
-    //     console.log(response.data.abilities)
-    //     return response.data.abilities.map((ability: Ability) => {
-    //         return ability.ability.name
-    //     })
-    // },
     getAbilities: async (name: string): Promise<Ability[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
         console.log(response.data.abilities)
