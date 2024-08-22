@@ -1,7 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+
+interface EffectEntry {
+    short_effect: string;
+}
+
+interface AbilityDetail {
+    id: number;
+    name: string;
+    effect_entries: EffectEntry[];
+}
 
 const PokemonId = () => {
     const {name} = useParams();
@@ -28,6 +38,15 @@ const PokemonId = () => {
         }
     }, [dispatch,name]);
 
+    const [selectedAbilityDetail, setSelectedAbilityDetail] = useState<AbilityDetail | null>(null);
+
+    const handleAbilityClick = (abilityDetail: AbilityDetail) => {
+        if (selectedAbilityDetail?.name === abilityDetail.name) {
+            setSelectedAbilityDetail(null);
+        } else {
+            setSelectedAbilityDetail(abilityDetail);
+        }
+    };
 
     return (
         <div>
@@ -39,7 +58,8 @@ const PokemonId = () => {
                         <div>
                             {pokemonOne && (
                                 <div>
-                                    <p key={pokemonOne.name}>id: {pokemonOne.id} <br/> height: {pokemonOne.height} <br/> weight: {pokemonOne.weight}</p>
+                                    <p key={pokemonOne.name}>id: {pokemonOne.id} <br/> height: {pokemonOne.height}
+                                        <br/> weight: {pokemonOne.weight}</p>
                                 </div>
                             )}
                         </div>
@@ -55,39 +75,57 @@ const PokemonId = () => {
                                 }
                             </div>
                             <div>
-                                {abilitiesDetails.map((abilityDetail) => {
-                                    return (
-                                        <div key={abilityDetail.id}>
-                                            <p>name: {abilityDetail.name}:</p>
-                                            <ul>
-                                                {abilityDetail.effect_entries.map((value, index) => (
-                                                    <li key={index}>{value.short_effect}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    );
-                                })}
+                                {abilitiesDetails.map((abilityDetail) => (
+                                    <div key={abilityDetail.id}>
+                                        <button onClick={() => handleAbilityClick(abilityDetail)}>
+                                            Detail: {abilityDetail.name}
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
-                        </div>
+                            {selectedAbilityDetail && (
+                                <div className="divAbilities">
+                                    <ul>
+                                        {selectedAbilityDetail.effect_entries.map((value, index) => (
+                                            <li key={index}>{value.short_effect}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        {/*<div>*/}
+                        {/*    {abilitiesDetails.map((abilityDetail) => {*/}
+                        {/*        return (*/}
+                        {/*            <div key={abilityDetail.id}>*/}
+                        {/*                <p>name: {abilityDetail.name}:</p>*/}
+                        {/*                <ul>*/}
+                        {/*                    {abilityDetail.effect_entries.map((value, index) => (*/}
+                        {/*                        <li key={index}>{value.short_effect}</li>*/}
+                        {/*                    ))}*/}
+                        {/*                </ul>*/}
+                        {/*            </div>*/}
+                        {/*        );*/}
+                        {/*    })}*/}
+                        {/*</div>*/}
+                    </div>
 
-                        <div>
-                            <h5>stat</h5>
-                            <div>
-                                {
-                                    stat.map((value, index) =>
-                                        <div key={index}>
-                                            <p>base_stat: {value.base_stat} <br/> effort:{value.effort}
-                                                <br/> name: {value.stat.name}</p>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                            <div>
-                                {statDetails.map((statDetail) => {
-                                    return (
-                                        <div key={statDetail.id}>
-                                            <p>name: {statDetail.name} </p>
-                                            {/*<ul>*/}
+                <div>
+                <h5>stat</h5>
+                <div>
+            {
+                stat.map((value, index) =>
+                <div key={index}>
+            <p>base_stat: {value.base_stat} <br/> effort:{value.effort}
+                <br/> name: {value.stat.name}</p>
+        </div>
+    )
+}
+</div>
+    <div>
+        {statDetails.map((statDetail) => {
+            return (
+                <div key={statDetail.id}>
+                    <p>name: {statDetail.name} </p>
+                    {/*<ul>*/}
                                             {/*    {statDetail.affecting_moves.increase.map((value, index) => (*/}
                                             {/*        <li key={index}>{value.move.name}</li>*/}
                                             {/*    ))}*/}
