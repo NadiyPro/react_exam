@@ -7,7 +7,6 @@ const PokemonId = () => {
     const {name} = useParams();
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const abilities = useAppSelector(state => state.pokemonAllStore.ability);
-    const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
     const dispatch = useAppDispatch();
 
 
@@ -27,7 +26,11 @@ const PokemonId = () => {
                         <img src={images[name]} alt={name}/>
                         <ul>
                             {abilities.map((ability) => (
-                                <li key={ability.slot}>{ability.slot} {ability.is_hidden}</li>
+                                ability.is_hidden && (
+                                    <li key={ability.slot}>
+                                        {ability.slot} {ability.is_hidden.toString()}
+                                    </li>
+                                )
                             ))}
                         </ul>
                     </div>
