@@ -13,6 +13,14 @@ interface AbilityDetail {
     effect_entries: EffectEntry[];
 }
 
+interface StatDetail {
+    id: number;
+    name: string;
+    affecting_moves: {
+        increase: { move: { name: string } }[];
+    };
+}
+
 const PokemonId = () => {
     const {name} = useParams();
     const pokemonOne = useAppSelector(state => state.pokemonAllStore.pokemonOne);
@@ -39,12 +47,20 @@ const PokemonId = () => {
     }, [dispatch,name]);
 
     const [selectedAbilityDetail, setSelectedAbilityDetail] = useState<AbilityDetail | null>(null);
+    const [selectedStatDetail, setSelectedStatDetail] = useState<StatDetail | null>(null);
 
     const handleAbilityClick = (abilityDetail: AbilityDetail) => {
         if (selectedAbilityDetail?.name === abilityDetail.name) {
             setSelectedAbilityDetail(null);
         } else {
             setSelectedAbilityDetail(abilityDetail);
+        }
+    };
+    const handleStatClick = (statDetail: StatDetail) => {
+        if (selectedStatDetail?.name === statDetail.name) {
+            setSelectedStatDetail(null);
+        } else {
+            setSelectedStatDetail(statDetail);
         }
     };
 
@@ -106,33 +122,67 @@ const PokemonId = () => {
                         {/*        );*/}
                         {/*    })}*/}
                         {/*</div>*/}
-                    </div>
+                        </div>
 
-                <div>
-                <h5>base_stat</h5>
-                <div>
-            {
-                stat.map((value, index) =>
-                <div key={index}>
-            <p>{value.stat.name}: {value.base_stat}</p>
-        </div>
-    )
-}
-</div>
-    <div>
-        {statDetails.map((statDetail) => {
-            return (
-                <div key={statDetail.id}>
-                    <p>name: {statDetail.name} </p>
-                    {/*<ul>*/}
-                                            {/*    {statDetail.affecting_moves.increase.map((value, index) => (*/}
-                                            {/*        <li key={index}>{value.move.name}</li>*/}
-                                            {/*    ))}*/}
-                                            {/*</ul>*/}
+                        <div>
+                            <h5>base_stat</h5>
+                            <div>
+                                {
+                                    stat.map((value, index) =>
+                                        <div key={index}>
+                                            <p>{value.stat.name}: {value.base_stat}</p>
                                         </div>
-                                    );
-                                })}
+                                    )
+                                }
                             </div>
+
+                            <div>
+                                {statDetails.map((statDetail) => (
+                                    <div key={statDetail.id}>
+                                        <button onClick={() => handleStatClick(statDetail)}>
+                                            Detail: {statDetail.name}
+                                        </button>
+                                    </div>
+                                ))}
+                                {/*{statDetails.map((statDetail) => {*/}
+                                {/*    return (*/}
+                                {/*            <div key={statDetail.id}>*/}
+                                {/*                <button onClick={() => handleAbilityClick(statDetail)}>*/}
+                                {/*                    Detail: {statDetail.name}*/}
+                                {/*                </button>*/}
+                                {/*            /!*<ul>*!/*/}
+                                {/*            /!*    {statDetail.affecting_moves.increase.map((value, index) => (*!/*/}
+                                {/*            /!*        <li key={index}>{value.move.name}</li>*!/*/}
+                                {/*            /!*    ))}*!/*/}
+                                {/*            /!*</ul>*!/*/}
+                                {/*        </div>*/}
+                                {/*    );*/}
+                                {/*})}*/}
+                            </div>
+                            {selectedStatDetail && (
+                                <div className="divAbilities">
+                                    <ul>
+                                        {selectedStatDetail.affecting_moves.increase.map((value, index) => (
+                                            <li key={index}>{value.move.name}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/*<div>*/}
+                            {/*    {statDetails.map((statDetail) => {*/}
+                            {/*        return (*/}
+                            {/*            <div key={statDetail.id}>*/}
+                            {/*                <p>name: {statDetail.name} </p>*/}
+                            {/*                /!*<ul>*!/*/}
+                            {/*                /!*    {statDetail.affecting_moves.increase.map((value, index) => (*!/*/}
+                            {/*                /!*        <li key={index}>{value.move.name}</li>*!/*/}
+                            {/*                /!*    ))}*!/*/}
+                            {/*                /!*</ul>*!/*/}
+                            {/*            </div>*/}
+                            {/*        );*/}
+                            {/*    })}*/}
+                            {/*</div>*/}
                         </div>
 
                         <div>
