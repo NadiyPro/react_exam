@@ -239,11 +239,6 @@ const PokemonId = () => {
                                         )}
                                     </div>
 
-                                    {/*<div>*/}
-                                    {/*    <h5>evolution</h5>*/}
-                                    {/*    <button onClick={() => navigate(`/evolution-chain/${value.id}`)}>detail form</button>*/}
-                                    {/*</div>*/}
-
                                 </div>
                             )
                         })}
