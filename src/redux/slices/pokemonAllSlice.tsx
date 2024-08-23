@@ -12,7 +12,7 @@ import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
-import {IChain, IEvolution, IEvolvesTo, Species} from "../../models/IEvolution";
+import {EvolvesTo} from "../../models/IEvolution";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -30,7 +30,7 @@ interface PokemonAllState {
     form:IForm[];
     pokemonOne:IPokemon | null;
     // species:ISpecies[]
-    evolution: IEvolution | null;
+    evolution: EvolvesTo[];
 }
 
 const initialState: PokemonAllState = {
@@ -49,7 +49,7 @@ const initialState: PokemonAllState = {
     form:[],
     pokemonOne: null,
     // species:[]
-    evolution:null
+    evolution:[]
 };
 
 export const pokemonAllSlice = createSlice({

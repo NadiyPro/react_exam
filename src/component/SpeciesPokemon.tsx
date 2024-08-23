@@ -17,7 +17,7 @@ const SpeciesPokemon = () => {
 
     return (
         <div>
-            {evolution && (evolution.chain.species.name)}
+            {evolution.map(value => value.species.name)}
         </div>
     );
 };

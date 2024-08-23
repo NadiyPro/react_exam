@@ -117,6 +117,7 @@ const loadEvolutionDetails = createAsyncThunk(
         try {
             let species = await pokemonService.getSpecies(name);
             let evolutionUrl = species.map(value => value.evolution_chain.url);
+            console.log(evolutionUrl)
 
             let evolutionDetails = await pokemonService.getEvolution(evolutionUrl.toString());
             // let evolution = evolutionDetails.chain.evolves_to;
