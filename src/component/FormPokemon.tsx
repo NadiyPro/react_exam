@@ -79,16 +79,16 @@ const FormPokemon = () => {
                                 {selectedTypeDetail && (
                                     <div>
                                         <ul>
-                                            double damage from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
+                                            1. double damage from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            double damage to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
+                                            2. double damage to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half damage from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
+                                            3. half damage from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half damage to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
+                                            4. half damage to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                         </ul>
                                     </div>
