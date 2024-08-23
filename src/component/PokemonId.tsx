@@ -91,7 +91,7 @@ const PokemonId = () => {
                                     <div><p>id: {pokemonOne.id}</p></div>
                                     <div>
                                         <img alt={'img'}
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVR4nO3TQQrAIBAEQf//6c59DyuJwRbGhr0XjI4xj8VbjlMAb7sAdkyA/QawAV15AOwJsAG1DAD2N8QGdOUBsCfABtQyANjfEBvQlQfAngAbULsA/p6Aj3c24AGLFvEPeZntyQAAAABJRU5ErkJggg=="/>
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVR4nO3TQQrAIBAEQf//6c59DyuJwRbGhr0XjI4xj8VbjlMAb7sAdkyA/QawAV15AOwJsAG1DAD2N8QGdOUBsCfABtQyANjfEBvQlQfAngAbULsA/p6Aj3c24AGLFvEPeZntyQAAAABJRU5ErkJggg=="/>
                                         <p> height: {pokemonOne.height}</p>
                                     </div>
                                     <div>
@@ -99,6 +99,9 @@ const PokemonId = () => {
                                             alt={'img'}
                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXElEQVR4nO2avWtUQRTFf4ZoCiWkikkkYJVGUKy0ULGNq12KiOhaayGCH60QCxtFC8FKm4AIpknqqIVB8gdEUygWikIKwcQiWmTkynkwPHbZmZf9GMkcGNidOffOue/OnbfvzUJGRkZVnAUWgV+A63HbkJZabBB3ExDvmrSZmEyYwSZwAxil9xgFbkqTC83MK5EtiNRwS9psmbXEhsgjpIcRaVsPIRdrMRb7gDPAPWABWAV+AL/V7PMHYF6cSdnEwoXqiwmkDzgHzElsbOHamn+pujRfXQ/EJr2oK+wLsyzcB+rAKWDcGxtXX12c1ZLte+ACsKtbgRwB3pVELAMTFfxNyNb3tQQc7mQgdqWue0toDbgDbKn4BitMPCjbLflaE9fmuNYkO9sKZAB44Y09AYY09hr4BBwN8H269N1sPsqHYUi+i3mea+62BbLgbXtTpbH9gYV6CHjcoN9sh0t9U5rLae5W+hqiEfG8+v4AJ4jHXmAFuBzIP+bdxesB+hqiGfGR+r9V+NnyTLYHA7jDwBfxH0boCyb2A2809hbYHeJMWTCbzwHcftVLsXvtidAXRbR6+KpxuxeE1EXxGGBZaYUH4n4HxiroiyIe97bgSwF1UfhrVR/TXh2e3Ia+KOLVNj9j+O1KG/RFEZ92IIjZNuoLJ/YILgeSGFzOSGJwOSOJweWMJAaXM5IYXM5IYnA5I4nB5YwkBrfjMrIuYgpHbmUckLafBGBRZDuzSw23Y47eaiJv6syu2fulbmJMQRSvoYKPqWc6+Lqna8fTBWpKYXE4+l/+YSAjI4N/+AsUpdOtE+HlwgAAAABJRU5ErkJggg=="/>
                                         <p>weight: {pokemonOne.weight}</p>
+                                    </div>
+                                    <div>
+                                        <p>species: {pokemonOne.species.name}</p>
                                     </div>
                                 </div>
                             )}
@@ -118,14 +121,14 @@ const PokemonId = () => {
                                 {abilitiesDetails.map((abilityDetail) => (
                                     <div key={abilityDetail.id}>
                                         <button onClick={() => handleAbilityClick(abilityDetail)}>
-                                        Detail: {abilityDetail.name}
+                                            Detail: {abilityDetail.name}
                                         </button>
                                     </div>
                                 ))}
                             </div>
                             {selectedAbilityDetail && (
                                 <div>
-                                    <ul>
+                                <ul>
                                         {selectedAbilityDetail.effect_entries.map((value, index) => (
                                             <li key={index}>{value.short_effect}</li>
                                         ))}
