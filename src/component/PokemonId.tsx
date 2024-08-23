@@ -227,17 +227,17 @@ const PokemonId = () => {
                                     <div className="divAbilities">
                                         {/*{selectedTypeDetail.name}*/}
                                         <ul>
-                                            double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map(value =>
-                                            <li>{value.name}</li>)}
+                                            double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
+                                            <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            double_damage_to: {selectedTypeDetail.damage_relations.double_damage_to.map(value =>
-                                            <li>{value.name}</li>)}
+                                            double_damage_to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
+                                            <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_from:{selectedTypeDetail.damage_relations.half_damage_from.map(value =>
-                                            <li>{value.name}</li>)}
+                                            half_damage_from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
+                                            <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_to:{selectedTypeDetail.damage_relations.half_damage_to.map(value =>
-                                            <li>{value.name}</li>)}
+                                            half_damage_to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
+                                            <li key={index}>{value.name}</li>)}
                                         </ul>
                                     </div>
                                 )}

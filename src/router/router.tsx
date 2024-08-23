@@ -4,6 +4,7 @@ import {createBrowserRouter} from "react-router-dom";
 import React from "react";
 import PokemonAllComponent from "../component/PokemonAllComponent";
 import PokemonId from "../component/PokemonId";
+import FormPokemon from "../component/FormPokemon";
 
 export const router = createBrowserRouter(
     [
@@ -13,8 +14,8 @@ export const router = createBrowserRouter(
             errorElement:<ErrorElement/>,
             children: [
                 {index: true, element: <PokemonAllComponent/>},
-                {path:'/pokemon/:name', element: <PokemonId/>}
-                // {path:'posts', element: <PostsPage/>},
+                {path:'/pokemon/:name', element: <PokemonId/>},
+                {path:'/pokemon-for/:name', element: <FormPokemon/>}
                 // {path:'comments', element: <CommentsPage/>},
                 // {path:'users/:id', element: <User/>},
                 // {path:'users/:id/posts', element: <Post/>},
