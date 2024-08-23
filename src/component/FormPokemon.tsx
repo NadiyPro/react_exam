@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 import {useParams} from "react-router-dom";
+import '../module/global.css';
 
 interface TypeDetail {
     id: number;
@@ -45,20 +46,20 @@ const FormPokemon = () => {
                             <h6>form_name: {formDetail.name}</h6>
                             <h6>{formDetail.types.map(value => value.type.name)}</h6>
                             <div>
-                                <h6>front_default</h6>
+                                <h6>front default</h6>
                                 <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
                             </div>
                             <div>
-                                <h6>back_default</h6>
+                                <h6>back default</h6>
                                 <img src={formDetail.sprites.back_default} alt={'back_default'}/>
                             </div>
 
                             <div>
-                                <h6>front_shiny</h6>
+                                <h6>front shiny</h6>
                                 <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
                             </div>
                             <div>
-                                <h6>back_shiny</h6>
+                                <h6>back shiny</h6>
                                 <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
                             </div>
 
@@ -78,16 +79,16 @@ const FormPokemon = () => {
                                 {selectedTypeDetail && (
                                     <div>
                                         <ul>
-                                            double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
+                                            double damage from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            double_damage_to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
+                                            double damage to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
+                                            half damage from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
+                                            half damage to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                         </ul>
                                     </div>

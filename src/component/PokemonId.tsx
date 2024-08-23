@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import '../module/global.css';
 
 interface EffectEntry {
     short_effect: string;
@@ -176,16 +177,16 @@ const PokemonId = () => {
                                 {selectedTypeDetail && (
                                     <div>
                                         <ul>
-                                            double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
+                                            double damage from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            double_damage_to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
+                                            double damage to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
+                                            half damage from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                             <br/>
-                                            half_damage_to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
+                                            half damage to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
                                         </ul>
                                     </div>

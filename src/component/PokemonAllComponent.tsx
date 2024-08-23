@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 import {useNavigate} from "react-router-dom";
+import '../module/global.css';
 
 const PokemonAllComponent= () => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const PokemonAllComponent= () => {
 
     return (
         <div>
-
+            <h5>Pokemon</h5>
             {pokemon.map(value => (
                 <div key={value.name}>
                     <div>{value.name}</div>
