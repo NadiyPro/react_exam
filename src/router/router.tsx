@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
             children: [
                 {index: true, element: <PokemonAllComponent/>},
                 {path:'/pokemon/:name', element: <PokemonId/>},
-                {path:'/pokemon-for/:name', element: <FormPokemon/>}
+                {path:'/pokemon-form/:name', element: <FormPokemon/>}
                 // {path:'comments', element: <CommentsPage/>},
                 // {path:'users/:id', element: <User/>},
                 // {path:'users/:id/posts', element: <Post/>},

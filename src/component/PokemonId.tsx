@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
@@ -32,6 +32,7 @@ interface TypeDetail {
 }
 const PokemonId = () => {
     const {name} = useParams();
+    const navigate = useNavigate();
     const pokemonOne = useAppSelector(state => state.pokemonAllStore.pokemonOne);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
@@ -40,8 +41,8 @@ const PokemonId = () => {
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
     const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
     // const type = useAppSelector(state => state.pokemonAllStore.type);
-    const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
-    const form = useAppSelector(state => state.pokemonAllStore.form);
+    // const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
+    // const form = useAppSelector(state => state.pokemonAllStore.form);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -51,7 +52,7 @@ const PokemonId = () => {
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
             dispatch(pokemonAllActions.loadTypeDetails(name));
-            dispatch(pokemonAllActions.loadFormDetails(name));
+            // dispatch(pokemonAllActions.loadFormDetails(name));
         }
     }, [dispatch,name]);
 
@@ -273,41 +274,43 @@ const PokemonId = () => {
 
                         <div>
                             <h5>form</h5>
-                            <div>
-                                {
-                                    form.map((value, index) =>
-                                        <div key={index}>
-                                            <p> name: {value.name} </p>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                            <div>
-                                {formDetails.map((formDetail) => {
-                                    return (
-                                        <div key={formDetail.id}>
-                                            <div>
-                                                <h6>front_default</h6>
-                                                <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
-                                            </div>
-                                            <div>
-                                                <h6>back_default</h6>
-                                                <img src={formDetail.sprites.back_default} alt={'back_default'}/>
-                                            </div>
+                            <button onClick={()=> navigate(`/pokemon-form/${name}`)}>Detail form</button>
+                            {/*<div>*/}
+                            {/*    {*/}
+                            {/*        form.map((value, index) =>*/}
+                            {/*            <div key={index}>*/}
+                            {/*                <p> name: {value.name} </p>*/}
+                            {/*            </div>*/}
+                            {/*        )*/}
+                            {/*    }*/}
+                            {/*</div>*/}
+                            {/*<div>*/}
+                            {/*    {formDetails.map((formDetail) => {*/}
+                            {/*        return (*/}
+                            {/*            <div key={formDetail.id}>*/}
+                            {/*                <h6>form_name: {formDetail.name}</h6>*/}
+                            {/*                <div>*/}
+                            {/*                    <h6>front_default</h6>*/}
+                            {/*                    <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>*/}
+                            {/*                </div>*/}
+                            {/*                <div>*/}
+                            {/*                    <h6>back_default</h6>*/}
+                            {/*                    <img src={formDetail.sprites.back_default} alt={'back_default'}/>*/}
+                            {/*                </div>*/}
 
-                                            <div>
-                                                <h6>front_shiny</h6>
-                                                <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
-                                            </div>
-                                            <div>
-                                            <h6>back_shiny</h6>
-                                                <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
-                                            </div>
+                            {/*                <div>*/}
+                            {/*                    <h6>front_shiny</h6>*/}
+                            {/*                    <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>*/}
+                            {/*                </div>*/}
+                            {/*                <div>*/}
+                            {/*                    <h6>back_shiny</h6>*/}
+                            {/*                    <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>*/}
+                            {/*                </div>*/}
 
-                                        </div>
-                                    );
-                                })};
-                            </div>
+                            {/*            </div>*/}
+                            {/*        );*/}
+                            {/*    })};*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 )}
