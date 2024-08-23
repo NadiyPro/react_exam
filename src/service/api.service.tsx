@@ -63,12 +63,9 @@ const pokemonService = {
         const response = names.map((name) => axiosInstance.get(`/pokemon-form/${name}`)
             .then(response => response.data));
         return Promise.all(response);
-    }
-
-
-
-    // getForms: async (name: string) : Promise<Form[]> => {
-    //     const response = await axiosInstance.get(`/pokemon-form/${name}`);
+    },
+    // getEvolution: async (name: string) : Promise<Form[]> => {
+    //     const response = await axiosInstance.get(`/evolution-chain/${id}`);
     //     return response.data.forms;
     // }
 };
