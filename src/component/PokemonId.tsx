@@ -127,7 +127,7 @@ const PokemonId = () => {
                                                 </div>
                                                 <div>
                                                     <button
-                                                        onClick={() => navigate(`/evolution-chain/${pokemonOne.id}`)}>
+                                                        onClick={() => navigate(`/pokemon-species/${pokemonOne.name}/`)}>
                                                         evolution
                                                     </button>
                                                 </div>

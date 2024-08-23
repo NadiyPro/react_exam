@@ -1,9 +1,9 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadEvolutionDetails, loadFormDetails,
+    loadAbilitiesDetails, loadFormDetails,
     loadPokemonAll,
-    loadPokemonImage, loadPokemonOne,
+    loadPokemonImage, loadPokemonOne, loadSpeciesDetails,
     loadStatDetails,
     loadTypeDetails
 } from "../reducers/loadAbility";
@@ -12,7 +12,7 @@ import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
-import {IEvolvesTo} from "../../models/IEvolution";
+import {ISpecies} from "../../models/ISpecies";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -29,7 +29,8 @@ interface PokemonAllState {
     formDetails:IFormDetail[];
     form:IForm[];
     pokemonOne:IPokemon | null;
-    evolution:IEvolvesTo[]
+    species:ISpecies[]
+
 }
 
 const initialState: PokemonAllState = {
@@ -47,7 +48,7 @@ const initialState: PokemonAllState = {
     formDetails:[],
     form:[],
     pokemonOne: null,
-    evolution:[]
+    species:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -103,8 +104,8 @@ export const pokemonAllSlice = createSlice({
                 }
             )
             .addCase(
-                loadEvolutionDetails.fulfilled, (state, action) => {
-                    state.evolution = action.payload;
+                loadSpeciesDetails.fulfilled, (state, action) => {
+                    state.species = action.payload;
                     // const {formDetails, form} = action.payload as { formDetails: IFormDetail[]; form: IForm[] };
                     // state.formDetails = formDetails;
                     // state.form = form;
@@ -124,5 +125,5 @@ export const pokemonAllActions = {
     loadStatDetails,
     loadTypeDetails,
     loadFormDetails,
-    loadEvolutionDetails
+    loadSpeciesDetails
 };

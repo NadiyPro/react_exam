@@ -4,7 +4,7 @@ import {createBrowserRouter} from "react-router-dom";
 import React from "react";
 import PokemonAllComponent from "../component/PokemonAllComponent";
 import PokemonId from "../component/PokemonId";
-import EvolutionPokemon from "../component/EvolutionPokemon";
+import SpeciesPokemon from "../component/SpeciesPokemon";
 import Search from "../component/Search";
 
 export const router = createBrowserRouter(
@@ -16,7 +16,7 @@ export const router = createBrowserRouter(
             children: [
                 {index: true, element: <PokemonAllComponent/>},
                 {path:'/pokemon/:name', element: <PokemonId/>},
-                {path:'/evolution-chain/:id', element: <EvolutionPokemon/>},
+                {path:'/pokemon-species/:name', element: <SpeciesPokemon/>},
                 {path:'/search/:name', element: <Search/>}
                 // {path:'users/:id', element: <User/>},
                 // {path:'users/:id/posts', element: <Post/>},

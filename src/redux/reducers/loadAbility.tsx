@@ -111,18 +111,18 @@ const loadFormDetails = createAsyncThunk(
         }
     }
 );
-const loadEvolutionDetails = createAsyncThunk(
+const loadSpeciesDetails = createAsyncThunk(
     'pokemonEvolutionSlice',
-    async (id: number, thunkAPI) => {
+    async (name: string, thunkAPI) => {
         try {
-            let evolution = await pokemonService.getEvolution(id);
-
-            let evolutionName = evolution.map(value => value.species.name);
-            console.log(evolutionName)
+            let species = await pokemonService.getSpecies(name);
+            console.log(species)
+            // let evolutionName = evolution.map(value => value.species.name);
+            // console.log(evolutionName)
 
             // let formDetails = await pokemonService.getFormsDetails(evolutionName);
             // console.log(thunkAPI.fulfillWithValue(formDetails))
-            return  thunkAPI.fulfillWithValue(evolution);
+            return  thunkAPI.fulfillWithValue(species);
         } catch (e) {
             let error = e as AxiosError;
             return thunkAPI.rejectWithValue(error?.response?.data);
@@ -137,5 +137,5 @@ export {
     loadStatDetails,
     loadTypeDetails,
     loadFormDetails,
-    loadEvolutionDetails
+    loadSpeciesDetails
 };

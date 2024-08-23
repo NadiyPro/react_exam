@@ -6,6 +6,7 @@ import {IStatDetail} from "../models/IStatDetail";
 import {ITypeDetail} from "../models/ITypeDetail";
 import {IFormDetail} from "../models/IFormDetail";
 import {IChain, IEvolution, IEvolvesTo} from "../models/IEvolution";
+import {ISpecies} from "../models/ISpecies";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -21,6 +22,8 @@ const pokemonService = {
     },
     getPokemon: async (name: string):Promise<IPokemon> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
+        console.log(response)
+
         return response.data;
     },
     getPokemonImage: async (name: string): Promise<string> => {
@@ -65,10 +68,10 @@ const pokemonService = {
             .then(response => response.data));
         return Promise.all(response);
     },
-    getEvolution: async (id: number) : Promise<IEvolvesTo[]> => {
-        const response = await axiosInstance.get(`/evolution-chain/${id}`);
-        console.log(response.data.chain.evolves_to)
-        return response.data.chain.evolves_to;
+    getSpecies: async (name: string) : Promise<ISpecies[]> => {
+        const response = await axiosInstance.get(`/pokemon-species/${name}`);
+        console.log(response.data)
+        return response.data;
     }
 };
 
