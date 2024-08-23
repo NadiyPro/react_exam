@@ -35,7 +35,6 @@ const PokemonId = () => {
     const {name} = useParams();
     const navigate = useNavigate();
     const pokemonOne = useAppSelector(state => state.pokemonAllStore.pokemonOne);
-    // const images = useAppSelector(state => state.pokemonAllStore.images);
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
     const abilities = useAppSelector(state => state.pokemonAllStore.abilities);
     const statDetails = useAppSelector(state => state.pokemonAllStore.statDetails);
@@ -48,7 +47,6 @@ const PokemonId = () => {
         if (name){
             dispatch(pokemonAllActions.loadPokemonOne(name));
             dispatch(pokemonAllActions.loadFormDetails(name));
-            // dispatch(pokemonAllActions.loadPokemonImage(name));
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
             dispatch(pokemonAllActions.loadTypeDetails(name));

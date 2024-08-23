@@ -1,14 +1,14 @@
 export interface IEvolution {
     id: number
     baby_trigger_item: any
-    chain: Chain
+    chain: IChain
 }
 
-export interface Chain {
+export interface IChain {
     is_baby: boolean
     species: Species
     evolution_details: any
-    evolves_to: EvolvesTo[]
+    evolves_to: IEvolvesTo[]
 }
 
 export interface Species {
@@ -16,7 +16,7 @@ export interface Species {
     url: string
 }
 
-export interface EvolvesTo {
+export interface IEvolvesTo {
     is_baby: boolean
     species: Species2
     evolution_details: EvolutionDetail[]

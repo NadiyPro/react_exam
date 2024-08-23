@@ -1,7 +1,7 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadFormDetails,
+    loadAbilitiesDetails, loadEvolutionDetails, loadFormDetails,
     loadPokemonAll,
     loadPokemonImage, loadPokemonOne,
     loadStatDetails,
@@ -12,6 +12,7 @@ import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
+import {IEvolvesTo} from "../../models/IEvolution";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -28,6 +29,7 @@ interface PokemonAllState {
     formDetails:IFormDetail[];
     form:IForm[];
     pokemonOne:IPokemon | null;
+    evolution:IEvolvesTo[]
 }
 
 const initialState: PokemonAllState = {
@@ -44,7 +46,8 @@ const initialState: PokemonAllState = {
     type:[],
     formDetails:[],
     form:[],
-    pokemonOne: null
+    pokemonOne: null,
+    evolution:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -99,6 +102,14 @@ export const pokemonAllSlice = createSlice({
                     state.form = form;
                 }
             )
+            .addCase(
+                loadEvolutionDetails.fulfilled, (state, action) => {
+                    state.evolution = action.payload;
+                    // const {formDetails, form} = action.payload as { formDetails: IFormDetail[]; form: IForm[] };
+                    // state.formDetails = formDetails;
+                    // state.form = form;
+                }
+            )
     }
 });
 
@@ -112,5 +123,6 @@ export const pokemonAllActions = {
     loadAbilitiesDetails,
     loadStatDetails,
     loadTypeDetails,
-    loadFormDetails
+    loadFormDetails,
+    loadEvolutionDetails
 };

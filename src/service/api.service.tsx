@@ -5,7 +5,7 @@ import {IAbilityDetail} from "../models/IAbilityDetail";
 import {IStatDetail} from "../models/IStatDetail";
 import {ITypeDetail} from "../models/ITypeDetail";
 import {IFormDetail} from "../models/IFormDetail";
-import {IEvolution} from "../models/IEvolution";
+import {IChain, IEvolution, IEvolvesTo} from "../models/IEvolution";
 
 export const baseURL = 'https://pokeapi.co/api/v2';
 
@@ -65,9 +65,10 @@ const pokemonService = {
             .then(response => response.data));
         return Promise.all(response);
     },
-    getEvolution: async (id: number) : Promise<IEvolution[]> => {
+    getEvolution: async (id: number) : Promise<IEvolvesTo[]> => {
         const response = await axiosInstance.get(`/evolution-chain/${id}`);
-        return response.data.forms;
+        console.log(response.data.chain.evolves_to)
+        return response.data.chain.evolves_to;
     }
 };
 
