@@ -63,7 +63,7 @@ const FormPokemon = () => {
                             </div>
 
 
-                            <h5>type</h5>
+                            <h5>type form </h5>
                             <div>
                                 {typeDetails.map((typeDetail) => (
                                     <div key={typeDetail.id}>
@@ -76,8 +76,7 @@ const FormPokemon = () => {
 
                             <div>
                                 {selectedTypeDetail && (
-                                    <div className="divAbilities">
-                                        {/*{selectedTypeDetail.name}*/}
+                                    <div>
                                         <ul>
                                             double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
@@ -97,7 +96,7 @@ const FormPokemon = () => {
 
                         </div>
                     );
-                })};
+                })}
             </div>
         </div>
     );

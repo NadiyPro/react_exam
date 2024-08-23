@@ -113,7 +113,7 @@ const PokemonId = () => {
                                 ))}
                             </div>
                             {selectedAbilityDetail && (
-                                <div className="divAbilities">
+                                <div>
                                     <ul>
                                         {selectedAbilityDetail.effect_entries.map((value, index) => (
                                             <li key={index}>{value.short_effect}</li>
@@ -145,7 +145,7 @@ const PokemonId = () => {
                                 ))}
                             </div>
                             {selectedStatDetail && (
-                                <div className="divAbilities">
+                                <div>
                                     <ul>
                                         {selectedStatDetail.affecting_moves.increase.map((value, index) => (
                                             <li key={index}>{value.move.name}</li>
@@ -156,12 +156,17 @@ const PokemonId = () => {
                         </div>
 
                         <div>
-                            <h5>type</h5>
+                            <h5>form</h5>
+                            <button onClick={() => navigate(`/pokemon-form/${name}`)}>Detail form</button>
+                        </div>
+
+                        <div>
+                            <h5>type form</h5>
                             <div>
                                 {typeDetails.map((typeDetail) => (
                                     <div key={typeDetail.id}>
                                         <button onClick={() => handleTypeClick(typeDetail)}>
-                                            Detail: {typeDetail.name}
+                                            type form detail: {typeDetail.name}
                                         </button>
                                     </div>
                                 ))}
@@ -169,7 +174,7 @@ const PokemonId = () => {
 
                             <div>
                                 {selectedTypeDetail && (
-                                    <div className="divAbilities">
+                                    <div>
                                         <ul>
                                             double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
@@ -186,12 +191,6 @@ const PokemonId = () => {
                                     </div>
                                 )}
                             </div>
-                        </div>
-
-
-                        <div>
-                            <h5>form</h5>
-                            <button onClick={()=> navigate(`/pokemon-form/${name}`)}>Detail form</button>
                         </div>
                     </div>
                 )}
