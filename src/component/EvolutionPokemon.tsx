@@ -1,7 +1,7 @@
 import React from 'react';
 import '../module/global.css';
 
-const FormPokemon = () => {
+const EvolutionPokemon = () => {
 
 
     return (
@@ -12,4 +12,4 @@ const FormPokemon = () => {
     );
 };
 
-export default FormPokemon;
+export default EvolutionPokemon;

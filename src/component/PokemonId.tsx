@@ -127,13 +127,19 @@ const PokemonId = () => {
                                                 <div>
                                                     <p>species: {pokemonOne.species.name}</p>
                                                 </div>
+                                                <div>
+                                                    <button
+                                                        onClick={() => navigate(`/evolution-chain/${pokemonOne.id}`)}>
+                                                        evolution
+                                                    </button>
+                                                </div>
                                             </div>
                                         )}
                                     </div>
 
                                     <div>
                                         <div>
-                                            {typeDetails.map((typeDetail) => (
+                                        {typeDetails.map((typeDetail) => (
                                                 <div key={typeDetail.id}>
                                                     <h5>type: {typeDetail.name}</h5>
                                                     <button onClick={() => handleTypeClick(typeDetail)}>
@@ -233,10 +239,10 @@ const PokemonId = () => {
                                         )}
                                     </div>
 
-                                    <div>
-                                        <h5>form</h5>
-                                        <button onClick={() => navigate(`/pokemon-form/${name}`)}>detail form</button>
-                                    </div>
+                                    {/*<div>*/}
+                                    {/*    <h5>evolution</h5>*/}
+                                    {/*    <button onClick={() => navigate(`/evolution-chain/${value.id}`)}>detail form</button>*/}
+                                    {/*</div>*/}
 
                                 </div>
                             )
