@@ -40,9 +40,6 @@ const PokemonId = () => {
     const statDetails = useAppSelector(state => state.pokemonAllStore.statDetails);
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
     const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
-    // const type = useAppSelector(state => state.pokemonAllStore.type);
-    // const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
-    // const form = useAppSelector(state => state.pokemonAllStore.form);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -52,7 +49,6 @@ const PokemonId = () => {
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
             dispatch(pokemonAllActions.loadTypeDetails(name));
-            // dispatch(pokemonAllActions.loadFormDetails(name));
         }
     }, [dispatch,name]);
 
@@ -125,20 +121,6 @@ const PokemonId = () => {
                                     </ul>
                                 </div>
                             )}
-                        {/*<div>*/}
-                        {/*    {abilitiesDetails.map((abilityDetail) => {*/}
-                        {/*        return (*/}
-                        {/*            <div key={abilityDetail.id}>*/}
-                        {/*                <p>name: {abilityDetail.name}:</p>*/}
-                        {/*                <ul>*/}
-                        {/*                    {abilityDetail.effect_entries.map((value, index) => (*/}
-                        {/*                        <li key={index}>{value.short_effect}</li>*/}
-                        {/*                    ))}*/}
-                        {/*                </ul>*/}
-                        {/*            </div>*/}
-                        {/*        );*/}
-                        {/*    })}*/}
-                        {/*</div>*/}
                         </div>
 
                         <div>
@@ -161,20 +143,6 @@ const PokemonId = () => {
                                         </button>
                                     </div>
                                 ))}
-                                {/*{statDetails.map((statDetail) => {*/}
-                                {/*    return (*/}
-                                {/*            <div key={statDetail.id}>*/}
-                                {/*                <button onClick={() => handleAbilityClick(statDetail)}>*/}
-                                {/*                    Detail: {statDetail.name}*/}
-                                {/*                </button>*/}
-                                {/*            /!*<ul>*!/*/}
-                                {/*            /!*    {statDetail.affecting_moves.increase.map((value, index) => (*!/*/}
-                                {/*            /!*        <li key={index}>{value.move.name}</li>*!/*/}
-                                {/*            /!*    ))}*!/*/}
-                                {/*            /!*</ul>*!/*/}
-                                {/*        </div>*/}
-                                {/*    );*/}
-                                {/*})}*/}
                             </div>
                             {selectedStatDetail && (
                                 <div className="divAbilities">
@@ -185,34 +153,10 @@ const PokemonId = () => {
                                     </ul>
                                 </div>
                             )}
-
-                            {/*<div>*/}
-                            {/*    {statDetails.map((statDetail) => {*/}
-                            {/*        return (*/}
-                            {/*            <div key={statDetail.id}>*/}
-                            {/*                <p>name: {statDetail.name} </p>*/}
-                            {/*                /!*<ul>*!/*/}
-                            {/*                /!*    {statDetail.affecting_moves.increase.map((value, index) => (*!/*/}
-                            {/*                /!*        <li key={index}>{value.move.name}</li>*!/*/}
-                            {/*                /!*    ))}*!/*/}
-                            {/*                /!*</ul>*!/*/}
-                            {/*            </div>*/}
-                            {/*        );*/}
-                            {/*    })}*/}
-                            {/*</div>*/}
                         </div>
 
                         <div>
                             <h5>type</h5>
-                            {/*<div>*/}
-                            {/*    {*/}
-                            {/*        type.map((value, index) =>*/}
-                            {/*            <div key={index}>*/}
-                            {/*                <p> name: {value.type.name} <br/> slot: {value.slot} </p>*/}
-                            {/*            </div>*/}
-                            {/*        )*/}
-                            {/*    }*/}
-                            {/*</div>*/}
                             <div>
                                 {typeDetails.map((typeDetail) => (
                                     <div key={typeDetail.id}>
@@ -226,7 +170,6 @@ const PokemonId = () => {
                             <div>
                                 {selectedTypeDetail && (
                                     <div className="divAbilities">
-                                        {/*{selectedTypeDetail.name}*/}
                                         <ul>
                                             double_damage_from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
                                             <li key={index}>{value.name}</li>)}
@@ -243,74 +186,12 @@ const PokemonId = () => {
                                     </div>
                                 )}
                             </div>
-
-
-                            {/*<div>*/}
-                            {/*    {typeDetails.map((typeDetail) => {*/}
-                            {/*        return (*/}
-                            {/*            <div key={typeDetail.id}>*/}
-                            {/*                <div>*/}
-                            {/*                    {typeDetail.name}*/}
-                            {/*                    <ul>*/}
-                            {/*                        double_damage_from: {typeDetail.damage_relations.double_damage_from.map(value =>*/}
-                            {/*                        <li>{value.name}</li>)}*/}
-                            {/*                        <br/>*/}
-                            {/*                        double_damage_to: {typeDetail.damage_relations.double_damage_to.map(value =>*/}
-                            {/*                        <li>{value.name}</li>)}*/}
-                            {/*                        <br/>*/}
-                            {/*                        half_damage_from:{typeDetail.damage_relations.half_damage_from.map(value =>*/}
-                            {/*                        <li>{value.name}</li>)}*/}
-                            {/*                        <br/>*/}
-                            {/*                        half_damage_to:{typeDetail.damage_relations.half_damage_to.map(value =>*/}
-                            {/*                        <li>{value.name}</li>)}*/}
-                            {/*                    </ul>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        );*/}
-                            {/*    })}*/}
-                            {/*</div>*/}
                         </div>
 
 
                         <div>
                             <h5>form</h5>
                             <button onClick={()=> navigate(`/pokemon-form/${name}`)}>Detail form</button>
-                            {/*<div>*/}
-                            {/*    {*/}
-                            {/*        form.map((value, index) =>*/}
-                            {/*            <div key={index}>*/}
-                            {/*                <p> name: {value.name} </p>*/}
-                            {/*            </div>*/}
-                            {/*        )*/}
-                            {/*    }*/}
-                            {/*</div>*/}
-                            {/*<div>*/}
-                            {/*    {formDetails.map((formDetail) => {*/}
-                            {/*        return (*/}
-                            {/*            <div key={formDetail.id}>*/}
-                            {/*                <h6>form_name: {formDetail.name}</h6>*/}
-                            {/*                <div>*/}
-                            {/*                    <h6>front_default</h6>*/}
-                            {/*                    <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>*/}
-                            {/*                </div>*/}
-                            {/*                <div>*/}
-                            {/*                    <h6>back_default</h6>*/}
-                            {/*                    <img src={formDetail.sprites.back_default} alt={'back_default'}/>*/}
-                            {/*                </div>*/}
-
-                            {/*                <div>*/}
-                            {/*                    <h6>front_shiny</h6>*/}
-                            {/*                    <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>*/}
-                            {/*                </div>*/}
-                            {/*                <div>*/}
-                            {/*                    <h6>back_shiny</h6>*/}
-                            {/*                    <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>*/}
-                            {/*                </div>*/}
-
-                            {/*            </div>*/}
-                            {/*        );*/}
-                            {/*    })};*/}
-                            {/*</div>*/}
                         </div>
                     </div>
                 )}
