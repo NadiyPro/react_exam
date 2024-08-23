@@ -1,9 +1,9 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadFormDetails,
+    loadAbilitiesDetails, loadEvolutionDetails, loadFormDetails,
     loadPokemonAll,
-    loadPokemonImage, loadPokemonOne, loadSpeciesDetails,
+    loadPokemonImage, loadPokemonOne,
     loadStatDetails,
     loadTypeDetails
 } from "../reducers/loadAbility";
@@ -12,7 +12,7 @@ import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
-import {ISpecies} from "../../models/ISpecies";
+import {IChain, IEvolution, IEvolvesTo, Species} from "../../models/IEvolution";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -29,8 +29,8 @@ interface PokemonAllState {
     formDetails:IFormDetail[];
     form:IForm[];
     pokemonOne:IPokemon | null;
-    species:ISpecies[]
-
+    // species:ISpecies[]
+    evolution: IEvolution | null;
 }
 
 const initialState: PokemonAllState = {
@@ -48,7 +48,8 @@ const initialState: PokemonAllState = {
     formDetails:[],
     form:[],
     pokemonOne: null,
-    species:[]
+    // species:[]
+    evolution:null
 };
 
 export const pokemonAllSlice = createSlice({
@@ -103,12 +104,17 @@ export const pokemonAllSlice = createSlice({
                     state.form = form;
                 }
             )
+            // .addCase(
+            //     loadEvolutionDetails.fulfilled, (state, action) => {
+            //         state.evolution = action.payload;
+            //         // const {formDetails, form} = action.payload as { formDetails: IFormDetail[]; form: IForm[] };
+            //         // state.formDetails = formDetails;
+            //         // state.form = form;
+            //     }
+            // )
             .addCase(
-                loadSpeciesDetails.fulfilled, (state, action) => {
-                    state.species = action.payload;
-                    // const {formDetails, form} = action.payload as { formDetails: IFormDetail[]; form: IForm[] };
-                    // state.formDetails = formDetails;
-                    // state.form = form;
+                loadEvolutionDetails.fulfilled, (state, action) => {
+                    state.evolution = action.payload;
                 }
             )
     }
@@ -125,5 +131,5 @@ export const pokemonAllActions = {
     loadStatDetails,
     loadTypeDetails,
     loadFormDetails,
-    loadSpeciesDetails
+    loadEvolutionDetails
 };

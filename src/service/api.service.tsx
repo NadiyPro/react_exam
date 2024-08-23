@@ -50,7 +50,6 @@ const pokemonService = {
     },
     getType: async (name: string) : Promise<IType[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response.data.types)
         return response.data.types;
     },
     getTypeDetails: async (names: string[]): Promise<ITypeDetail[]> => {
@@ -60,7 +59,6 @@ const pokemonService = {
     },
     getForms: async (name: string) : Promise<IForm[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response.data.forms)
         return response.data.forms;
     },
     getFormsDetails: async (names: string[]): Promise<IFormDetail[]> => {
@@ -70,6 +68,15 @@ const pokemonService = {
     },
     getSpecies: async (name: string) : Promise<ISpecies[]> => {
         const response = await axiosInstance.get(`/pokemon-species/${name}`);
+        return response.data;
+    },
+    // getEvolution: async (evolutionUrl: string) : Promise<IEvolution[]> => {
+    //     const response = await axiosInstance.get(`${evolutionUrl}`);
+    //     console.log(response.data.chain.evolves_to)
+    //     return response.data.chain.evolves_to;
+    // }
+    getEvolution: async (evolutionUrl: string) : Promise<IEvolution> => {
+        const response = await axiosInstance.get(`${evolutionUrl}`);
         console.log(response.data)
         return response.data;
     }

@@ -6,18 +6,18 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const SpeciesPokemon = () => {
     const {name} = useParams();
-    const species = useAppSelector(state => state.pokemonAllStore.species);
+    const evolution = useAppSelector(state => state.pokemonAllStore.evolution);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (name){
-            dispatch(pokemonAllActions.loadSpeciesDetails(name));
+            dispatch(pokemonAllActions.loadEvolutionDetails(name));
         }
     }, [dispatch,name]);
 
     return (
         <div>
-            
+            {evolution && (evolution.chain.species.name)}
         </div>
     );
 };
