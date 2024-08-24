@@ -133,7 +133,7 @@ const PokemonId = () => {
                                             {
                                                 species && (
                                                     <button
-                                                        onClick={() => navigate(`/pokemon-species/${species}`)}>
+                                                        onClick={() => navigate(`/evolution-chain/${species}`)}>
                                                         evolution
                                                     </button>
                                                 )

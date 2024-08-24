@@ -19,7 +19,7 @@ const PokemonAllComponent= () => {
 
     useEffect(() => {
         pokemon.forEach(value => {
-            if (!images[value.name]) { /**!images[value.name] перевіряємо чи завантажено вже зображення для цього покемона, щоб не завантажити дубль малюнку**/
+            if (!images[value.name]) { /**!images value.name перевіряємо чи завантажено вже зображення для цього покемона, щоб не завантажити дубль малюнку**/
                 dispatch(pokemonAllActions.loadPokemonImage(value.name));
             }
         });
