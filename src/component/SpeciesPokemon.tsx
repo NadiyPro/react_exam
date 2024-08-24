@@ -44,15 +44,19 @@ const SpeciesPokemon = () => {
 
     return (
         <div>
-            {evolutionSpeciesName && <img src={images[evolutionSpeciesName]} alt={'img1'} />}
-            {evolutionEvolves_toSpeciesName?.map((name, index) => (
-                <img key={index} src={images[name]} alt={`img2-${index}`} />
-            ))}
-            {evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
-                innerArray.map((name, innerIndex) => (
-                    <img key={`${index}-${innerIndex}`} src={images[name]} alt={`img3-${index}-${innerIndex}`} />
-                ))
-            ))}
+            <div>
+                {evolutionSpeciesName && <img src={images[evolutionSpeciesName]} alt={'img1'}/>}
+            </div>
+            <div>
+                {evolutionEvolves_toSpeciesName?.map((name, index) => (
+                <img key={index} src={images[name]} alt={`img2-${index}`} />))}
+            </div>
+            <div>
+                {evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
+                    innerArray.map((name, innerIndex) => (
+                        <img key={`${index}-${innerIndex}`} src={images[name]} alt={`img3-${index}-${innerIndex}`}/>
+                    ))))}
+            </div>
         </div>
     );
 };
