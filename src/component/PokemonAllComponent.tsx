@@ -51,6 +51,9 @@ const PokemonAllComponent= () => {
             <button onClick={nextPage}>
                 Next
             </button>
+            <button onClick={() => navigate(`/`)}>
+                Home
+            </button>
         </div>
     );
 };

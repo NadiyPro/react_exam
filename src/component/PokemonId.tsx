@@ -142,7 +142,7 @@ const PokemonId = () => {
                                     </div>
 
                                     <div>
-                                    <div>
+                                        <div>
                                             {typeDetails.map((typeDetail) => (
                                                 <div key={typeDetail.id}>
                                                     <h5>type: {typeDetail.name}</h5>
@@ -248,6 +248,11 @@ const PokemonId = () => {
                         })}
                     </div>)
             }
+            <div>
+                <button onClick={() => navigate(`/`)}>
+                    Home
+                </button>
+            </div>
         </div>
     )
 };
