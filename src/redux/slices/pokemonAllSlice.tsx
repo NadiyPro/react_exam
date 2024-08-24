@@ -12,7 +12,6 @@ import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
 import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
-import {EvolvesTo} from "../../models/IEvolution";
 import {ISpecies} from "../../models/ISpecies";
 
 interface PokemonAllState {
@@ -31,7 +30,9 @@ interface PokemonAllState {
     form:IForm[];
     pokemonOne:IPokemon | null;
     species:ISpecies | null | string;
-    evolution: EvolvesTo[];
+    evolutionSpeciesName: string;
+    evolutionEvolves_toSpeciesName: string[] | null
+    evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
 }
 
 const initialState: PokemonAllState = {
@@ -50,7 +51,9 @@ const initialState: PokemonAllState = {
     form:[],
     pokemonOne: null,
     species:null,
-    evolution:[]
+    evolutionSpeciesName: '',
+    evolutionEvolves_toSpeciesName:[''],
+    evolutionEvolves_toEvolves_toSpeciesName: [['']]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -112,7 +115,14 @@ export const pokemonAllSlice = createSlice({
             )
             .addCase(
                 loadEvolutionDetails.fulfilled, (state, action) => {
-                    state.evolution = action.payload;
+                    const {evolutionSpeciesName,
+                        evolutionEvolves_toSpeciesName,
+                        evolutionEvolves_toEvolves_toSpeciesName} = action.payload;
+                    state.evolutionSpeciesName = evolutionSpeciesName as string;
+                    state.evolutionEvolves_toSpeciesName = evolutionEvolves_toSpeciesName as string[] | null;
+                    state.evolutionEvolves_toEvolves_toSpeciesName = evolutionEvolves_toEvolves_toSpeciesName as string[][] | null;
+
+                    // as { evolutionSpeciesName: Chain | null; evolutionEvolves_toSpeciesName: EvolvesTo | null,evolutionEvolves_toEvolves_toSpeciesName: EvolvesTo[] };
                 }
             )
     }

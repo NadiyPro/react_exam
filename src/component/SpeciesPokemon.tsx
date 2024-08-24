@@ -6,7 +6,9 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const SpeciesPokemon = () => {
     const {id} = useParams();
-    const evolution = useAppSelector(state => state.pokemonAllStore.evolution);
+    const evolutionSpeciesName = useAppSelector(state => state.pokemonAllStore.evolutionSpeciesName);
+    const evolutionEvolves_toSpeciesName = useAppSelector(state => state.pokemonAllStore.evolutionEvolves_toSpeciesName);
+    const evolutionEvolves_toEvolves_toSpeciesName = useAppSelector(state => state.pokemonAllStore.evolutionEvolves_toEvolves_toSpeciesName);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const dispatch = useAppDispatch();
 
@@ -17,20 +19,40 @@ const SpeciesPokemon = () => {
     }, [dispatch,id]);
 
     useEffect(() => {
-        evolution.forEach(value => {
-            if (!images[value.species.name]) { /**!images value.name перевіряємо чи завантажено вже зображення для цього покемона, щоб не завантажити дубль малюнку**/
-            dispatch(pokemonAllActions.loadPokemonImage(value.species.name));
-            }
-        });
-    }, [images, dispatch]);
+        if (evolutionSpeciesName && !images[evolutionSpeciesName]) {
+            dispatch(pokemonAllActions.loadPokemonImage(evolutionSpeciesName));
+        }
+        if (evolutionEvolves_toSpeciesName) {
+            evolutionEvolves_toSpeciesName.forEach((name) => {
+                if (name && !images[name]) {
+                    dispatch(pokemonAllActions.loadPokemonImage(name));
+                }
+            });
+        }
+        if (evolutionEvolves_toEvolves_toSpeciesName) {
+            evolutionEvolves_toEvolves_toSpeciesName.forEach((innerArray) => {
+                innerArray.forEach((name) => {
+                    if (name && !images[name]) {
+                        dispatch(pokemonAllActions.loadPokemonImage(name));
+                    }
+                });
+            });
+        }
+    }, [evolutionSpeciesName, evolutionEvolves_toSpeciesName, evolutionEvolves_toEvolves_toSpeciesName, images, dispatch]);
+
+
 
     return (
         <div>
-            {evolution.map(value =>
-                <div key={value.species.name}>
-                    pokemon name: {value.species.name}
-                    <img src={images[value.species.name]} alt={value.species.name}/>
-                </div>)}
+            {evolutionSpeciesName && <img src={images[evolutionSpeciesName]} alt={'img1'} />}
+            {evolutionEvolves_toSpeciesName?.map((name, index) => (
+                <img key={index} src={images[name]} alt={`img2-${index}`} />
+            ))}
+            {evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
+                innerArray.map((name, innerIndex) => (
+                    <img key={`${index}-${innerIndex}`} src={images[name]} alt={`img3-${index}-${innerIndex}`} />
+                ))
+            ))}
         </div>
     );
 };

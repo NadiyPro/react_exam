@@ -132,9 +132,11 @@ const loadEvolutionDetails = createAsyncThunk(
     async (id: number, thunkAPI) => {
         try {
             let evolution = await pokemonService.getEvolution(id);
-            console.log(evolution)
+            let evolutionSpeciesName = evolution.species.name;
+            let evolutionEvolves_toSpeciesName = evolution && (evolution.evolves_to.map(value => value.species.name));
+            let evolutionEvolves_toEvolves_toSpeciesName = evolution && (evolution.evolves_to.map(value => value.evolves_to.map(item => item.species.name)))
 
-            return  thunkAPI.fulfillWithValue(evolution);
+            return  thunkAPI.fulfillWithValue({evolutionSpeciesName,evolutionEvolves_toSpeciesName,evolutionEvolves_toEvolves_toSpeciesName});
         } catch (e) {
             let error = e as AxiosError;
             return thunkAPI.rejectWithValue(error?.response?.data);
