@@ -45,9 +45,7 @@ const loadAbilitiesDetails = createAsyncThunk(
     async (name: string, thunkAPI) => {
         try {
             let abilities = await pokemonService.getAbilities(name);
-
             let abilitiesNames = abilities.map(ability => ability.ability.name);
-
             let abilitiesDetails = await pokemonService.getAbilitiesDetails(abilitiesNames);
 
             return  thunkAPI.fulfillWithValue({abilitiesDetails, abilities});
@@ -63,9 +61,7 @@ const loadStatDetails = createAsyncThunk(
     async (name: string, thunkAPI) => {
         try {
             let stat = await pokemonService.getStats(name);
-
             let statNames = stat.map(value => value.stat.name);
-
             let statDetails = await pokemonService.getStatsDetails(statNames);
 
             return  thunkAPI.fulfillWithValue({statDetails, stat});
@@ -81,9 +77,7 @@ const loadTypeDetails = createAsyncThunk(
     async (name: string, thunkAPI) => {
         try {
             let type = await pokemonService.getType(name);
-
             let typeNames = type.map(value => value.type.name);
-
             let typeDetails = await pokemonService.getTypeDetails(typeNames);
 
             return  thunkAPI.fulfillWithValue({typeDetails, type});
@@ -99,9 +93,7 @@ const loadFormDetails = createAsyncThunk(
     async (name: string, thunkAPI) => {
         try {
             let form = await pokemonService.getForms(name);
-
             let formNames = form.map(value => value.name);
-
             let formDetails = await pokemonService.getFormsDetails(formNames);
 
             return  thunkAPI.fulfillWithValue({formDetails, form});
@@ -118,7 +110,7 @@ const loadSpecies = createAsyncThunk(
             let species = await pokemonService.getSpecies(name);
             let speciesUrl = species.evolution_chain.url.split('/').filter(Boolean);
             let getSpeciesUrlId =  speciesUrl[speciesUrl.length - 1];
-            console.log(getSpeciesUrlId)
+
             return thunkAPI.fulfillWithValue(getSpeciesUrlId);
         } catch (e) {
             let error = e as AxiosError;
