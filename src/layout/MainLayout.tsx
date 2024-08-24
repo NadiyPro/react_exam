@@ -2,9 +2,11 @@ import React from 'react';
 import {Outlet} from "react-router-dom";
 
 const MainLayout = () => {
+
+
     return (
         <div>
-            <form>
+            <form >
                 <label>
                     <input type={"text"} name={'search'} placeholder={'Enter the name of the pokemon or species or ability'}
                               className='input_FormComponent'/>
