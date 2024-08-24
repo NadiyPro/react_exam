@@ -4,7 +4,13 @@ import {Outlet} from "react-router-dom";
 const MainLayout = () => {
     return (
         <div>
-            MainLayout
+            <form>
+                <label>
+                    <input type={"text"} name={'search'} placeholder={'Enter the name of the pokemon or species or ability'}
+                              className='input_FormComponent'/>
+                </label>
+                <button>Search</button>
+            </form>
             <Outlet/>
         </div>
     );
