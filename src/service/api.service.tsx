@@ -66,12 +66,10 @@ const pokemonService = {
     },
     getSpecies: async (name: string) : Promise<ISpecies> => {
         const response = await axiosInstance.get(`/pokemon-species/${name}`);
-        console.log(response)
         return response.data;
     },
     getEvolution: async (id: number) : Promise<Chain> => {
         const response = await axiosInstance.get(`/evolution-chain/${id}`);
-        console.log(response.data.chain)
         return response.data.chain;
     }
 };
