@@ -22,8 +22,6 @@ const pokemonService = {
     },
     getPokemon: async (name: string):Promise<IPokemon> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        console.log(response)
-
         return response.data;
     },
     getPokemonImage: async (name: string): Promise<string> => {
@@ -68,15 +66,11 @@ const pokemonService = {
     },
     getSpecies: async (name: string) : Promise<ISpecies> => {
         const response = await axiosInstance.get(`/pokemon-species/${name}`);
+        console.log(response)
         return response.data;
     },
-    // getEvolution: async (evolutionUrl: string) : Promise<IEvolution[]> => {
-    //     const response = await axiosInstance.get(`${evolutionUrl}`);
-    //     console.log(response.data.chain.evolves_to)
-    //     return response.data.chain.evolves_to;
-    // }
-    getEvolution: async (evolutionUrl: string) : Promise<EvolvesTo[]> => {
-        const response = await axiosInstance.get(`${evolutionUrl}`);
+    getEvolution: async (id: number) : Promise<EvolvesTo[]> => {
+        const response = await axiosInstance.get(`/evolution-chain/${id}`);
         console.log(response.data.chain.evolves_to)
         return response.data.chain.evolves_to;
     }

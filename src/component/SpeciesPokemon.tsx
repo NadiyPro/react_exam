@@ -5,19 +5,19 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 
 const SpeciesPokemon = () => {
-    // const {name} = useParams();
-    // const evolution = useAppSelector(state => state.pokemonAllStore.evolution);
-    // const dispatch = useAppDispatch();
-    //
-    // useEffect(() => {
-    //     if (name){
-    //         dispatch(pokemonAllActions.loadEvolutionDetails(name));
-    //     }
-    // }, [dispatch,name]);
+    const {id} = useParams();
+    const evolution = useAppSelector(state => state.pokemonAllStore.evolution);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (id){
+            dispatch(pokemonAllActions.loadEvolutionDetails(+id));
+        }
+    }, [dispatch,id]);
 
     return (
         <div>
-
+            {evolution.map(value => <div key={value.species.name}>{value.species.name}</div>)}
         </div>
     );
 };
