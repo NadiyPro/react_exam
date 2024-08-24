@@ -66,7 +66,7 @@ const pokemonService = {
             .then(response => response.data));
         return Promise.all(response);
     },
-    getSpecies: async (name: string) : Promise<ISpecies[]> => {
+    getSpecies: async (name: string) : Promise<ISpecies> => {
         const response = await axiosInstance.get(`/pokemon-species/${name}`);
         return response.data;
     },

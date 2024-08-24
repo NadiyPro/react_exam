@@ -111,27 +111,44 @@ const loadFormDetails = createAsyncThunk(
         }
     }
 );
-const loadEvolutionDetails = createAsyncThunk(
-    'pokemonEvolutionSlice',
-    async (name: string, thunkAPI) => {
+const loadSpecies = createAsyncThunk(
+    'pokemonSpecies',
+    async  (name: string, thunkAPI) => {
         try {
             let species = await pokemonService.getSpecies(name);
-            let evolutionUrl = species.map(value => value.evolution_chain.url);
-            console.log(evolutionUrl)
 
-            let evolutionDetails = await pokemonService.getEvolution(evolutionUrl.toString());
-            // let evolution = evolutionDetails.chain.evolves_to;
-
-            // let evolution = evolutionDetails.map(value => value.evolves_to);
-
-            console.log(evolutionDetails)
-            return  thunkAPI.fulfillWithValue(evolutionDetails);
+            let speciesUrl = species.evolution_chain.url.split('/').filter(Boolean);
+            let getSpeciesUrlId =  speciesUrl[speciesUrl.length - 1];
+            console.log(getSpeciesUrlId)
+            return thunkAPI.fulfillWithValue(getSpeciesUrlId);
         } catch (e) {
             let error = e as AxiosError;
             return thunkAPI.rejectWithValue(error?.response?.data);
         }
     }
 );
+
+// const loadEvolutionDetails = createAsyncThunk(
+//     'pokemonEvolutionSlice',
+//     async (name: string, thunkAPI) => {
+//         try {
+//             let species = await pokemonService.getSpecies(name);
+//             let evolutionUrl = species.map(value => value.evolution_chain.url);
+//             console.log(evolutionUrl)
+//
+//             let evolutionDetails = await pokemonService.getEvolution(evolutionUrl.toString());
+//             // let evolution = evolutionDetails.chain.evolves_to;
+//
+//             // let evolution = evolutionDetails.map(value => value.evolves_to);
+//
+//             console.log(evolutionDetails)
+//             return  thunkAPI.fulfillWithValue(evolutionDetails);
+//         } catch (e) {
+//             let error = e as AxiosError;
+//             return thunkAPI.rejectWithValue(error?.response?.data);
+//         }
+//     }
+// );
 export {
     loadPokemonAll,
     loadPokemonOne,
@@ -140,5 +157,5 @@ export {
     loadStatDetails,
     loadTypeDetails,
     loadFormDetails,
-    loadEvolutionDetails
+    loadSpecies
 };

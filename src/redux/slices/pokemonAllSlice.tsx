@@ -1,9 +1,9 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadEvolutionDetails, loadFormDetails,
+    loadAbilitiesDetails, loadFormDetails,
     loadPokemonAll,
-    loadPokemonImage, loadPokemonOne,
+    loadPokemonImage, loadPokemonOne, loadSpecies,
     loadStatDetails,
     loadTypeDetails
 } from "../reducers/loadAbility";
@@ -13,6 +13,7 @@ import {IStatDetail} from "../../models/IStatDetail";
 import {ITypeDetail} from "../../models/ITypeDetail";
 import {IFormDetail} from "../../models/IFormDetail";
 import {EvolvesTo} from "../../models/IEvolution";
+import {ISpecies} from "../../models/ISpecies";
 
 interface PokemonAllState {
     pokemon: IPokemonNameUrl[];
@@ -29,7 +30,7 @@ interface PokemonAllState {
     formDetails:IFormDetail[];
     form:IForm[];
     pokemonOne:IPokemon | null;
-    // species:ISpecies[]
+    species:ISpecies | null | string;
     evolution: EvolvesTo[];
 }
 
@@ -48,7 +49,7 @@ const initialState: PokemonAllState = {
     formDetails:[],
     form:[],
     pokemonOne: null,
-    // species:[]
+    species:null,
     evolution:[]
 };
 
@@ -104,19 +105,16 @@ export const pokemonAllSlice = createSlice({
                     state.form = form;
                 }
             )
+            .addCase(
+                loadSpecies.fulfilled, (state, action) => {
+                    state.species = action.payload;
+                }
+            )
             // .addCase(
             //     loadEvolutionDetails.fulfilled, (state, action) => {
             //         state.evolution = action.payload;
-            //         // const {formDetails, form} = action.payload as { formDetails: IFormDetail[]; form: IForm[] };
-            //         // state.formDetails = formDetails;
-            //         // state.form = form;
             //     }
             // )
-            .addCase(
-                loadEvolutionDetails.fulfilled, (state, action) => {
-                    state.evolution = action.payload;
-                }
-            )
     }
 });
 
@@ -131,5 +129,5 @@ export const pokemonAllActions = {
     loadStatDetails,
     loadTypeDetails,
     loadFormDetails,
-    loadEvolutionDetails
+    loadSpecies
 };

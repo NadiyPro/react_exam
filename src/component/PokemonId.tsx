@@ -41,6 +41,7 @@ const PokemonId = () => {
     const stat = useAppSelector(state => state.pokemonAllStore.stat);
     const formDetails = useAppSelector(state => state.pokemonAllStore.formDetails);
     const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
+    const species = useAppSelector(state => state.pokemonAllStore.species);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -50,6 +51,7 @@ const PokemonId = () => {
             dispatch(pokemonAllActions.loadAbilitiesDetails(name));
             dispatch(pokemonAllActions.loadStatDetails(name));
             dispatch(pokemonAllActions.loadTypeDetails(name));
+            dispatch(pokemonAllActions.loadSpecies(name));
         }
     }, [dispatch,name]);
 
@@ -125,19 +127,23 @@ const PokemonId = () => {
                                                 <div>
                                                     <p>species: {pokemonOne.species.name}</p>
                                                 </div>
-                                                <div>
-                                                    <button
-                                                        onClick={() => navigate(`/pokemon-species/${pokemonOne.name}/`)}>
-                                                        evolution
-                                                    </button>
-                                                </div>
                                             </div>
                                         )}
+                                        <div>
+                                            {
+                                                species && (
+                                                    <button
+                                                        onClick={() => navigate(`/pokemon-species/${species}`)}>
+                                                        evolution
+                                                    </button>
+                                                )
+                                            }
+                                        </div>
                                     </div>
 
                                     <div>
-                                        <div>
-                                        {typeDetails.map((typeDetail) => (
+                                    <div>
+                                            {typeDetails.map((typeDetail) => (
                                                 <div key={typeDetail.id}>
                                                     <h5>type: {typeDetail.name}</h5>
                                                     <button onClick={() => handleTypeClick(typeDetail)}>
