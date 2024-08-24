@@ -28,7 +28,7 @@ const pokemonService = {
     },
     getPokemonImage: async (name: string): Promise<string> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        return response.data.sprites.front_default;
+        return response.data.sprites.front_default; /**витягаю одразу посилання на дефолтний малюнок**/
     },
     getAbilities: async (name: string): Promise<IAbility[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
