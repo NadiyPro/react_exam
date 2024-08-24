@@ -30,10 +30,10 @@ const SpeciesPokemon = () => {
             });
         }
         if (evolutionEvolves_toEvolves_toSpeciesName) {
-            evolutionEvolves_toEvolves_toSpeciesName.forEach((innerArray) => {
-                innerArray.forEach((name) => {
-                    if (name && !images[name]) {
-                        dispatch(pokemonAllActions.loadPokemonImage(name));
+            evolutionEvolves_toEvolves_toSpeciesName.forEach((name1) => {
+                name1.forEach((name2) => {
+                    if (name2 && !images[name2]) {
+                        dispatch(pokemonAllActions.loadPokemonImage(name2));
                     }
                 });
             });
