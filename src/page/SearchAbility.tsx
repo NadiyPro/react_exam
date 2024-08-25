@@ -5,7 +5,7 @@ import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const SearchAbility = () => {
     const {ability} = useParams();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     // const offset = useAppSelector(state => state.pokemonAllStore.offset);
@@ -21,7 +21,7 @@ const SearchAbility = () => {
     useEffect(() => {
         abilitiesDetails.map(value => value.pokemon.map(item => {
             if (!images[item.pokemon.name ]) {
-            dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name ));
+            dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name));
             }
         } ));
 
@@ -33,7 +33,7 @@ const SearchAbility = () => {
                 <div>{value.pokemon.map(item =>
                     <div>
                         <p>{item.pokemon.name}</p>
-                        <img src={images[item.pokemon.name]} alt={'img'}/>
+                        <img src={images[item.pokemon.name]} alt={'img'} onClick={() => navigate(`/pokemon/${item.pokemon.name}`)}/>
                     </div>)}
                 </div>)
             }
