@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import {loadAbilityPagination} from "../redux/reducers/loadAbility";
 
 const SearchAbility = () => {
     const {ability} = useParams();
@@ -27,19 +28,20 @@ const SearchAbility = () => {
 
     }, [images, dispatch,abilitiesDetails]);
 
-    // useEffect(() => {
-    //     dispatch(pokemonAllActions.loadPokemonAll({ offset, limit }));
-    // }, [dispatch, offset, limit]);
-    //
-    // const nextPage = () => {
-    //     dispatch(pokemonAllActions.setOffset(offset + limit));
-    // };
-    //
-    // const prevPage = () => {
-    //     if (offset > 0) {
-    //         dispatch(pokemonAllActions.setOffset(offset - limit));
-    //     }
-    // };
+    useEffect(() => {
+        const limit = 20;
+        dispatch(pokemonAllActions.loadAbilityPagination({ offset, limit }));
+    }, [dispatch, offset, limit]);
+
+    const nextPage = () => {
+        dispatch(pokemonAllActions.setOffset(offset + limit));
+    };
+
+    const prevPage = () => {
+        if (offset > 0) {
+            dispatch(pokemonAllActions.setOffset(offset - limit));
+        }
+    };
 
     return (
         <div>
@@ -54,12 +56,12 @@ const SearchAbility = () => {
                     </div>)
                 }
             </div>
-            {/*<button onClick={prevPage} disabled={offset === 0}>*/}
-            {/*    Prev*/}
-            {/*</button>*/}
-            {/*<button onClick={nextPage}>*/}
-            {/*    Next*/}
-            {/*</button>*/}
+            <button onClick={prevPage} disabled={offset === 0}>
+                Prev
+            </button>
+            <button onClick={nextPage}>
+                Next
+            </button>
             <div>
                 <button onClick={() => navigate(`/`)}>
                     Home

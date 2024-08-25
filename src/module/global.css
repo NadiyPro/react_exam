@@ -1,3 +1,8 @@
 body{
     background-color: rgba(255, 255, 0, 0.7);
 }
+.formImag{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}

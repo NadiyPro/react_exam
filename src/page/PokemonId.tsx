@@ -90,7 +90,8 @@ const PokemonId = () => {
                         {formDetails.map((formDetail) => {
 
                             return (
-                                <div key={formDetail.id}>
+                                <div key={formDetail.id} >
+                                    <div className='formImag'>
                                     <div>
                                         <h6>front default</h6>
                                         <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
@@ -107,6 +108,7 @@ const PokemonId = () => {
                                     <div>
                                         <h6>back shiny</h6>
                                         <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
+                                    </div>
                                     </div>
 
                                     <div>

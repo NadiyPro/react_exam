@@ -71,7 +71,11 @@ const pokemonService = {
     getEvolution: async (id: number) : Promise<Chain> => {
         const response = await axiosInstance.get(`/evolution-chain/${id}`);
         return response.data.chain;
-    }
+    },
+    getAbilityPagination: async (offset:number, limit: number):Promise<IPokemonNameUrl[]> => {
+        const response = await axiosInstance.get(baseURL + `/ability/?offset=${offset}&limit=${limit}`);
+        return response.data.results;
+    },
 };
 
 export {

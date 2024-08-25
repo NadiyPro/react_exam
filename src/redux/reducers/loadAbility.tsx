@@ -163,6 +163,18 @@ const loadAllPokemonSearch = createAsyncThunk(
         }
     }
 );
+const loadAbilityPagination = createAsyncThunk(
+    'pokemonAbilityPagination',
+    async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {
+        try {
+            let response = await pokemonService.getAbilityPagination(offset,limit);
+            return thunkAPI.fulfillWithValue(response);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
 
 export {
     loadPokemonAll,
@@ -174,5 +186,6 @@ export {
     loadFormDetails,
     loadSpecies,
     loadEvolutionDetails,
-    loadAllPokemonSearch
+    loadAllPokemonSearch,
+    loadAbilityPagination
 };
