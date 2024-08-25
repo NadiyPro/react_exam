@@ -136,7 +136,6 @@ export const pokemonAllSlice = createSlice({
 });
 
 
-
 export const pokemonAllActions = {
     ...pokemonAllSlice.actions,
     loadPokemonAll,
