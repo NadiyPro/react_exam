@@ -27,7 +27,6 @@ const MainLayout = () => {
         } else {
             alert('No Pokémon found with that name');
         }
-        dispatch(pokemonAllActions.loadPokemonOne(data.nameForm));
     };
 
     return (
