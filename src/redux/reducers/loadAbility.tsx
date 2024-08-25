@@ -143,7 +143,7 @@ const loadAllPokemon = createAsyncThunk(
         try {
             let allPokemon:IPokemonNameUrl[] = [];
             let offset = 0;
-            const limit = 100; // Adjust limit based on the API's maximum allowed value
+            const limit = 1000;
 
             while (true) {
                 const response = await pokemonService.getAll(offset, limit);
@@ -157,19 +157,6 @@ const loadAllPokemon = createAsyncThunk(
             }
 
             return thunkAPI.fulfillWithValue(allPokemon);
-        // try {
-        //     let allPokemon:IPokemonNameUrl[] = [];
-        //     let offset = 0;
-        //     const limit = 100;
-        //     let response = await pokemonService.getAll(offset,limit);
-        //     allPokemon = [...allPokemon, ...response];
-        //     if (response.length < limit) {
-        //         break;
-        //     }
-        //
-        //     offset += limit;
-        // }
-        // return thunkAPI.fulfillWithValue(allPokemon);
         } catch (e) {
             let error = e as AxiosError;
             return thunkAPI.rejectWithValue(error?.response?.data);
