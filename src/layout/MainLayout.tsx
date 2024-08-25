@@ -2,6 +2,7 @@ import React from 'react';
 import {Outlet} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAppDispatch, useAppSelector} from "../redux/store";
+import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const MainLayout = () => {
     const {handleSubmit, register} = useForm();
@@ -16,7 +17,7 @@ const MainLayout = () => {
     // }, [pokemon, dispatch]);
     const registerHandle = () => {
         // pokemon.forEach(value => {
-        //   if(value.name === formProps){
+        //   if(value.name === nameForm){
         //       dispatch(pokemonAllActions.loadPokemonOne(value.name));
         //   }
         //     // dispatch(pokemonAllActions.loadPokemonOne(value.name));

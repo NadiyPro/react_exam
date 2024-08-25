@@ -21,7 +21,8 @@
     "axios": "^1.7.4",
     "react-router-dom": "^6.26.1",
     "react-hook-form": "^7.53.0",
-    "@hookform/resolvers": "^3.9.0"
+    "@hookform/resolvers": "^3.9.0",
+    "joi": "^17.13.3"
   },
   "scripts": {
     "start": "react-scripts start",
