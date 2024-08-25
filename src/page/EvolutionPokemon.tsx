@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "../redux/store";
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 
-const SpeciesPokemon = () => {
+const EvolutionPokemon = () => {
     const {id} = useParams();
     const navigate = useNavigate();
     const evolutionSpeciesName = useAppSelector(state => state.pokemonAllStore.evolutionSpeciesName);
@@ -70,4 +70,4 @@ const SpeciesPokemon = () => {
     );
 };
 
-export default SpeciesPokemon;
+export default EvolutionPokemon;
