@@ -1,9 +1,15 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadAbilityPagination, loadAllPokemonSearch, loadEvolutionDetails, loadFormDetails,
+    loadAbilitiesDetails,
+    loadAbilitySearch,
+    loadAllPokemonSearch,
+    loadEvolutionDetails,
+    loadFormDetails,
     loadPokemonAll,
-    loadPokemonImage, loadPokemonOne, loadSpecies,
+    loadPokemonImage,
+    loadPokemonOne,
+    loadSpecies,
     loadStatDetails,
     loadTypeDetails
 } from "../reducers/loadAbility";
@@ -35,7 +41,6 @@ interface PokemonAllState {
     evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
     searchQuery: string;
     pokemonAll:IPokemonNameUrl[];
-    abilityPagination:IAbilityDetail[]
 }
 
 const initialState: PokemonAllState = {
@@ -59,7 +64,6 @@ const initialState: PokemonAllState = {
     evolutionEvolves_toEvolves_toSpeciesName: [['']],
     searchQuery: '',
     pokemonAll:[],
-    abilityPagination:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -134,11 +138,6 @@ export const pokemonAllSlice = createSlice({
                     state.pokemonAll = action.payload;
                 }
             )
-            .addCase(
-                loadAbilityPagination.fulfilled, (state, action) => {
-                    state.abilityPagination = action.payload;
-                }
-            )
     }
 });
 
@@ -155,5 +154,5 @@ export const pokemonAllActions = {
     loadSpecies,
     loadEvolutionDetails,
     loadAllPokemonSearch,
-    loadAbilityPagination
+    loadAbilitySearch
 };

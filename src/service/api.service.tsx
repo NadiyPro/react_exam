@@ -72,10 +72,14 @@ const pokemonService = {
         const response = await axiosInstance.get(`/evolution-chain/${id}`);
         return response.data.chain;
     },
-    getAbilityPagination: async (ability: string, offset: number, limit: number) => {
-        const response = await axiosInstance.get(`/ability/${ability}/?offset=${offset}&limit=${limit}`);
+    getAbilitySearch: async (ability: string) => {
+        const response = await axiosInstance.get(`/ability/${ability}`);
         return response.data.results;
     }
+    // getAbilityPagination: async (ability: string, offset: number, limit: number) => {
+    //     const response = await axiosInstance.get(`/ability/${ability}/?offset=${offset}&limit=${limit}`);
+    //     return response.data.results;
+    // }
 };
 
 export {

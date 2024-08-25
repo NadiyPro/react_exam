@@ -15,9 +15,9 @@ const SearchAbility = () => {
 
     useEffect(() => {
         if (ability) {
-            dispatch(pokemonAllActions.loadAbilityPagination({ ability, offset, limit }));
+            dispatch(pokemonAllActions.loadAbilitySearch(ability));
         }
-    }, [dispatch, ability, offset, limit]);
+    }, [dispatch, ability]);
 
     // useEffect(() => {
     //     if (ability && ability.trim()){
@@ -34,11 +34,6 @@ const SearchAbility = () => {
 
     }, [images, dispatch,abilitiesDetails]);
 
-    // useEffect(() => {
-    //     const limit = 20;
-    //     dispatch(pokemonAllActions.loadAbilityPagination({ offset, limit }));
-    // }, [dispatch, offset, limit]);
-    //
     // const nextPage = () => {
     //     dispatch(pokemonAllActions.setOffset(offset + limit));
     // };

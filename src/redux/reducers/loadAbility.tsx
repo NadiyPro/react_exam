@@ -163,11 +163,12 @@ const loadAllPokemonSearch = createAsyncThunk(
         }
     }
 );
+
 // const loadAbilityPagination = createAsyncThunk(
-//     'pokemonAbilityPagination',
-//     async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {
+//     'pokemonAbilitiesSlice/loadAbilitiesDetails',
+//     async ({ ability, offset, limit }: { ability: string, offset: number, limit: number }, thunkAPI) => {
 //         try {
-//             let response = await pokemonService.getAbilityPagination(offset,limit);
+//             let response = await pokemonService.getAbilityPagination(ability, offset, limit);
 //             return thunkAPI.fulfillWithValue(response);
 //         } catch (e) {
 //             let error = e as AxiosError;
@@ -175,13 +176,11 @@ const loadAllPokemonSearch = createAsyncThunk(
 //         }
 //     }
 // );
-
-const loadAbilityPagination = createAsyncThunk(
-    'pokemonAbilitiesSlice/loadAbilitiesDetails',
-    async ({ ability, offset, limit }: { ability: string, offset: number, limit: number }, thunkAPI) => {
+const loadAbilitySearch = createAsyncThunk(
+    'pokemonAbilitiesSearch',
+    async ( ability: string, thunkAPI) => {
         try {
-            // Загружайте данные с учетом пагинации
-            let response = await pokemonService.getAbilityPagination(ability, offset, limit);
+            let response = await pokemonService.getAbilitySearch(ability);
             return thunkAPI.fulfillWithValue(response);
         } catch (e) {
             let error = e as AxiosError;
@@ -201,5 +200,5 @@ export {
     loadSpecies,
     loadEvolutionDetails,
     loadAllPokemonSearch,
-    loadAbilityPagination
+    loadAbilitySearch
 };
