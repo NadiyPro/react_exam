@@ -1,9 +1,42 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../redux/store";
+import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const SearchAbility = () => {
+    const {ability} = useParams();
+    // const navigate = useNavigate();
+    const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
+    const images = useAppSelector(state => state.pokemonAllStore.images);
+    // const offset = useAppSelector(state => state.pokemonAllStore.offset);
+    // const limit = useAppSelector(state => state.pokemonAllStore.limit);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (ability){
+            dispatch(pokemonAllActions.loadAbilitiesDetails(ability));
+        }
+    }, [dispatch,ability]);
+
+    useEffect(() => {
+        abilitiesDetails.map(value => value.pokemon.map(item => {
+            if (!images[item.pokemon.name ]) {
+            dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name ));
+            }
+        } ));
+
+    }, [images, dispatch]);
+
     return (
         <div>
-            SearchAbility
+            {abilitiesDetails.map(value =>
+                <div>{value.pokemon.map(item =>
+                    <div>
+                        <p>{item.pokemon.name}</p>
+                        <img src={images[item.pokemon.name]} alt={'img'}/>
+                    </div>)}
+                </div>)
+            }
         </div>
     );
 };

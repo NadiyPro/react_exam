@@ -41,7 +41,7 @@ const PokemonAllComponent= () => {
             {pokemon.map(value => (
                 <div key={value.name}>
                     <div>{value.name}</div>
-                    <img src={images[value.name]} alt={value.name} onClick={() => navigate(`pokemon/${value.name}`)}/>
+                    <img src={images[value.name]} alt={'img'} onClick={() => navigate(`pokemon/${value.name}`)}/>
                 </div>
             ))}
 
