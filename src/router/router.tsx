@@ -1,10 +1,11 @@
 import ErrorElement from "../layout/ErrorElement";
 import {createBrowserRouter} from "react-router-dom";
 import React from "react";
-import PokemonAllComponent from "../component/PokemonAllComponent";
-import PokemonId from "../component/PokemonId";
-import SpeciesPokemon from "../component/SpeciesPokemon";
 import MainLayout from "../layout/MainLayout";
+import PokemonAllComponent from "../page/PokemonAllComponent";
+import PokemonId from "../page/PokemonId";
+import SpeciesPokemon from "../page/SpeciesPokemon";
+
 
 
 export const router = createBrowserRouter(

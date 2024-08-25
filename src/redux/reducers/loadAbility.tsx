@@ -2,6 +2,7 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {pokemonService} from "../../service/api.service";
 
+
 const loadPokemonAll = createAsyncThunk(
     'pokemonAllSlice',
     async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {

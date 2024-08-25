@@ -53,8 +53,6 @@ const SpeciesPokemon = () => {
                 <h5>Evolution</h5>
                 {evolutionEvolves_toSpeciesName?.map((name, index) => (
                     <img key={index} src={images[name]} alt={`img2-${index}`}/>))}
-            </div>
-            <div><h5>Final evolution</h5>
                 {evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
                     innerArray.map((name, innerIndex) => (
                         <img key={`${index}-${innerIndex}`} src={images[name]} alt={`img3-${index}-${innerIndex}`}/>

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../redux/store";
-import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 import {useNavigate} from "react-router-dom";
 import '../module/global.css';
+import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
 const PokemonAllComponent= () => {
     const navigate = useNavigate();
