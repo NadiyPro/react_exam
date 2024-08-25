@@ -176,6 +176,18 @@ const loadAbilitySearch = createAsyncThunk(
         }
     }
 );
+const loadTypeSearch = createAsyncThunk(
+    'pokemonTypeSearch',
+    async (type: string, thunkAPI) => {
+        try {
+            let response = await pokemonService.getAbilitySearch(type);
+            return thunkAPI.fulfillWithValue(response);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
 
 export {
     loadPokemonAll,
@@ -188,5 +200,6 @@ export {
     loadSpecies,
     loadEvolutionDetails,
     loadAllPokemonSearch,
-    loadAbilitySearch
+    loadAbilitySearch,
+    loadTypeSearch
 };

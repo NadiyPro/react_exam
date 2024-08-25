@@ -1,0 +1,52 @@
+import React, {useEffect} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../redux/store";
+import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+
+const SearchType = () => {
+    const {type} = useParams();
+    const navigate = useNavigate();
+    const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
+    const images = useAppSelector(state => state.pokemonAllStore.images);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (type) {
+            dispatch(pokemonAllActions.loadTypeSearch(type));
+        }
+    }, [dispatch, type]);
+
+    useEffect(() => {
+        typeDetails.map(value => value.pokemon.map(item => {
+            if (!images[item.pokemon.name ]) {
+                dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name));
+            }
+        } ));
+
+    }, [images, dispatch,typeDetails]);
+
+    return (
+        <div>
+            <div>
+                {typeDetails.map(value =>
+                    <div key={value.id}>{value.pokemon.map(item =>
+                        <div>
+                            <p>{item.pokemon.name}</p>
+                            <img src={images[item.pokemon.name]} alt={'img'}
+                                 onClick={() => navigate(`/pokemon/${item.pokemon.name}`)}/>
+                        </div>)}
+                    </div>)
+                }
+            </div>
+            <div>
+
+                <button onClick={() => navigate(`/`)}>
+                    Home
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default SearchType;

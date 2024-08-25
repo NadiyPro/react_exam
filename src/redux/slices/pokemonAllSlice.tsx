@@ -11,7 +11,7 @@ import {
     loadPokemonOne,
     loadSpecies,
     loadStatDetails,
-    loadTypeDetails
+    loadTypeDetails, loadTypeSearch
 } from "../reducers/loadAbility";
 import {IAbilityDetail} from "../../models/IAbilityDetail";
 import {IAbility, IForm, IPokemon, IStat, IType} from "../../models/IPokemon";
@@ -41,6 +41,8 @@ interface PokemonAllState {
     evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
     searchQuery: string;
     pokemonAll:IPokemonNameUrl[];
+    abilitiesSearch:IAbilityDetail[];
+    typeSearch:ITypeDetail[];
 }
 
 const initialState: PokemonAllState = {
@@ -64,6 +66,8 @@ const initialState: PokemonAllState = {
     evolutionEvolves_toEvolves_toSpeciesName: [['']],
     searchQuery: '',
     pokemonAll:[],
+    abilitiesSearch:[],
+    typeSearch:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -138,6 +142,16 @@ export const pokemonAllSlice = createSlice({
                     state.pokemonAll = action.payload;
                 }
             )
+            .addCase(
+                loadAbilitySearch.fulfilled, (state, action) => {
+                    state.abilitiesSearch = action.payload;
+                }
+            )
+            .addCase(
+                loadTypeSearch.fulfilled, (state, action) => {
+                    state.typeSearch = action.payload;
+                }
+            )
     }
 });
 
@@ -154,5 +168,6 @@ export const pokemonAllActions = {
     loadSpecies,
     loadEvolutionDetails,
     loadAllPokemonSearch,
-    loadAbilitySearch
+    loadAbilitySearch,
+    loadTypeSearch
 };

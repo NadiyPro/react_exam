@@ -6,6 +6,7 @@ import PokemonAllComponent from "../page/PokemonAllComponent";
 import PokemonId from "../page/PokemonId";
 import SpeciesPokemon from "../page/SpeciesPokemon";
 import SearchAbility from "../page/SearchAbility";
+import SearchType from "../page/SearchType";
 
 
 
@@ -19,7 +20,8 @@ export const router = createBrowserRouter(
                 {index: true, element: <PokemonAllComponent/>},
                 {path:'/pokemon/:name', element: <PokemonId/>},
                 {path:'/evolution-chain/:id', element: <SpeciesPokemon/>},
-                {path:'/ability/:ability', element: <SearchAbility/>}
+                {path:'/ability/:ability', element: <SearchAbility/>},
+                {path:'/type/:type', element: <SearchType/>}
             ]
         }
     ]

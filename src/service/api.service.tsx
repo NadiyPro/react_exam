@@ -75,6 +75,10 @@ const pokemonService = {
     getAbilitySearch: async (ability: string) => {
         const response = await axiosInstance.get(`/ability/${ability}`);
         return response.data.results;
+    },
+    getTypeSearch: async (type: string) => {
+        const response = await axiosInstance.get(`/type/${type}`);
+        return response.data.results;
     }
     // getAbilityPagination: async (ability: string, offset: number, limit: number) => {
     //     const response = await axiosInstance.get(`/ability/${ability}/?offset=${offset}&limit=${limit}`);

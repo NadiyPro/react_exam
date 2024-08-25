@@ -13,6 +13,7 @@ const MainLayout = () => {
     const { handleSubmit, register } = useForm<FormData>();
     const pokemonAll = useAppSelector(state => state.pokemonAllStore.pokemonAll);
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
+    const typeDetails = useAppSelector(state => state.pokemonAllStore.typeDetails);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -25,10 +26,15 @@ const MainLayout = () => {
         const searchNamePokemon = pokemonAll.find(value => value.name === data.nameForm);
         if (searchNamePokemon) {
             navigate(`/pokemon/${searchNamePokemon.name}`);
-        } else {
+        } else if (abilitiesDetails.find(value => value.name === data.nameForm)){
             const searchAbility = abilitiesDetails.find(value => value.name === data.nameForm)
             if (searchAbility) {
                 navigate(`/ability/${searchAbility.name}`);
+            }
+        } else if (typeDetails.find(value => value.name === data.nameForm)){
+            const searchType = typeDetails.find(value => value.name === data.nameForm)
+            if (searchType) {
+                navigate(`/ability/${searchType.name}`);
             }
         }
     };
