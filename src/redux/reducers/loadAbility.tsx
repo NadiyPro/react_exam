@@ -180,7 +180,7 @@ const loadTypeSearch = createAsyncThunk(
     'pokemonTypeSearch',
     async (type: string, thunkAPI) => {
         try {
-            let response = await pokemonService.getAbilitySearch(type);
+            let response = await pokemonService.getTypeSearch(type);
             return thunkAPI.fulfillWithValue(response);
         } catch (e) {
             let error = e as AxiosError;

@@ -34,7 +34,7 @@ const MainLayout = () => {
         } else if (typeDetails.find(value => value.name === data.nameForm)){
             const searchType = typeDetails.find(value => value.name === data.nameForm)
             if (searchType) {
-                navigate(`/ability/${searchType.name}`);
+                navigate(`/type/${searchType.name}`);
             }
         }
     };
