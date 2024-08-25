@@ -193,7 +193,7 @@ const PokemonId = () => {
                                                 )
                                             }
                                         </div>
-                                        <div>
+                                        <div key={name}>
                                             {abilitiesDetails.map((abilityDetail) => (
                                                 <div key={abilityDetail.id}>
                                                     <button onClick={() => handleAbilityClick(abilityDetail)}>

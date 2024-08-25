@@ -7,14 +7,14 @@ const SearchAbility = () => {
     const {ability} = useParams();
     const navigate = useNavigate();
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
-    const abilityPagination = useAppSelector(state => state.pokemonAllStore.abilityPagination);
+    // const abilityPagination = useAppSelector(state => state.pokemonAllStore.abilityPagination);
     const images = useAppSelector(state => state.pokemonAllStore.images);
     const offset = useAppSelector(state => state.pokemonAllStore.offset);
     const limit = useAppSelector(state => state.pokemonAllStore.limit);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (ability && ability.trim()) {
+        if (ability) {
             dispatch(pokemonAllActions.loadAbilityPagination({ ability, offset, limit }));
         }
     }, [dispatch, ability, offset, limit]);
@@ -39,18 +39,18 @@ const SearchAbility = () => {
     //     dispatch(pokemonAllActions.loadAbilityPagination({ offset, limit }));
     // }, [dispatch, offset, limit]);
     //
-    const nextPage = () => {
-        dispatch(pokemonAllActions.setOffset(offset + limit));
-    };
-
-    const prevPage = () => {
-        if (offset > 0) {
-            dispatch(pokemonAllActions.setOffset(offset - limit));
-        }
-    };
-
+    // const nextPage = () => {
+    //     dispatch(pokemonAllActions.setOffset(offset + limit));
+    // };
+    //
+    // const prevPage = () => {
+    //     if (offset > 0) {
+    //         dispatch(pokemonAllActions.setOffset(offset - limit));
+    //     }
+    // };
     return (
         <div>
+
             <div>
                 {abilitiesDetails.map(value =>
                     <div key={value.id}>{value.pokemon.map(item =>
@@ -63,12 +63,12 @@ const SearchAbility = () => {
                 }
             </div>
             <div>
-                <button onClick={prevPage} disabled={offset === 0}>
-                    Prev
-                </button>
-                <button onClick={nextPage}>
-                    Next
-                </button>
+                {/*<button onClick={prevPage} disabled={offset === 0}>*/}
+                {/*    Prev*/}
+                {/*</button>*/}
+                {/*<button onClick={nextPage}>*/}
+                {/*    Next*/}
+                {/*</button>*/}
                 <button onClick={() => navigate(`/`)}>
                     Home
                 </button>
