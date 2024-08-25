@@ -17,8 +17,8 @@ export const router = createBrowserRouter(
             children: [
                 {index: true, element: <PokemonAllComponent/>},
                 {path:'/pokemon/:name', element: <PokemonId/>},
-                {path:'/evolution-chain/:id', element: <SpeciesPokemon/>},
-                // {path:'/search/:name', element: <Search/>}
+                {path:'/evolution-chain/:id', element: <SpeciesPokemon/>}
+                // {path:'/search/:ability', element: <SearchAbility/>}
             ]
         }
     ]

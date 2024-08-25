@@ -1,6 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 import {pokemonService} from "../../service/api.service";
+import {IPokemonNameUrl} from "../../models/IPokemonPagNameUrl";
 
 
 const loadPokemonAll = createAsyncThunk(
@@ -136,6 +137,45 @@ const loadEvolutionDetails = createAsyncThunk(
         }
     }
 );
+const loadAllPokemon = createAsyncThunk(
+    'pokemonAll',
+    async  (_, thunkAPI) => {
+        try {
+            let allPokemon:IPokemonNameUrl[] = [];
+            let offset = 0;
+            const limit = 100; // Adjust limit based on the API's maximum allowed value
+
+            while (true) {
+                const response = await pokemonService.getAll(offset, limit);
+                allPokemon = [...allPokemon, ...response];
+
+                if (response.length < limit) {
+                    break;
+                }
+
+                offset += limit;
+            }
+
+            return thunkAPI.fulfillWithValue(allPokemon);
+        // try {
+        //     let allPokemon:IPokemonNameUrl[] = [];
+        //     let offset = 0;
+        //     const limit = 100;
+        //     let response = await pokemonService.getAll(offset,limit);
+        //     allPokemon = [...allPokemon, ...response];
+        //     if (response.length < limit) {
+        //         break;
+        //     }
+        //
+        //     offset += limit;
+        // }
+        // return thunkAPI.fulfillWithValue(allPokemon);
+        } catch (e) {
+            let error = e as AxiosError;
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    }
+);
 export {
     loadPokemonAll,
     loadPokemonOne,
@@ -145,5 +185,6 @@ export {
     loadTypeDetails,
     loadFormDetails,
     loadSpecies,
-    loadEvolutionDetails
+    loadEvolutionDetails,
+    loadAllPokemon
 };

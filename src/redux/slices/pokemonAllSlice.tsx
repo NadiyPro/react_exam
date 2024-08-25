@@ -1,7 +1,7 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadEvolutionDetails, loadFormDetails,
+    loadAbilitiesDetails, loadAllPokemon, loadEvolutionDetails, loadFormDetails,
     loadPokemonAll,
     loadPokemonImage, loadPokemonOne, loadSpecies,
     loadStatDetails,
@@ -33,6 +33,8 @@ interface PokemonAllState {
     evolutionSpeciesName: string;
     evolutionEvolves_toSpeciesName: string[] | null
     evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
+    searchQuery: string;
+    pokemonAll:IPokemonNameUrl[];
 }
 
 const initialState: PokemonAllState = {
@@ -53,7 +55,9 @@ const initialState: PokemonAllState = {
     species:null,
     evolutionSpeciesName: '',
     evolutionEvolves_toSpeciesName:[''],
-    evolutionEvolves_toEvolves_toSpeciesName: [['']]
+    evolutionEvolves_toEvolves_toSpeciesName: [['']],
+    searchQuery: '',
+    pokemonAll:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -125,6 +129,11 @@ export const pokemonAllSlice = createSlice({
                     // as { evolutionSpeciesName: Chain | null; evolutionEvolves_toSpeciesName: EvolvesTo | null,evolutionEvolves_toEvolves_toSpeciesName: EvolvesTo[] };
                 }
             )
+            .addCase(
+                loadAllPokemon.fulfilled, (state, action) => {
+                    state.pokemonAll = action.payload;
+                }
+            )
     }
 });
 
@@ -140,5 +149,6 @@ export const pokemonAllActions = {
     loadTypeDetails,
     loadFormDetails,
     loadSpecies,
-    loadEvolutionDetails
+    loadEvolutionDetails,
+    loadAllPokemon
 };

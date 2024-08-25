@@ -1,45 +1,50 @@
-import React from 'react';
-import {Outlet} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {useAppDispatch, useAppSelector} from "../redux/store";
-import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import React, { useEffect} from 'react';
+import { Outlet, useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "../redux/store";
+import { pokemonAllActions } from "../redux/slices/pokemonAllSlice";
+
+interface FormData {
+    nameForm: string;
+}
 
 const MainLayout = () => {
-    const {handleSubmit, register} = useForm();
-    const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
+    const navigate = useNavigate();
+    const { handleSubmit, register } = useForm<FormData>();
+    const pokemonAll = useAppSelector(state => state.pokemonAllStore.pokemonAll);
     const dispatch = useAppDispatch();
 
+    useEffect(() => {
+        if (pokemonAll.length === 0) {
+            dispatch(pokemonAllActions.loadAllPokemon()); // Функция для загрузки всех страниц
+        }
+    }, [dispatch, pokemonAll.length]);
 
-    // useEffect(() => {
-    //     pokemon.forEach(value => {
-    //         dispatch(pokemonAllActions.loadPokemonOne(value.name));
-    //     });
-    // }, [pokemon, dispatch]);
-    const registerHandle = () => {
-        // pokemon.forEach(value => {
-        //   if(value.name === nameForm){
-        //       dispatch(pokemonAllActions.loadPokemonOne(value.name));
-        //   }
-        //     // dispatch(pokemonAllActions.loadPokemonOne(value.name));
-        // });
-
-        console.log()
-    }
+    const registerHandle: SubmitHandler<FormData> = (data) => {
+        const foundPokemon = pokemonAll.find(value => value.name === data.nameForm);
+        if (foundPokemon) {
+            navigate(`/pokemon/${foundPokemon.name}`);
+        } else {
+            alert('No Pokémon found with that name');
+        }
+        dispatch(pokemonAllActions.loadPokemonOne(data.nameForm));
+    };
 
     return (
         <div>
             <form onSubmit={handleSubmit(registerHandle)}>
                 <label>
-                    <input type={"text"} {...register('nameForm')} placeholder={'Enter the name of the pokemon or species or ability'}
-                              className='input_FormComponent'/>
+                    <input
+                        type="text"
+                        {...register('nameForm')}
+                        placeholder="Enter the name of the pokemon or species or ability"
+                        className="input_FormComponent"
+                    />
                 </label>
-                <button>Search</button>
+                <button type="submit">Search</button>
             </form>
-
-
-            <Outlet/>
+            <Outlet />
         </div>
     );
 };
-
 export default MainLayout;
