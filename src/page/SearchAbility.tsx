@@ -8,8 +8,8 @@ const SearchAbility = () => {
     const navigate = useNavigate();
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
     const images = useAppSelector(state => state.pokemonAllStore.images);
-    // const offset = useAppSelector(state => state.pokemonAllStore.offset);
-    // const limit = useAppSelector(state => state.pokemonAllStore.limit);
+    const offset = useAppSelector(state => state.pokemonAllStore.offset);
+    const limit = useAppSelector(state => state.pokemonAllStore.limit);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const SearchAbility = () => {
             }
         } ));
 
-    }, [images, dispatch]);
+    }, [images, dispatch,abilitiesDetails]);
 
     // useEffect(() => {
     //     dispatch(pokemonAllActions.loadPokemonAll({ offset, limit }));
