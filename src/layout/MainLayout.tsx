@@ -16,7 +16,7 @@ const MainLayout = () => {
 
     useEffect(() => {
         if (pokemonAll.length === 0) {
-            dispatch(pokemonAllActions.loadAllPokemon()); // Функция для загрузки всех страниц
+            dispatch(pokemonAllActions.loadAllPokemon());
         }
     }, [dispatch, pokemonAll.length]);
 
