@@ -125,8 +125,6 @@ export const pokemonAllSlice = createSlice({
                     state.evolutionSpeciesName = evolutionSpeciesName as string;
                     state.evolutionEvolves_toSpeciesName = evolutionEvolves_toSpeciesName as string[] | null;
                     state.evolutionEvolves_toEvolves_toSpeciesName = evolutionEvolves_toEvolves_toSpeciesName as string[][] | null;
-
-                    // as { evolutionSpeciesName: Chain | null; evolutionEvolves_toSpeciesName: EvolvesTo | null,evolutionEvolves_toEvolves_toSpeciesName: EvolvesTo[] };
                 }
             )
             .addCase(

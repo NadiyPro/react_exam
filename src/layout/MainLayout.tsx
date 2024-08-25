@@ -21,9 +21,9 @@ const MainLayout = () => {
     }, [dispatch, pokemonAll.length]);
 
     const registerHandle: SubmitHandler<FormData> = (data) => {
-        const foundPokemon = pokemonAll.find(value => value.name === data.nameForm);
-        if (foundPokemon) {
-            navigate(`/pokemon/${foundPokemon.name}`);
+        const searchNamePokemon = pokemonAll.find(value => value.name === data.nameForm);
+        if (searchNamePokemon) {
+            navigate(`/pokemon/${searchNamePokemon.name}`);
         } else {
             alert('No Pokémon found with that name');
         }
