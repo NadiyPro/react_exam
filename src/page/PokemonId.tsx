@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../redux/store";
-import '../module/global.css';
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
+import '../module/global.css';
 
 interface EffectEntry {
     short_effect: string;

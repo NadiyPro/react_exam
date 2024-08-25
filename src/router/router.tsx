@@ -5,6 +5,7 @@ import MainLayout from "../layout/MainLayout";
 import PokemonAllComponent from "../page/PokemonAllComponent";
 import PokemonId from "../page/PokemonId";
 import SpeciesPokemon from "../page/SpeciesPokemon";
+import SearchAbility from "../page/SearchAbility";
 
 
 
@@ -17,8 +18,8 @@ export const router = createBrowserRouter(
             children: [
                 {index: true, element: <PokemonAllComponent/>},
                 {path:'/pokemon/:name', element: <PokemonId/>},
-                {path:'/evolution-chain/:id', element: <SpeciesPokemon/>}
-                // {path:'/search/:ability', element: <SearchAbility/>}
+                {path:'/evolution-chain/:id', element: <SpeciesPokemon/>},
+                {path:'/ability/:ability', element: <SearchAbility/>}
             ]
         }
     ]

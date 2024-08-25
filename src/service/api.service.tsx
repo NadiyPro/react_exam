@@ -30,7 +30,7 @@ const pokemonService = {
     },
     getAbilities: async (name: string): Promise<IAbility[]> => {
         const response = await axiosInstance.get(`/pokemon/${name}`);
-        return response.data.abilities; // Вернем массив объектов Ability
+        return response.data.abilities;
     },
     getAbilitiesDetails: async (names: string[]): Promise<IAbilityDetail[]> => {
         const response = names.map((name) => axiosInstance.get(`/ability/${name}`)

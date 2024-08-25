@@ -34,7 +34,7 @@ interface PokemonAllState {
     evolutionEvolves_toSpeciesName: string[] | null
     evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
     searchQuery: string;
-    pokemonAll:IPokemonNameUrl[];
+    pokemonAll:IPokemonNameUrl[]
 }
 
 const initialState: PokemonAllState = {
@@ -132,11 +132,6 @@ export const pokemonAllSlice = createSlice({
                     state.pokemonAll = action.payload;
                 }
             )
-            // .addCase(
-            //     loadAllPokemon.fulfilled, (state, action) => {
-            //         state.pokemonAll = action.payload;
-            //     }
-            // )
     }
 });
 

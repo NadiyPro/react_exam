@@ -163,6 +163,7 @@ const loadAllPokemonSearch = createAsyncThunk(
         }
     }
 );
+
 export {
     loadPokemonAll,
     loadPokemonOne,
