@@ -7,10 +7,8 @@ const SearchAbility = () => {
     const {ability} = useParams();
     const navigate = useNavigate();
     const abilitiesDetails = useAppSelector(state => state.pokemonAllStore.abilitiesDetails);
-    // const abilityPagination = useAppSelector(state => state.pokemonAllStore.abilityPagination);
     const images = useAppSelector(state => state.pokemonAllStore.images);
-    const offset = useAppSelector(state => state.pokemonAllStore.offset);
-    const limit = useAppSelector(state => state.pokemonAllStore.limit);
+
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -19,11 +17,6 @@ const SearchAbility = () => {
         }
     }, [dispatch, ability]);
 
-    // useEffect(() => {
-    //     if (ability && ability.trim()){
-    //         dispatch(pokemonAllActions.loadAbilitiesDetails(ability));
-    //     }
-    // }, [dispatch,ability]);
 
     useEffect(() => {
         abilitiesDetails.map(value => value.pokemon.map(item => {
@@ -34,15 +27,7 @@ const SearchAbility = () => {
 
     }, [images, dispatch,abilitiesDetails]);
 
-    // const nextPage = () => {
-    //     dispatch(pokemonAllActions.setOffset(offset + limit));
-    // };
-    //
-    // const prevPage = () => {
-    //     if (offset > 0) {
-    //         dispatch(pokemonAllActions.setOffset(offset - limit));
-    //     }
-    // };
+
     return (
         <div>
 
@@ -58,12 +43,7 @@ const SearchAbility = () => {
                 }
             </div>
             <div>
-                {/*<button onClick={prevPage} disabled={offset === 0}>*/}
-                {/*    Prev*/}
-                {/*</button>*/}
-                {/*<button onClick={nextPage}>*/}
-                {/*    Next*/}
-                {/*</button>*/}
+
                 <button onClick={() => navigate(`/`)}>
                     Home
                 </button>

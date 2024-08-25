@@ -164,18 +164,6 @@ const loadAllPokemonSearch = createAsyncThunk(
     }
 );
 
-// const loadAbilityPagination = createAsyncThunk(
-//     'pokemonAbilitiesSlice/loadAbilitiesDetails',
-//     async ({ ability, offset, limit }: { ability: string, offset: number, limit: number }, thunkAPI) => {
-//         try {
-//             let response = await pokemonService.getAbilityPagination(ability, offset, limit);
-//             return thunkAPI.fulfillWithValue(response);
-//         } catch (e) {
-//             let error = e as AxiosError;
-//             return thunkAPI.rejectWithValue(error?.response?.data);
-//         }
-//     }
-// );
 const loadAbilitySearch = createAsyncThunk(
     'pokemonAbilitiesSearch',
     async ( ability: string, thunkAPI) => {
