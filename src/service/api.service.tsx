@@ -72,10 +72,10 @@ const pokemonService = {
         const response = await axiosInstance.get(`/evolution-chain/${id}`);
         return response.data.chain;
     },
-    getAbilityPagination: async (offset:number, limit: number):Promise<IPokemonNameUrl[]> => {
-        const response = await axiosInstance.get(baseURL + `/ability/?offset=${offset}&limit=${limit}`);
+    getAbilityPagination: async (ability: string, offset: number, limit: number) => {
+        const response = await axiosInstance.get(`/ability/${ability}/?offset=${offset}&limit=${limit}`);
         return response.data.results;
-    },
+    }
 };
 
 export {

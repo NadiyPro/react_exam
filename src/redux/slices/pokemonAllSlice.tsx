@@ -34,7 +34,8 @@ interface PokemonAllState {
     evolutionEvolves_toSpeciesName: string[] | null
     evolutionEvolves_toEvolves_toSpeciesName: string[][] | null;
     searchQuery: string;
-    pokemonAll:IPokemonNameUrl[]
+    pokemonAll:IPokemonNameUrl[];
+    abilityPagination:IAbilityDetail[]
 }
 
 const initialState: PokemonAllState = {
@@ -57,7 +58,8 @@ const initialState: PokemonAllState = {
     evolutionEvolves_toSpeciesName:[''],
     evolutionEvolves_toEvolves_toSpeciesName: [['']],
     searchQuery: '',
-    pokemonAll:[]
+    pokemonAll:[],
+    abilityPagination:[]
 };
 
 export const pokemonAllSlice = createSlice({
@@ -134,7 +136,7 @@ export const pokemonAllSlice = createSlice({
             )
             .addCase(
                 loadAbilityPagination.fulfilled, (state, action) => {
-                    state.pokemonAll = action.payload;
+                    state.abilityPagination = action.payload;
                 }
             )
     }

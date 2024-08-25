@@ -163,11 +163,25 @@ const loadAllPokemonSearch = createAsyncThunk(
         }
     }
 );
+// const loadAbilityPagination = createAsyncThunk(
+//     'pokemonAbilityPagination',
+//     async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {
+//         try {
+//             let response = await pokemonService.getAbilityPagination(offset,limit);
+//             return thunkAPI.fulfillWithValue(response);
+//         } catch (e) {
+//             let error = e as AxiosError;
+//             return thunkAPI.rejectWithValue(error?.response?.data);
+//         }
+//     }
+// );
+
 const loadAbilityPagination = createAsyncThunk(
-    'pokemonAbilityPagination',
-    async  ({ offset, limit }: { offset: number; limit: number }, thunkAPI) => {
+    'pokemonAbilitiesSlice/loadAbilitiesDetails',
+    async ({ ability, offset, limit }: { ability: string, offset: number, limit: number }, thunkAPI) => {
         try {
-            let response = await pokemonService.getAbilityPagination(offset,limit);
+            // Загружайте данные с учетом пагинации
+            let response = await pokemonService.getAbilityPagination(ability, offset, limit);
             return thunkAPI.fulfillWithValue(response);
         } catch (e) {
             let error = e as AxiosError;
