@@ -137,7 +137,7 @@ const loadEvolutionDetails = createAsyncThunk(
         }
     }
 );
-const loadAllPokemon = createAsyncThunk(
+const loadAllPokemonSearch = createAsyncThunk(
     'pokemonAll',
     async  (_, thunkAPI) => {
         try {
@@ -173,5 +173,5 @@ export {
     loadFormDetails,
     loadSpecies,
     loadEvolutionDetails,
-    loadAllPokemon
+    loadAllPokemonSearch
 };

@@ -1,7 +1,7 @@
 import {IPokemonNameUrl} from '../../models/IPokemonPagNameUrl';
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
-    loadAbilitiesDetails, loadAllPokemon, loadEvolutionDetails, loadFormDetails,
+    loadAbilitiesDetails, loadAllPokemonSearch, loadEvolutionDetails, loadFormDetails,
     loadPokemonAll,
     loadPokemonImage, loadPokemonOne, loadSpecies,
     loadStatDetails,
@@ -128,10 +128,15 @@ export const pokemonAllSlice = createSlice({
                 }
             )
             .addCase(
-                loadAllPokemon.fulfilled, (state, action) => {
+                loadAllPokemonSearch.fulfilled, (state, action) => {
                     state.pokemonAll = action.payload;
                 }
             )
+            // .addCase(
+            //     loadAllPokemon.fulfilled, (state, action) => {
+            //         state.pokemonAll = action.payload;
+            //     }
+            // )
     }
 });
 
@@ -147,5 +152,5 @@ export const pokemonAllActions = {
     loadFormDetails,
     loadSpecies,
     loadEvolutionDetails,
-    loadAllPokemon
+    loadAllPokemonSearch
 };

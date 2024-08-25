@@ -16,7 +16,7 @@ const MainLayout = () => {
 
     useEffect(() => {
         if (pokemonAll.length === 0) {
-            dispatch(pokemonAllActions.loadAllPokemon());
+            dispatch(pokemonAllActions.loadAllPokemonSearch());
         }
     }, [dispatch, pokemonAll.length]);
 
@@ -27,6 +27,7 @@ const MainLayout = () => {
         } else {
             alert('No Pokémon found with that name');
         }
+        // const searchAbility =
     };
 
     return (
