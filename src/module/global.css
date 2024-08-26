@@ -36,3 +36,32 @@ body{
 .input_search{
     width: 20vw;
 }
+/*.img_pokemon{*/
+/*    margin: 15px;*/
+/*}*/
+.div_button{
+    width: 100%;
+    background-color: darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*******div_PokemonAll******/
+.div_PokemonAll{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+.div_inner_PokemonAll{
+    height: 90vh;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /*background-color: darkturquoise;*/
+}
+.div_img{
+    margin: 15px;
+    background-color: darkturquoise;
+}

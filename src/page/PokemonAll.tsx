@@ -36,21 +36,26 @@ const PokemonAll= () => {
     };
 
     return (
-        <div>
-            <h5>Pokemon</h5>
-            {pokemon.map(value => (
-                <div key={value.name}>
-                    <div>{value.name}</div>
-                    <img src={images[value.name]} alt={'img'} onClick={() => navigate(`pokemon/${value.name}`)}/>
-                </div>
-            ))}
-
-            <button onClick={prevPage} disabled={offset === 0}>
-                Prev
-            </button>
-            <button onClick={nextPage}>
-                Next
-            </button>
+        <div className={'div_PokemonAll'}>
+            <div>
+                <h3>Pokemon all</h3>
+            </div>
+            <div className={'div_inner_PokemonAll'}>
+                {pokemon.map(value => (
+                    <div className={'div_img'} key={value.name}>
+                        <div>{value.name}</div>
+                        <img src={images[value.name]} alt={'img'} onClick={() => navigate(`pokemon/${value.name}`)}/>
+                    </div>
+                ))}
+            </div>
+            <div className={'div_button'}>
+                <button onClick={prevPage} disabled={offset === 0}>
+                    Prev
+                </button>
+                <button onClick={nextPage}>
+                    Next
+                </button>
+            </div>
         </div>
     );
 };
