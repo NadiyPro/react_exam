@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import '../module/global.css';
 import {pokemonAllActions} from "../redux/slices/pokemonAllSlice";
 
-const PokemonAllComponent= () => {
+const PokemonAll= () => {
     const navigate = useNavigate();
     const pokemon = useAppSelector(state => state.pokemonAllStore.pokemon);
     const images = useAppSelector(state => state.pokemonAllStore.images);
@@ -55,4 +55,4 @@ const PokemonAllComponent= () => {
     );
 };
 
-export default PokemonAllComponent;
+export default PokemonAll;
