@@ -187,7 +187,6 @@ const PokemonId = () => {
                                                    </div>
                                                </div>
                                                <div className={'div_base_stat'}>
-                                                   {/*<div><h5 className={'h5_base'}>base stat:</h5></div>*/}
                                                    <div>
                                                        <h5 className={'h5_base'}>base stat:</h5>
                                                        {
