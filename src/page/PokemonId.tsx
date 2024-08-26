@@ -81,7 +81,7 @@ const PokemonId = () => {
                                                        {pokemonOne && (
                                                            <div className={'div_id_height'}>
                                                                <div>
-                                                                   <div><h5>id: {pokemonOne.id}</h5></div>
+                                                                   <div><h5 className={'h5_id_base'}>id: {pokemonOne.id}</h5></div>
                                                                    <div>
                                                                        <h5>species: {pokemonOne.species.name}</h5>
                                                                    </div>
@@ -112,8 +112,8 @@ const PokemonId = () => {
                                                                        <h5 className={'h5_type_abilities'}>type:</h5>
                                                                        {typeDetails.map((typeDetail) => (
                                                                            <div key={typeDetail.id}>
-                                                                               <button
-                                                                                   onClick={() => handleTypeClick(typeDetail)}>
+                                                                               <button className={'button_PokemonId'}
+                                                                                       onClick={() => handleTypeClick(typeDetail)}>
                                                                                    {typeDetail.name}
                                                                                </button>
                                                                            </div>
@@ -161,6 +161,7 @@ const PokemonId = () => {
                                                                     alt={'back_default'}/>
                                                            </div>
                                                        </div>
+                                                       <hr/>
                                                        <div className={'div_img_row'}>
                                                            <div className={'div_img_form'}>
                                                                <h5>front shiny</h5>
@@ -178,7 +179,7 @@ const PokemonId = () => {
                                                    <div>
                                                        {
                                                            species && (
-                                                               <button
+                                                               <button className={'button_PokemonId'}
                                                                    onClick={() => navigate(`/evolution-chain/${species}`)}>
                                                                    evolution
                                                                </button>
@@ -188,7 +189,7 @@ const PokemonId = () => {
                                                </div>
                                                <div className={'div_base_stat'}>
                                                    <div>
-                                                       <h5 className={'h5_base'}>base stat:</h5>
+                                                       <h5 className={'h5_id_base'}>base stat:</h5>
                                                        {
                                                            stat.map((value, index) =>
                                                                <div key={index}>
@@ -202,7 +203,7 @@ const PokemonId = () => {
                                                        <div className={'div_type_ability'} key={name}>
                                                            {abilitiesDetails.map((abilityDetail) => (
                                                                <div key={abilityDetail.id}>
-                                                                   <button
+                                                                   <button className={'button_PokemonId'}
                                                                        onClick={() => handleAbilityClick(abilityDetail)}>
                                                                        {abilityDetail.name}
                                                                    </button>

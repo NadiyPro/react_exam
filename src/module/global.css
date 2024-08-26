@@ -169,7 +169,7 @@ body{
 .h5_type_abilities{
     margin: 20px 0 0 0;
 }
-.h5_base{
+.h5_id_base{
     margin: 0;
 }
 .div_type_ability{
@@ -180,4 +180,12 @@ body{
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+}
+.button_PokemonId{
+    width: 10vw;
+    background: #1e90ff;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 8px 6px 5px 0 rgba(0,0,0,0.7);
+    margin-bottom: 10px;
 }
