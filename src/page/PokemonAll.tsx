@@ -49,10 +49,10 @@ const PokemonAll= () => {
                 ))}
             </div>
             <div className={'div_button'}>
-                <button onClick={prevPage} disabled={offset === 0}>
+                <button className={'button_pagination'} onClick={prevPage} disabled={offset === 0}>
                     Prev
                 </button>
-                <button onClick={nextPage}>
+                <button className={'button_pagination'} onClick={nextPage}>
                     Next
                 </button>
             </div>

@@ -56,7 +56,7 @@ const MainLayout = () => {
                             className={'input_search'}
                         />
                     </label>
-                    <button type="submit">Search</button>
+                    <button className={'button_pagination'} type="submit">Search</button>
                 </form>
             </div>
             <div>

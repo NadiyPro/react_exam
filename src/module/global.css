@@ -29,9 +29,10 @@ body{
 }
 .div_search{
     width: 100%;
+    height: 5vh;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     background-color: gold;
 }
 .input_search{
@@ -47,6 +48,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.button_pagination{
+    width: 5vw;
+    background: #1e90ff;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.7);
+    margin: 20px;
 }
 /*******div_PokemonAll******/
 .div_PokemonAll{
