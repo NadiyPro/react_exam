@@ -143,7 +143,7 @@ const loadAllPokemonSearch = createAsyncThunk(
         try {
             let allPokemon:IPokemonNameUrl[] = [];
             let offset = 0;
-            const limit = 1000;
+            const limit = 100;
 
             while (true) {
                 const response = await pokemonService.getAll(offset, limit);

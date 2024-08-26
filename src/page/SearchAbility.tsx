@@ -33,7 +33,6 @@ const SearchAbility = () => {
             <div>
                 <h3>Search all ability</h3>
             </div>
-            <div>
                 {abilitiesDetails.map(value =>
                     <div className={'div_search_ability'} key={value.id}>{value.pokemon.map(item =>
                         <div className={'div_img'}>
@@ -43,7 +42,6 @@ const SearchAbility = () => {
                         </div>)}
                     </div>)
                 }
-            </div>
             <div className={'div_button'}>
                 <button className={'button_pagination'} onClick={() => navigate(`/`)}>
                     Home

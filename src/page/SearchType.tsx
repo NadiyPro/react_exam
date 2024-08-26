@@ -29,16 +29,17 @@ const SearchType = () => {
     return (
         <div className={'div_SearchAbilityAll'}>
             <div>
-                {typeDetails.map(value =>
-                    <div className={'div_search_ability'} key={value.id}>{value.pokemon.map(item =>
-                        <div className={'div_img'}>
-                            <p>{item.pokemon.name}</p>
-                            <img src={images[item.pokemon.name]} alt={'img'}
-                                 onClick={() => navigate(`/pokemon/${item.pokemon.name}`)}/>
-                        </div>)}
-                    </div>)
-                }
+                <h3>Search all type</h3>
             </div>
+            {typeDetails.map(value =>
+                <div className={'div_search_ability'} key={value.id}>{value.pokemon.map(item =>
+                    <div className={'div_img'}>
+                        <p>{item.pokemon.name}</p>
+                        <img src={images[item.pokemon.name]} alt={'img'}
+                             onClick={() => navigate(`/pokemon/${item.pokemon.name}`)}/>
+                    </div>)}
+                </div>)
+            }
             <div className={'div_button'}>
                 <button className={'button_pagination'} onClick={() => navigate(`/`)}>
                     Home
