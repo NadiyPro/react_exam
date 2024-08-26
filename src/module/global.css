@@ -121,13 +121,19 @@ body{
     align-items: center;
     flex-direction: row;
 }
-.div_type_ability{
+.div_type_height_weight{
     width: 30vw;
     background: darkgoldenrod;
 }
 .div_base_stat{
     width: 30vw;
     background: darkseagreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
 }
 .div_PokemonId_row{
     display: flex;
@@ -146,35 +152,27 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     background-color: darkgreen;
 }
-/*.div_type_ability_base{*/
-/*    width: 60vw;*/
-/*    display: flex;*/
-/*    justify-content: space-evenly;*/
-/*    align-items: center;*/
-/*    flex-direction: row;*/
-/*    background-color: #93b0ec;*/
-/*    !*margin: 0 20px 0 0;*!*/
-/*}*/
-.div_height_item{
+.div_height_weight_item{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #e993ec;
-    margin-right: 30px;
+
 }
-.div_weight_item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e993ec;
+.h5_height_weight{
+    margin: 0 0 10px 0;
 }
-.div_type{
-    width: 30vw;
+.h5_type_abilities{
+    margin: 20px 0 0 0;
 }
-.div_ability{
+.h5_base{
+    margin: 0;
+}
+.div_type_ability{
     width: 30vw;
 }
 .div_PokemonId_column{
