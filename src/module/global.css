@@ -54,7 +54,7 @@ body{
     background: #1e90ff;
     color: white;
     border-radius: 5px;
-    box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.7);
+    box-shadow: 8px 6px 5px 0 rgba(0,0,0,0.7);
     margin: 20px;
 }
 /*******div_PokemonAll******/
@@ -82,5 +82,5 @@ body{
     background: rgb(34,193,195);
     background: linear-gradient(0deg, rgba(34,193,195,1) 29%, rgba(195,245,246,1) 90%);
     border-radius: 20px;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
 }
