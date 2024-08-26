@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { pokemonAllActions } from "../redux/slices/pokemonAllSlice";
+import '../module/global.css'
 
 interface FormData {
     nameForm: string;
@@ -40,19 +41,25 @@ const MainLayout = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(registerHandle)}>
-                <label>
-                    <input
-                        type="text"
-                        {...register('nameForm')}
-                        placeholder="Enter the name of the pokemon or species or ability"
-                        className="input_FormComponent"
-                    />
-                </label>
-                <button type="submit">Search</button>
-            </form>
-            <Outlet />
+        <div className={'div_base'}>
+            <div className={'div_logo'}>
+                <img className={'img_logo'} alt={'img'} src={'https://i.pinimg.com/originals/34/c1/e5/34c1e5d371d64a581b1902ec5c4509f4.png'} />
+
+                <form  onSubmit={handleSubmit(registerHandle)}>
+                    <label>
+                        <input
+                            type="text"
+                            {...register('nameForm')}
+                            placeholder="Enter the name or type or ability"
+                            className={'input_search'}
+                        />
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div>
+                <Outlet/>
+            </div>
         </div>
     );
 };

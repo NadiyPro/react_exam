@@ -1,8 +1,31 @@
 body{
-    background-color: rgba(255, 255, 0, 0.7);
+   margin: 0;
+    padding: 0;
+}
+.div_base{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
 }
 .formImag{
     display: flex;
     justify-items: center;
     align-items: center;
+}
+.div_logo{
+    width: 100%;
+    background-color: darkred;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+.img_logo{
+    width: 10vw;
+    height: 10vh;
+    border: 2px solid darkslateblue;
+}
+.input_search{
+    width: 30vw;
 }
