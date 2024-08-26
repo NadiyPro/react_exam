@@ -59,7 +59,7 @@ const MainLayout = () => {
                     <button className={'button_pagination'} type="submit">Search</button>
                 </form>
             </div>
-            <div>
+            <div className={'div_Outlet'}>
                 <Outlet/>
             </div>
         </div>

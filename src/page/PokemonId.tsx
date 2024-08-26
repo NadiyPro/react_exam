@@ -82,176 +82,178 @@ const PokemonId = () => {
     };
     return (
         <div>
-            {
-                name && (
-                    <div key={name}>
-                        <div><h5>Pokemon name: {name}</h5></div>
+           <div>
+               {
+                   name && (
+                       <div key={name}>
+                           <div><h5>Pokemon name: {name}</h5></div>
 
-                        {formDetails.map((formDetail) => {
+                           {formDetails.map((formDetail) => {
 
-                            return (
-                                <div key={formDetail.id} >
-                                    <div className='formImag'>
-                                    <div className={'div_img_form'}>
-                                        <h6>front default</h6>
-                                        <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
-                                    </div>
-                                    <div className={'div_img_form'}>
-                                        <h6>back default</h6>
-                                        <img src={formDetail.sprites.back_default} alt={'back_default'}/>
-                                    </div>
+                               return (
+                                   <div key={formDetail.id} >
+                                       <div className='formImag'>
+                                           <div className={'div_img_form'}>
+                                               <h6>front default</h6>
+                                               <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
+                                           </div>
+                                           <div className={'div_img_form'}>
+                                               <h6>back default</h6>
+                                               <img src={formDetail.sprites.back_default} alt={'back_default'}/>
+                                           </div>
 
-                                    <div className={'div_img_form'}>
-                                        <h6>front shiny</h6>
-                                        <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
-                                    </div>
-                                    <div className={'div_img_form'}>
-                                        <h6>back shiny</h6>
-                                        <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
-                                    </div>
-                                    </div>
+                                           <div className={'div_img_form'}>
+                                               <h6>front shiny</h6>
+                                               <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
+                                           </div>
+                                           <div className={'div_img_form'}>
+                                               <h6>back shiny</h6>
+                                               <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
+                                           </div>
+                                       </div>
 
-                                    <div>
-                                        {pokemonOne && (
-                                            <div>
-                                                <div><p>id: {pokemonOne.id}</p></div>
-                                                <div>
-                                                    <img alt={'img'}
-                                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVR4nO3TQQrAIBAEQf//6c59DyuJwRbGhr0XjI4xj8VbjlMAb7sAdkyA/QawAV15AOwJsAG1DAD2N8QGdOUBsCfABtQyANjfEBvQlQfAngAbULsA/p6Aj3c24AGLFvEPeZntyQAAAABJRU5ErkJggg=="/>
-                                                    <p> height: {pokemonOne.height}</p>
-                                                </div>
-                                                <div>
-                                                    <img
-                                                        alt={'img'}
-                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXElEQVR4nO2avWtUQRTFf4ZoCiWkikkkYJVGUKy0ULGNq12KiOhaayGCH60QCxtFC8FKm4AIpknqqIVB8gdEUygWikIKwcQiWmTkynkwPHbZmZf9GMkcGNidOffOue/OnbfvzUJGRkZVnAUWgV+A63HbkJZabBB3ExDvmrSZmEyYwSZwAxil9xgFbkqTC83MK5EtiNRwS9psmbXEhsgjpIcRaVsPIRdrMRb7gDPAPWABWAV+AL/V7PMHYF6cSdnEwoXqiwmkDzgHzElsbOHamn+pujRfXQ/EJr2oK+wLsyzcB+rAKWDcGxtXX12c1ZLte+ACsKtbgRwB3pVELAMTFfxNyNb3tQQc7mQgdqWue0toDbgDbKn4BitMPCjbLflaE9fmuNYkO9sKZAB44Y09AYY09hr4BBwN8H269N1sPsqHYUi+i3mea+62BbLgbXtTpbH9gYV6CHjcoN9sh0t9U5rLae5W+hqiEfG8+v4AJ4jHXmAFuBzIP+bdxesB+hqiGfGR+r9V+NnyTLYHA7jDwBfxH0boCyb2A2809hbYHeJMWTCbzwHcftVLsXvtidAXRbR6+KpxuxeE1EXxGGBZaYUH4n4HxiroiyIe97bgSwF1UfhrVR/TXh2e3Ia+KOLVNj9j+O1KG/RFEZ92IIjZNuoLJ/YILgeSGFzOSGJwOSOJweWMJAaXM5IYXM5IYnA5I4nB5YwkBrfjMrIuYgpHbmUckLafBGBRZDuzSw23Y47eaiJv6syu2fulbmJMQRSvoYKPqWc6+Lqna8fTBWpKYXE4+l/+YSAjI4N/+AsUpdOtE+HlwgAAAABJRU5ErkJggg=="/>
-                                                    <p>weight: {pokemonOne.weight}</p>
-                                                </div>
-                                                <div>
-                                                    <p>species: {pokemonOne.species.name}</p>
-                                                </div>
-                                            </div>
-                                        )}
-                                        <div>
-                                            {
-                                                species && (
-                                                    <button
-                                                        onClick={() => navigate(`/evolution-chain/${species}`)}>
-                                                        evolution
-                                                    </button>
-                                                )
-                                            }
-                                        </div>
-                                    </div>
+                                       <div>
+                                           {pokemonOne && (
+                                               <div>
+                                                   <div><p>id: {pokemonOne.id}</p></div>
+                                                   <div>
+                                                       <img alt={'img'}
+                                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVR4nO3TQQrAIBAEQf//6c59DyuJwRbGhr0XjI4xj8VbjlMAb7sAdkyA/QawAV15AOwJsAG1DAD2N8QGdOUBsCfABtQyANjfEBvQlQfAngAbULsA/p6Aj3c24AGLFvEPeZntyQAAAABJRU5ErkJggg=="/>
+                                                       <p> height: {pokemonOne.height}</p>
+                                                   </div>
+                                                   <div>
+                                                       <img
+                                                           alt={'img'}
+                                                           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXElEQVR4nO2avWtUQRTFf4ZoCiWkikkkYJVGUKy0ULGNq12KiOhaayGCH60QCxtFC8FKm4AIpknqqIVB8gdEUygWikIKwcQiWmTkynkwPHbZmZf9GMkcGNidOffOue/OnbfvzUJGRkZVnAUWgV+A63HbkJZabBB3ExDvmrSZmEyYwSZwAxil9xgFbkqTC83MK5EtiNRwS9psmbXEhsgjpIcRaVsPIRdrMRb7gDPAPWABWAV+AL/V7PMHYF6cSdnEwoXqiwmkDzgHzElsbOHamn+pujRfXQ/EJr2oK+wLsyzcB+rAKWDcGxtXX12c1ZLte+ACsKtbgRwB3pVELAMTFfxNyNb3tQQc7mQgdqWue0toDbgDbKn4BitMPCjbLflaE9fmuNYkO9sKZAB44Y09AYY09hr4BBwN8H269N1sPsqHYUi+i3mea+62BbLgbXtTpbH9gYV6CHjcoN9sh0t9U5rLae5W+hqiEfG8+v4AJ4jHXmAFuBzIP+bdxesB+hqiGfGR+r9V+NnyTLYHA7jDwBfxH0boCyb2A2809hbYHeJMWTCbzwHcftVLsXvtidAXRbR6+KpxuxeE1EXxGGBZaYUH4n4HxiroiyIe97bgSwF1UfhrVR/TXh2e3Ia+KOLVNj9j+O1KG/RFEZ92IIjZNuoLJ/YILgeSGFzOSGJwOSOJweWMJAaXM5IYXM5IYnA5I4nB5YwkBrfjMrIuYgpHbmUckLafBGBRZDuzSw23Y47eaiJv6syu2fulbmJMQRSvoYKPqWc6+Lqna8fTBWpKYXE4+l/+YSAjI4N/+AsUpdOtE+HlwgAAAABJRU5ErkJggg=="/>
+                                                       <p>weight: {pokemonOne.weight}</p>
+                                                   </div>
+                                                   <div>
+                                                       <p>species: {pokemonOne.species.name}</p>
+                                                   </div>
+                                               </div>
+                                           )}
+                                           <div>
+                                               {
+                                                   species && (
+                                                       <button
+                                                           onClick={() => navigate(`/evolution-chain/${species}`)}>
+                                                           evolution
+                                                       </button>
+                                                   )
+                                               }
+                                           </div>
+                                       </div>
 
-                                    <div>
-                                        <div>
-                                            {typeDetails.map((typeDetail) => (
-                                                <div key={typeDetail.id}>
-                                                    <h5>type: {typeDetail.name}</h5>
-                                                    <button onClick={() => handleTypeClick(typeDetail)}>
-                                                        detail: {typeDetail.name}
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </div>
+                                       <div>
+                                           <div>
+                                               {typeDetails.map((typeDetail) => (
+                                                   <div key={typeDetail.id}>
+                                                       <h5>type: {typeDetail.name}</h5>
+                                                       <button onClick={() => handleTypeClick(typeDetail)}>
+                                                           detail: {typeDetail.name}
+                                                       </button>
+                                                   </div>
+                                               ))}
+                                           </div>
 
-                                        <div>
-                                            {selectedTypeDetail && (
-                                                <div>
-                                                    <ul>
-                                                        1. double damage
-                                                        from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
-                                                        <li key={index}>{value.name}</li>)}
-                                                        <br/>
-                                                        2. double damage
-                                                        to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
-                                                        <li key={index}>{value.name}</li>)}
-                                                        <br/>
-                                                        3. half damage
-                                                        from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
-                                                        <li key={index}>{value.name}</li>)}
-                                                        <br/>
-                                                        4. half damage
-                                                        to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
-                                                        <li key={index}>{value.name}</li>)}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
+                                           <div>
+                                               {selectedTypeDetail && (
+                                                   <div>
+                                                       <ul>
+                                                           1. double damage
+                                                           from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
+                                                           <li key={index}>{value.name}</li>)}
+                                                           <br/>
+                                                           2. double damage
+                                                           to: {selectedTypeDetail.damage_relations.double_damage_to.map((value, index) =>
+                                                           <li key={index}>{value.name}</li>)}
+                                                           <br/>
+                                                           3. half damage
+                                                           from:{selectedTypeDetail.damage_relations.half_damage_from.map((value, index) =>
+                                                           <li key={index}>{value.name}</li>)}
+                                                           <br/>
+                                                           4. half damage
+                                                           to:{selectedTypeDetail.damage_relations.half_damage_to.map((value, index) =>
+                                                           <li key={index}>{value.name}</li>)}
+                                                       </ul>
+                                                   </div>
+                                               )}
+                                           </div>
+                                       </div>
 
 
-                                    <div>
-                                        <h5>abilities</h5>
-                                        <div>
-                                            {
-                                                abilities.map(value =>
-                                                    <div key={value.slot}>
-                                                        <p>is_hidden: {`${value.is_hidden}`} <br/> {value.ability.name}
-                                                        </p>
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
-                                        <div key={name}>
-                                            {abilitiesDetails.map((abilityDetail) => (
-                                                <div key={abilityDetail.id}>
-                                                    <button onClick={() => handleAbilityClick(abilityDetail)}>
-                                                        detail: {abilityDetail.name}
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        {selectedAbilityDetail && (
-                                            <div>
-                                                <ul>
-                                                    {selectedAbilityDetail.effect_entries.map((value, index) => (
-                                                        <li key={index}>{value.short_effect}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
-                                    </div>
+                                       <div>
+                                           <h5>abilities</h5>
+                                           <div>
+                                               {
+                                                   abilities.map(value =>
+                                                       <div key={value.slot}>
+                                                           <p>is_hidden: {`${value.is_hidden}`} <br/> {value.ability.name}
+                                                           </p>
+                                                       </div>
+                                                   )
+                                               }
+                                           </div>
+                                           <div key={name}>
+                                               {abilitiesDetails.map((abilityDetail) => (
+                                                   <div key={abilityDetail.id}>
+                                                       <button onClick={() => handleAbilityClick(abilityDetail)}>
+                                                           detail: {abilityDetail.name}
+                                                       </button>
+                                                   </div>
+                                               ))}
+                                           </div>
+                                           {selectedAbilityDetail && (
+                                               <div>
+                                                   <ul>
+                                                       {selectedAbilityDetail.effect_entries.map((value, index) => (
+                                                           <li key={index}>{value.short_effect}</li>
+                                                       ))}
+                                                   </ul>
+                                               </div>
+                                           )}
+                                       </div>
 
-                                    <div>
-                                        <h5>base_stat</h5>
-                                        <div>
-                                            {
-                                                stat.map((value, index) =>
-                                                    <div key={index}>
-                                                        <p>{value.stat.name}: {value.base_stat}</p>
-                                                    </div>
-                                                )
-                                            }
-                                        </div>
+                                       <div>
+                                           <h5>base_stat</h5>
+                                           <div>
+                                               {
+                                                   stat.map((value, index) =>
+                                                       <div key={index}>
+                                                           <p>{value.stat.name}: {value.base_stat}</p>
+                                                       </div>
+                                                   )
+                                               }
+                                           </div>
 
-                                        <div>
-                                            {statDetails.map((statDetail) => (
-                                                <div key={statDetail.id}>
-                                                    <button onClick={() => handleStatClick(statDetail)}>
-                                                        detail: {statDetail.name}
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        {selectedStatDetail && (
-                                            <div>
-                                                <ul>
-                                                    {selectedStatDetail.affecting_moves.increase.map((value, index) => (
-                                                        <li key={index}>{value.move.name}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
-                                    </div>
+                                           <div>
+                                               {statDetails.map((statDetail) => (
+                                                   <div key={statDetail.id}>
+                                                       <button onClick={() => handleStatClick(statDetail)}>
+                                                           detail: {statDetail.name}
+                                                       </button>
+                                                   </div>
+                                               ))}
+                                           </div>
+                                           {selectedStatDetail && (
+                                               <div>
+                                                   <ul>
+                                                       {selectedStatDetail.affecting_moves.increase.map((value, index) => (
+                                                           <li key={index}>{value.move.name}</li>
+                                                       ))}
+                                                   </ul>
+                                               </div>
+                                           )}
+                                       </div>
 
-                                </div>
-                            )
-                        })}
-                    </div>)
-            }
-            <div>
-                <button onClick={() => navigate(`/`)}>
+                                   </div>
+                               )
+                           })}
+                       </div>)
+               }
+           </div>
+            <div className={'div_button'}>
+                <button className={'button_pagination'} onClick={() => navigate(`/`)}>
                     Home
                 </button>
             </div>
