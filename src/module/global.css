@@ -69,7 +69,6 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /*background-color: darkturquoise;*/
 }
 .div_img{
     margin: 15px;
@@ -87,8 +86,8 @@ body{
 /*********PokemonId *****/
 .div_img_form{
     margin: 15px;
-    height: 15vh;
-    width: 10vw;
+    width: 15vw;
+    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,4 +207,17 @@ body{
 }
 .div_img_rend{
     margin-right: 5px;
+}
+/*******SearchAbility******/
+.div_SearchAbilityAll{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+.div_search_ability{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
