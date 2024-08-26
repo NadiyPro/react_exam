@@ -11,7 +11,7 @@ body{
 }
 .div_Outlet{
     width: 100%;
-    height: 85vh;
+    min-height: 85vh;
     background: chocolate;
 }
 .div_logo{
