@@ -43,10 +43,12 @@ const MainLayout = () => {
     return (
         <div className={'div_base'}>
             <div className={'div_logo'}>
-                <img className={'img_logo'} alt={'img'} src={'https://i.pinimg.com/originals/34/c1/e5/34c1e5d371d64a581b1902ec5c4509f4.png'} />
-
-                <form  onSubmit={handleSubmit(registerHandle)}>
-                    <label>
+                <img className={'img_logo'} alt={'img'}
+                     src={'https://www.vodafone.co.uk/newscentre/app/uploads/2023/02/Pokemon_logo.png'}/>
+            </div>
+            <div className={'div_search'}>
+                <form onSubmit={handleSubmit(registerHandle)}>
+                    <label form={'nameForm'}>
                         <input
                             type="text"
                             {...register('nameForm')}
