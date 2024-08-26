@@ -19,7 +19,7 @@ const SearchAbility = () => {
 
 
     useEffect(() => {
-        abilitiesDetails.map(value => value.pokemon.map(item => {
+        abilitiesDetails.map(value => value.pokemon.forEach(item => {
             if (!images[item.pokemon.name ]) {
             dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name));
             }

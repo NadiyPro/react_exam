@@ -18,7 +18,7 @@ const SearchType = () => {
     }, [dispatch, type]);
 
     useEffect(() => {
-        typeDetails.map(value => value.pokemon.map(item => {
+        typeDetails.map(value => value.pokemon.forEach(item => {
             if (!images[item.pokemon.name ]) {
                 dispatch(pokemonAllActions.loadPokemonImage(item.pokemon.name));
             }
