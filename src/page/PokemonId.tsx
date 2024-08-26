@@ -92,20 +92,20 @@ const PokemonId = () => {
                             return (
                                 <div key={formDetail.id} >
                                     <div className='formImag'>
-                                    <div>
+                                    <div className={'div_img_form'}>
                                         <h6>front default</h6>
                                         <img src={formDetail.sprites.front_default} alt={'front_shiny'}/>
                                     </div>
-                                    <div>
+                                    <div className={'div_img_form'}>
                                         <h6>back default</h6>
                                         <img src={formDetail.sprites.back_default} alt={'back_default'}/>
                                     </div>
 
-                                    <div>
+                                    <div className={'div_img_form'}>
                                         <h6>front shiny</h6>
                                         <img src={formDetail.sprites.front_shiny} alt={'front_shiny'}/>
                                     </div>
-                                    <div>
+                                    <div className={'div_img_form'}>
                                         <h6>back shiny</h6>
                                         <img src={formDetail.sprites.back_shiny} alt={'back_shiny'}/>
                                     </div>
