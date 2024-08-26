@@ -43,7 +43,7 @@ const PokemonAll= () => {
             <div className={'div_inner_PokemonAll'}>
                 {pokemon.map(value => (
                     <div className={'div_img'} key={value.name}>
-                        <div>{value.name}</div>
+                        <div><h5>{value.name}</h5></div>
                         <img src={images[value.name]} alt={'img'} onClick={() => navigate(`pokemon/${value.name}`)}/>
                     </div>
                 ))}
