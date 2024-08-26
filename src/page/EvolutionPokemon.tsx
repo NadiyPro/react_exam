@@ -47,17 +47,18 @@ const EvolutionPokemon = () => {
         <div>
             <div className={'div_EvolutionPokemon'}>
                 <div>
-                    <h5>Start evolution</h5>
-                    {evolutionSpeciesName && <img src={images[evolutionSpeciesName]} alt={'img1'}/>}
+                    <div><h5>Start evolution</h5></div>
+                    <div> {evolutionSpeciesName && <img src={images[evolutionSpeciesName]} alt={'img1'}/>}</div>
                 </div>
                 <div>
-                    <h5>Evolution</h5>
-                    {evolutionEvolves_toSpeciesName?.map((name, index) => (
+                    <div><h5>Evolution</h5></div>
+                        {evolutionEvolves_toSpeciesName?.map((name, index) => (
                         <img key={index} src={images[name]} alt={`img2-${index}`}/>))}
-                    {evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
+                    <div>{evolutionEvolves_toEvolves_toSpeciesName?.map((innerArray, index) => (
                         innerArray.map((name, innerIndex) => (
                             <img key={`${index}-${innerIndex}`} src={images[name]} alt={`img3-${index}-${innerIndex}`}/>
                         ))))}
+                    </div>
                 </div>
             </div>
             <div className={'div_button'}>

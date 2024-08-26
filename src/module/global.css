@@ -194,7 +194,13 @@ body{
 .div_EvolutionPokemon{
     min-height: 85vh;
     display: flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
+/*.div_EvolutionPokemon_img{*/
+/*    text-align: center;*/
+
+
+/*}*/
