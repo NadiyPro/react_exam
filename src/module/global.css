@@ -104,7 +104,6 @@ body{
     justify-items: center;
     align-items: center;
     flex-direction: column;
-    background: cornflowerblue;
 }
 .formImag{
     width: 30vw;
@@ -112,7 +111,6 @@ body{
     justify-items: center;
     align-items: center;
     flex-direction: column;
-    background: darkslategray;
 
 }
 .div_img_row{
@@ -123,11 +121,9 @@ body{
 }
 .div_type_height_weight{
     width: 30vw;
-    background: darkgoldenrod;
 }
 .div_base_stat{
     width: 30vw;
-    background: darkseagreen;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,14 +149,12 @@ body{
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    background-color: darkgreen;
 }
 .div_height_weight_item{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #e993ec;
 
 }
 .h5_height_weight{
