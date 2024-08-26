@@ -70,7 +70,7 @@ const PokemonId = () => {
                    name && (
                        <div className={'div_PokemonId_form'} key={name}>
                            <div>
-                               <h5>Pokemon name: {name}</h5>
+                               <h3>Pokemon name: {name}</h3>
                            </div>
                            <div>
                                {formDetails.map((formDetail) => {
