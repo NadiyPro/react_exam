@@ -12,7 +12,7 @@ body{
 .div_Outlet{
     width: 100%;
     min-height: 85vh;
-    background: chocolate;
+    /*background: chocolate;*/
 }
 .div_logo{
     width: 100%;
@@ -182,4 +182,11 @@ body{
     border-radius: 5px;
     box-shadow: 8px 6px 5px 0 rgba(0,0,0,0.7);
     margin-bottom: 10px;
+}
+.div_selected_button{
+    /*background-color: ;*/
+    background: rgb(246,249,251);
+    background: radial-gradient(circle, rgba(246,249,251,1) 0%, rgba(194,195,199,0.7651435574229692) 91%);
+    border-radius: 20px;
+    border: 2px solid #d3d1d1;
 }

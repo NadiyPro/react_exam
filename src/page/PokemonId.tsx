@@ -122,7 +122,7 @@ const PokemonId = () => {
 
                                                                    <div>
                                                                        {selectedTypeDetail && (
-                                                                           <div>
+                                                                           <div className={'div_selected_button'}>
                                                                                <ul>
                                                                                    1. double damage
                                                                                    from: {selectedTypeDetail.damage_relations.double_damage_from.map((value, index) =>
@@ -211,7 +211,7 @@ const PokemonId = () => {
                                                            ))}
                                                        </div>
                                                        {selectedAbilityDetail && (
-                                                           <div>
+                                                           <div className={'div_selected_button'}>
                                                                <ul>
                                                                    {selectedAbilityDetail.effect_entries.map((value, index) => (
                                                                        <li key={index}>{value.short_effect}</li>
