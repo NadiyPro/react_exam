@@ -52,7 +52,6 @@ const EvolutionPokemon = () => {
                 </div>
                 <div>
                     <div><h5>Evolution</h5></div>
-                    <div>
                         <div className={'div_Evolution_img'}>
                             {evolutionEvolves_toSpeciesName?.map((name, index) => (
                             <div className={'div_img_rend'}><img key={index} src={images[name]} alt={`img2-${index}`}/>
@@ -64,7 +63,6 @@ const EvolutionPokemon = () => {
                                                                      alt={`img3-${index}-${innerIndex}`}/></div>
                             ))))}
                         </div>
-                    </div>
                 </div>
             </div>
             <div className={'div_button'}>
